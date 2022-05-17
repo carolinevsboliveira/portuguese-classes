@@ -1,0 +1,27 @@
+{
+  "name": "Boilerplate for Learning",
+  "short_name": "Boilerplate",
+  "icons": [
+    {
+      "src": "/img/icon-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/img/icon-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color":"#06092b", 
+  "description":"Um boilerplate usando Typescrit, React, NextJs e Styled Components",
+  "display": "fullscreen",
+  "start_url": "/",
+  "theme_color": "#06092B",
+  "orientation": "portrait-primary"
+}
