@@ -22,7 +22,8 @@ const nextConfig = {
   },
   async rewrites() {
     return translatedRoutes
-  }
+  },
+  debug: true
 }
 
 module.exports = nextConfig

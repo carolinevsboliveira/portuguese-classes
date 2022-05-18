@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 import { GlobalStyles } from '../styles'
 import createEmotionCache from 'utils/createEmotionCache'
+import AuthContextProvider from 'contexts/auth-context'
 
 export default function App({ Component, pageProps }: AppProps) {
   const clientSideEmotionCache = createEmotionCache()
@@ -22,7 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <CacheProvider value={clientSideEmotionCache}>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <AuthContextProvider>
+          <Component {...pageProps} />
+        </AuthContextProvider>
       </CacheProvider>
     </>
   )
