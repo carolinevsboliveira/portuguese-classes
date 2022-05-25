@@ -1,8 +1,8 @@
 import { gql } from 'graphql-request'
 
 export const CREATE_NEW_STUDENT = gql`
-  mutation NewStudent($name: String!, $email: String!) {
-    createStudent(data: { name: $name, email: $email, active: false }) {
+  mutation NewStudent($email: String!) {
+    createNextUser(data: { email: $email, active: false }) {
       id
     }
   }

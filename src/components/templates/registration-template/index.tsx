@@ -2,6 +2,8 @@ import { Alert, Button } from '@mui/material'
 import BackdropWithLoader from 'components/backdrop-with-loader'
 import ControlledTextField from 'components/controlled-text-field'
 import { useAuth } from 'contexts/auth-context'
+import client from 'graphql/client'
+import { GET_CLASSES } from 'graphql/queries'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -14,15 +16,17 @@ function RegistrationTemplate() {
   const onSubmit = async () => {
     setIsSubmitting(true)
     setRegistrationError(false)
-    const { nameemail, password } = getValues()
+    const { email, password } = getValues()
 
     try {
       await registerAnAccount({ email, password })
+
       const response = await fetch('/api/submit', {
         method: 'POST',
-        body: JSON.stringify({ name, email, active: false })
+        body: JSON.stringify({ email })
       })
-      console.log('🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ response', response)
+
+      if (!response.ok) throw new Error(`Something went wrong submitting the form.`)
     } catch (error) {
       setRegistrationError(true)
       setIsSubmitting(false)
