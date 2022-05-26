@@ -1,5 +1,7 @@
+import RegistrationSuccessTemplate from 'templates/registration-success'
+
 function RegistrationSuccess() {
-  return <h1>AQUI</h1>
+  return <RegistrationSuccessTemplate />
 }
 
 export default RegistrationSuccess

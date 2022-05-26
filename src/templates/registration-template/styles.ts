@@ -18,4 +18,5 @@ export const FormWrapper = styled.div`
 
 export const FieldsWrapper = styled.div`
   padding-bottom: 1.5rem;
+  height: 6rem;
 `

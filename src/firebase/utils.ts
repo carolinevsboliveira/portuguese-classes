@@ -1,4 +1,4 @@
-type FirebaseResponseArrayErros = {
+type FirebaseResponseArrayErrors = {
   message?: string
   domain?: string
   reason?: string
@@ -6,7 +6,7 @@ type FirebaseResponseArrayErros = {
 type FirebaseErrorResponse = {
   code?: number
   message?: string
-  errors?: Array<FirebaseResponseArrayErros>
+  errors?: Array<FirebaseResponseArrayErrors>
 }
 export const translateFirebaseErrorMessages = (error: FirebaseErrorResponse) => {
   if (error.message?.includes('auth/email-already-exists')) {
