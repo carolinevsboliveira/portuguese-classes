@@ -1,4 +1,4 @@
-import LoginTemplate from 'components/templates/login-template'
+import LoginTemplate from 'templates/login-template'
 import React from 'react'
 
 function Login() {
