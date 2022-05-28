@@ -1,18 +1,24 @@
-import { Main } from 'components'
-import Head from 'next/head'
+import client from 'graphql/client'
+import { GetStaticProps } from 'next'
+import HomeTemplate from 'templates/home-template'
+import { GET_HOMEPAGE_PROPS } from 'graphql/queries'
+import { CourseHomepageQuery } from 'generated/graphql'
 
-export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>NextJs Boilerplate</title>
-        <meta name="description" content="NextJs Boilerplate created to be an template" />
-        <link rel="icon" href="/img/icon-128.png" />
-      </Head>
+//TODO: Add Schema variables to codegen.yml
+//TODO: Type homepage props
+//TODO: Use an fixed wave at the botton
 
-      <main>
-        <Main />
-      </main>
-    </div>
-  )
+export default function Home({ homepage }: any) {
+  const { title, slogan } = homepage
+  return <HomeTemplate title={title} slogan={slogan} teachers={homepage.teachers} />
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { homepages } = await client.request<CourseHomepageQuery>(GET_HOMEPAGE_PROPS)
+  const homepage = homepages[0]
+  return {
+    props: {
+      homepage
+    }
+  }
 }

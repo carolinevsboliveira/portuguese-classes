@@ -7,3 +7,28 @@ export const GET_CLASSES = gql`
     }
   }
 `
+
+export const GET_HOMEPAGE_PROPS = gql`
+  query CourseHomepage {
+    homepages(last: 1) {
+      id
+      courseClassPlataform
+      initialCurrentCourseDate
+      possibleSubscriptions
+      title
+      slogan
+      teachers {
+        name
+        about {
+          html
+        }
+        profilePhoto {
+          url
+        }
+        scholarExperience
+      }
+      valuePerMonth
+      finalCourseDate
+    }
+  }
+`
