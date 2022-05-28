@@ -9,8 +9,16 @@ import { CourseHomepageQuery } from 'generated/graphql'
 //TODO: Use an fixed wave at the botton
 
 export default function Home({ homepage }: any) {
-  const { title, slogan } = homepage
-  return <HomeTemplate title={title} slogan={slogan} teachers={homepage.teachers} />
+  const { title, slogan, subscriptionDate, possibleSubscriptions } = homepage
+  return (
+    <HomeTemplate
+      title={title}
+      slogan={slogan}
+      teachers={homepage.teachers}
+      subscriptionDate={subscriptionDate}
+      possibleSubscriptions={possibleSubscriptions}
+    />
+  )
 }
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -4,8 +4,9 @@ import * as S from './styles'
 import { Button, Card, Stack } from '@mui/material'
 import { ArrowBack, ArrowForward } from '@mui/icons-material'
 import { useRouter } from 'next/router'
+
 const defaultOptions = {
-  loop: true,
+  loop: false,
   autoplay: true,
   animationData: animationData,
   rendererSettings: {

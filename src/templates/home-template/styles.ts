@@ -47,13 +47,14 @@ export const InformationTextContainer = styled.div`
   }
 `
 
-export const TeachersWrapper = styled.div`
+export const AdditionalInfoWrapper = styled.div`
   background-color: var(--light);
   display: flex;
   border-radius: 60px 60px 0 0;
   width: 100%;
   padding: 3rem;
   justify-content: center;
+  align-items: center;
   gap: 5rem;
   @media (max-width: 500px) {
     flex-direction: column;

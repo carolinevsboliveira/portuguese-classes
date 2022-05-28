@@ -11,7 +11,7 @@ export const SuccessPageWrapper = styled.div`
 `
 
 export const ContentWrapper = styled.div`
-  padding: 3rem;
+  margin: 2rem;
 `
 export const TextWrapper = styled.div`
   text-align: center;

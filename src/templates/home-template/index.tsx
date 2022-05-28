@@ -1,7 +1,11 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Stack } from '@mui/material'
+import { Button, Card, CardContent, CardMedia, Stack, Step, Stepper, StepLabel, Orientation } from '@mui/material'
 import * as S from './styles'
 import animationData from 'assets/lotties/falling-books.json'
 import Lottie from 'react-lottie'
+import { useWindowSize } from 'hooks/use-window-size'
+import { generateSubscriptionSteps } from 'helpers/translate-user-messages'
+import { useState } from 'react'
+import ResponsiveStepper from 'components/responsive-steper/reponsive-steper'
 //TODO: type teachers
 const defaultOptions = {
   loop: false,
@@ -15,9 +19,26 @@ type HomeTemplateProps = {
   title?: string
   slogan?: string
   teachers?: Array<any>
+  subscriptionDate: {
+    initialDate: Date | string
+    finalDate: Date | string
+  }
+  possibleSubscriptions: boolean
 }
-const HomeTemplate = ({ title, slogan, teachers }: HomeTemplateProps) => {
-  console.log('🚀 ~ file: index.tsx ~ line 20 ~ HomeTemplate ~ teachers', teachers)
+
+const HomeTemplate = ({
+  title,
+  slogan,
+  teachers,
+  subscriptionDate: { initialDate, finalDate },
+  possibleSubscriptions
+}: HomeTemplateProps) => {
+  const { messageArray, activeSteps } = generateSubscriptionSteps({
+    isOpen: possibleSubscriptions,
+    initialDate,
+    finalDate
+  })
+
   return (
     <Stack spacing={2}>
       <S.FullHeightWrapper>
@@ -32,8 +53,9 @@ const HomeTemplate = ({ title, slogan, teachers }: HomeTemplateProps) => {
           <h1>{title}</h1>
           <h2>{slogan}</h2>
         </S.InformationTextContainer>
-        <S.TeachersWrapper>
-          {teachers?.map((teacher) => {
+        <S.AdditionalInfoWrapper>
+          <ResponsiveStepper steps={messageArray} activeSteps={activeSteps} />
+          {/* {teachers?.map((teacher) => {
             const profilePhoto = teacher.profilePhoto.url
             const professionalExperience = teacher.scholarExperience
             return (
@@ -52,8 +74,8 @@ const HomeTemplate = ({ title, slogan, teachers }: HomeTemplateProps) => {
                 </CardContent>
               </Card>
             )
-          })}
-        </S.TeachersWrapper>
+          })} */}
+        </S.AdditionalInfoWrapper>
       </S.FullHeightWrapper>
     </Stack>
   )
