@@ -1334,6 +1334,516 @@ export type ConnectPositionInput = {
   start?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type CurrentCourseDate = Node & {
+  __typename?: 'CurrentCourseDate';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<CurrentCourseDate>;
+  finalDate: Scalars['Date'];
+  /** List of CurrentCourseDate versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  initialDate: Scalars['Date'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  quantityOfStudents?: Maybe<Scalars['Int']>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  title: Scalars['String'];
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type CurrentCourseDateCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type CurrentCourseDateDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type CurrentCourseDateHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type CurrentCourseDatePublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type CurrentCourseDateScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type CurrentCourseDateUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type CurrentCourseDateConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: CurrentCourseDateWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type CurrentCourseDateConnection = {
+  __typename?: 'CurrentCourseDateConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<CurrentCourseDateEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type CurrentCourseDateCreateInput = {
+  cl3q77aih80a301xi5p4y9nl1?: InputMaybe<HomepageCreateManyInlineInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  finalDate: Scalars['Date'];
+  initialDate: Scalars['Date'];
+  quantityOfStudents?: InputMaybe<Scalars['Int']>;
+  title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type CurrentCourseDateCreateManyInlineInput = {
+  /** Connect multiple existing CurrentCourseDate documents */
+  connect?: InputMaybe<Array<CurrentCourseDateWhereUniqueInput>>;
+  /** Create and connect multiple existing CurrentCourseDate documents */
+  create?: InputMaybe<Array<CurrentCourseDateCreateInput>>;
+};
+
+export type CurrentCourseDateCreateOneInlineInput = {
+  /** Connect one existing CurrentCourseDate document */
+  connect?: InputMaybe<CurrentCourseDateWhereUniqueInput>;
+  /** Create and connect one CurrentCourseDate document */
+  create?: InputMaybe<CurrentCourseDateCreateInput>;
+};
+
+/** An edge in a connection. */
+export type CurrentCourseDateEdge = {
+  __typename?: 'CurrentCourseDateEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: CurrentCourseDate;
+};
+
+/** Identifies documents */
+export type CurrentCourseDateManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CurrentCourseDateWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CurrentCourseDateWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CurrentCourseDateWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  finalDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  finalDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  finalDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  finalDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  finalDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  finalDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  finalDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  finalDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  initialDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  initialDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  initialDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  initialDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  initialDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  initialDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  initialDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  quantityOfStudents?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  quantityOfStudents_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  quantityOfStudents_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  quantityOfStudents_in?: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  quantityOfStudents_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  quantityOfStudents_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  quantityOfStudents_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  quantityOfStudents_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum CurrentCourseDateOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  FinalDateAsc = 'finalDate_ASC',
+  FinalDateDesc = 'finalDate_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  InitialDateAsc = 'initialDate_ASC',
+  InitialDateDesc = 'initialDate_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  QuantityOfStudentsAsc = 'quantityOfStudents_ASC',
+  QuantityOfStudentsDesc = 'quantityOfStudents_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type CurrentCourseDateUpdateInput = {
+  cl3q77aih80a301xi5p4y9nl1?: InputMaybe<HomepageUpdateManyInlineInput>;
+  finalDate?: InputMaybe<Scalars['Date']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+  quantityOfStudents?: InputMaybe<Scalars['Int']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type CurrentCourseDateUpdateManyInlineInput = {
+  /** Connect multiple existing CurrentCourseDate documents */
+  connect?: InputMaybe<Array<CurrentCourseDateConnectInput>>;
+  /** Create and connect multiple CurrentCourseDate documents */
+  create?: InputMaybe<Array<CurrentCourseDateCreateInput>>;
+  /** Delete multiple CurrentCourseDate documents */
+  delete?: InputMaybe<Array<CurrentCourseDateWhereUniqueInput>>;
+  /** Disconnect multiple CurrentCourseDate documents */
+  disconnect?: InputMaybe<Array<CurrentCourseDateWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing CurrentCourseDate documents */
+  set?: InputMaybe<Array<CurrentCourseDateWhereUniqueInput>>;
+  /** Update multiple CurrentCourseDate documents */
+  update?: InputMaybe<Array<CurrentCourseDateUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple CurrentCourseDate documents */
+  upsert?: InputMaybe<Array<CurrentCourseDateUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type CurrentCourseDateUpdateManyInput = {
+  finalDate?: InputMaybe<Scalars['Date']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+  quantityOfStudents?: InputMaybe<Scalars['Int']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type CurrentCourseDateUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: CurrentCourseDateUpdateManyInput;
+  /** Document search */
+  where: CurrentCourseDateWhereInput;
+};
+
+export type CurrentCourseDateUpdateOneInlineInput = {
+  /** Connect existing CurrentCourseDate document */
+  connect?: InputMaybe<CurrentCourseDateWhereUniqueInput>;
+  /** Create and connect one CurrentCourseDate document */
+  create?: InputMaybe<CurrentCourseDateCreateInput>;
+  /** Delete currently connected CurrentCourseDate document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected CurrentCourseDate document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single CurrentCourseDate document */
+  update?: InputMaybe<CurrentCourseDateUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single CurrentCourseDate document */
+  upsert?: InputMaybe<CurrentCourseDateUpsertWithNestedWhereUniqueInput>;
+};
+
+export type CurrentCourseDateUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: CurrentCourseDateUpdateInput;
+  /** Unique document search */
+  where: CurrentCourseDateWhereUniqueInput;
+};
+
+export type CurrentCourseDateUpsertInput = {
+  /** Create document if it didn't exist */
+  create: CurrentCourseDateCreateInput;
+  /** Update document if it exists */
+  update: CurrentCourseDateUpdateInput;
+};
+
+export type CurrentCourseDateUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: CurrentCourseDateUpsertInput;
+  /** Unique document search */
+  where: CurrentCourseDateWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type CurrentCourseDateWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CurrentCourseDateWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CurrentCourseDateWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CurrentCourseDateWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  finalDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  finalDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  finalDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  finalDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  finalDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  finalDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  finalDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  finalDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  initialDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  initialDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  initialDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  initialDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  initialDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  initialDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  initialDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  quantityOfStudents?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  quantityOfStudents_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  quantityOfStudents_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  quantityOfStudents_in?: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  quantityOfStudents_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  quantityOfStudents_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  quantityOfStudents_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  quantityOfStudents_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References CurrentCourseDate record uniquely */
+export type CurrentCourseDateWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export enum DocumentFileTypes {
   Doc = 'doc',
   Docx = 'docx',
@@ -1405,15 +1915,13 @@ export type Homepage = Node & {
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
+  currentCourseDate?: Maybe<CurrentCourseDate>;
   /** Get the document in other stages */
   documentInStages: Array<Homepage>;
-  finalCourseDate?: Maybe<Scalars['Date']>;
   /** List of Homepage versions */
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
-  initialCurrentCourseDate?: Maybe<Scalars['Date']>;
-  nextSubscriptionDate?: Maybe<Scalars['DateTime']>;
   /** Display a message if is possible to subscribe at the course */
   possibleSubscriptions?: Maybe<Scalars['Boolean']>;
   /** The time the document was published. Null on documents in draft stage. */
@@ -1424,6 +1932,7 @@ export type Homepage = Node & {
   slogan?: Maybe<Scalars['String']>;
   /** System stage field */
   stage: Stage;
+  subscriptionDate?: Maybe<SubscriptionDate>;
   teachers: Array<Teacher>;
   title: Scalars['String'];
   /** The time the document was updated */
@@ -1435,6 +1944,11 @@ export type Homepage = Node & {
 
 
 export type HomepageCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type HomepageCurrentCourseDateArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1466,6 +1980,11 @@ export type HomepageScheduledInArgs = {
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type HomepageSubscriptionDateArgs = {
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -1505,11 +2024,10 @@ export type HomepageConnection = {
 export type HomepageCreateInput = {
   courseClassPlataform?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  finalCourseDate?: InputMaybe<Scalars['Date']>;
-  initialCurrentCourseDate?: InputMaybe<Scalars['Date']>;
-  nextSubscriptionDate?: InputMaybe<Scalars['DateTime']>;
+  currentCourseDate?: InputMaybe<CurrentCourseDateCreateOneInlineInput>;
   possibleSubscriptions?: InputMaybe<Scalars['Boolean']>;
   slogan?: InputMaybe<Scalars['String']>;
+  subscriptionDate?: InputMaybe<SubscriptionDateCreateOneInlineInput>;
   teachers?: InputMaybe<TeacherCreateManyInlineInput>;
   title: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -1584,21 +2102,7 @@ export type HomepageManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
-  finalCourseDate?: InputMaybe<Scalars['Date']>;
-  /** All values greater than the given value. */
-  finalCourseDate_gt?: InputMaybe<Scalars['Date']>;
-  /** All values greater than or equal the given value. */
-  finalCourseDate_gte?: InputMaybe<Scalars['Date']>;
-  /** All values that are contained in given list. */
-  finalCourseDate_in?: InputMaybe<Array<Scalars['Date']>>;
-  /** All values less than the given value. */
-  finalCourseDate_lt?: InputMaybe<Scalars['Date']>;
-  /** All values less than or equal the given value. */
-  finalCourseDate_lte?: InputMaybe<Scalars['Date']>;
-  /** All values that are not equal to given value. */
-  finalCourseDate_not?: InputMaybe<Scalars['Date']>;
-  /** All values that are not contained in given list. */
-  finalCourseDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  currentCourseDate?: InputMaybe<CurrentCourseDateWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1618,36 +2122,6 @@ export type HomepageManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  initialCurrentCourseDate?: InputMaybe<Scalars['Date']>;
-  /** All values greater than the given value. */
-  initialCurrentCourseDate_gt?: InputMaybe<Scalars['Date']>;
-  /** All values greater than or equal the given value. */
-  initialCurrentCourseDate_gte?: InputMaybe<Scalars['Date']>;
-  /** All values that are contained in given list. */
-  initialCurrentCourseDate_in?: InputMaybe<Array<Scalars['Date']>>;
-  /** All values less than the given value. */
-  initialCurrentCourseDate_lt?: InputMaybe<Scalars['Date']>;
-  /** All values less than or equal the given value. */
-  initialCurrentCourseDate_lte?: InputMaybe<Scalars['Date']>;
-  /** All values that are not equal to given value. */
-  initialCurrentCourseDate_not?: InputMaybe<Scalars['Date']>;
-  /** All values that are not contained in given list. */
-  initialCurrentCourseDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
-  nextSubscriptionDate?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  nextSubscriptionDate_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  nextSubscriptionDate_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  nextSubscriptionDate_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  nextSubscriptionDate_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  nextSubscriptionDate_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  nextSubscriptionDate_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  nextSubscriptionDate_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   possibleSubscriptions?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   possibleSubscriptions_not?: InputMaybe<Scalars['Boolean']>;
@@ -1689,6 +2163,7 @@ export type HomepageManyWhereInput = {
   slogan_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   slogan_starts_with?: InputMaybe<Scalars['String']>;
+  subscriptionDate?: InputMaybe<SubscriptionDateWhereInput>;
   teachers_every?: InputMaybe<TeacherWhereInput>;
   teachers_none?: InputMaybe<TeacherWhereInput>;
   teachers_some?: InputMaybe<TeacherWhereInput>;
@@ -1749,14 +2224,8 @@ export enum HomepageOrderByInput {
   CourseClassPlataformDesc = 'courseClassPlataform_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
-  FinalCourseDateAsc = 'finalCourseDate_ASC',
-  FinalCourseDateDesc = 'finalCourseDate_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
-  InitialCurrentCourseDateAsc = 'initialCurrentCourseDate_ASC',
-  InitialCurrentCourseDateDesc = 'initialCurrentCourseDate_DESC',
-  NextSubscriptionDateAsc = 'nextSubscriptionDate_ASC',
-  NextSubscriptionDateDesc = 'nextSubscriptionDate_DESC',
   PossibleSubscriptionsAsc = 'possibleSubscriptions_ASC',
   PossibleSubscriptionsDesc = 'possibleSubscriptions_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
@@ -1773,11 +2242,10 @@ export enum HomepageOrderByInput {
 
 export type HomepageUpdateInput = {
   courseClassPlataform?: InputMaybe<Scalars['String']>;
-  finalCourseDate?: InputMaybe<Scalars['Date']>;
-  initialCurrentCourseDate?: InputMaybe<Scalars['Date']>;
-  nextSubscriptionDate?: InputMaybe<Scalars['DateTime']>;
+  currentCourseDate?: InputMaybe<CurrentCourseDateUpdateOneInlineInput>;
   possibleSubscriptions?: InputMaybe<Scalars['Boolean']>;
   slogan?: InputMaybe<Scalars['String']>;
+  subscriptionDate?: InputMaybe<SubscriptionDateUpdateOneInlineInput>;
   teachers?: InputMaybe<TeacherUpdateManyInlineInput>;
   title?: InputMaybe<Scalars['String']>;
   valuePerMonth?: InputMaybe<Scalars['Int']>;
@@ -1802,9 +2270,6 @@ export type HomepageUpdateManyInlineInput = {
 
 export type HomepageUpdateManyInput = {
   courseClassPlataform?: InputMaybe<Scalars['String']>;
-  finalCourseDate?: InputMaybe<Scalars['Date']>;
-  initialCurrentCourseDate?: InputMaybe<Scalars['Date']>;
-  nextSubscriptionDate?: InputMaybe<Scalars['DateTime']>;
   possibleSubscriptions?: InputMaybe<Scalars['Boolean']>;
   slogan?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
@@ -1899,21 +2364,7 @@ export type HomepageWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
-  finalCourseDate?: InputMaybe<Scalars['Date']>;
-  /** All values greater than the given value. */
-  finalCourseDate_gt?: InputMaybe<Scalars['Date']>;
-  /** All values greater than or equal the given value. */
-  finalCourseDate_gte?: InputMaybe<Scalars['Date']>;
-  /** All values that are contained in given list. */
-  finalCourseDate_in?: InputMaybe<Array<Scalars['Date']>>;
-  /** All values less than the given value. */
-  finalCourseDate_lt?: InputMaybe<Scalars['Date']>;
-  /** All values less than or equal the given value. */
-  finalCourseDate_lte?: InputMaybe<Scalars['Date']>;
-  /** All values that are not equal to given value. */
-  finalCourseDate_not?: InputMaybe<Scalars['Date']>;
-  /** All values that are not contained in given list. */
-  finalCourseDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  currentCourseDate?: InputMaybe<CurrentCourseDateWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1933,36 +2384,6 @@ export type HomepageWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  initialCurrentCourseDate?: InputMaybe<Scalars['Date']>;
-  /** All values greater than the given value. */
-  initialCurrentCourseDate_gt?: InputMaybe<Scalars['Date']>;
-  /** All values greater than or equal the given value. */
-  initialCurrentCourseDate_gte?: InputMaybe<Scalars['Date']>;
-  /** All values that are contained in given list. */
-  initialCurrentCourseDate_in?: InputMaybe<Array<Scalars['Date']>>;
-  /** All values less than the given value. */
-  initialCurrentCourseDate_lt?: InputMaybe<Scalars['Date']>;
-  /** All values less than or equal the given value. */
-  initialCurrentCourseDate_lte?: InputMaybe<Scalars['Date']>;
-  /** All values that are not equal to given value. */
-  initialCurrentCourseDate_not?: InputMaybe<Scalars['Date']>;
-  /** All values that are not contained in given list. */
-  initialCurrentCourseDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
-  nextSubscriptionDate?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  nextSubscriptionDate_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  nextSubscriptionDate_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  nextSubscriptionDate_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  nextSubscriptionDate_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  nextSubscriptionDate_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  nextSubscriptionDate_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  nextSubscriptionDate_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   possibleSubscriptions?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   possibleSubscriptions_not?: InputMaybe<Scalars['Boolean']>;
@@ -2004,6 +2425,7 @@ export type HomepageWhereInput = {
   slogan_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   slogan_starts_with?: InputMaybe<Scalars['String']>;
+  subscriptionDate?: InputMaybe<SubscriptionDateWhereInput>;
   teachers_every?: InputMaybe<TeacherWhereInput>;
   teachers_none?: InputMaybe<TeacherWhereInput>;
   teachers_some?: InputMaybe<TeacherWhereInput>;
@@ -2125,18 +2547,24 @@ export type Mutation = {
   createAsset?: Maybe<Asset>;
   /** Create one class */
   createClass?: Maybe<Class>;
+  /** Create one currentCourseDate */
+  createCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Create one homepage */
   createHomepage?: Maybe<Homepage>;
   /** Create one nextUser */
   createNextUser?: Maybe<NextUser>;
   /** Create one scheduledRelease */
   createScheduledRelease?: Maybe<ScheduledRelease>;
+  /** Create one subscriptionDate */
+  createSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Create one teacher */
   createTeacher?: Maybe<Teacher>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
   /** Delete one class from _all_ existing stages. Returns deleted document. */
   deleteClass?: Maybe<Class>;
+  /** Delete one currentCourseDate from _all_ existing stages. Returns deleted document. */
+  deleteCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Delete one homepage from _all_ existing stages. Returns deleted document. */
   deleteHomepage?: Maybe<Homepage>;
   /**
@@ -2154,6 +2582,13 @@ export type Mutation = {
   /** Delete many Class documents, return deleted documents */
   deleteManyClassesConnection: ClassConnection;
   /**
+   * Delete many CurrentCourseDate documents
+   * @deprecated Please use the new paginated many mutation (deleteManyCurrentCourseDatesConnection)
+   */
+  deleteManyCurrentCourseDates: BatchPayload;
+  /** Delete many CurrentCourseDate documents, return deleted documents */
+  deleteManyCurrentCourseDatesConnection: CurrentCourseDateConnection;
+  /**
    * Delete many Homepage documents
    * @deprecated Please use the new paginated many mutation (deleteManyHomepagesConnection)
    */
@@ -2168,6 +2603,13 @@ export type Mutation = {
   /** Delete many NextUser documents, return deleted documents */
   deleteManyNextUsersConnection: NextUserConnection;
   /**
+   * Delete many SubscriptionDate documents
+   * @deprecated Please use the new paginated many mutation (deleteManySubscriptionDatesConnection)
+   */
+  deleteManySubscriptionDates: BatchPayload;
+  /** Delete many SubscriptionDate documents, return deleted documents */
+  deleteManySubscriptionDatesConnection: SubscriptionDateConnection;
+  /**
    * Delete many Teacher documents
    * @deprecated Please use the new paginated many mutation (deleteManyTeachersConnection)
    */
@@ -2180,12 +2622,16 @@ export type Mutation = {
   deleteScheduledOperation?: Maybe<ScheduledOperation>;
   /** Delete one scheduledRelease from _all_ existing stages. Returns deleted document. */
   deleteScheduledRelease?: Maybe<ScheduledRelease>;
+  /** Delete one subscriptionDate from _all_ existing stages. Returns deleted document. */
+  deleteSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Delete one teacher from _all_ existing stages. Returns deleted document. */
   deleteTeacher?: Maybe<Teacher>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
   /** Publish one class */
   publishClass?: Maybe<Class>;
+  /** Publish one currentCourseDate */
+  publishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Publish one homepage */
   publishHomepage?: Maybe<Homepage>;
   /**
@@ -2203,6 +2649,13 @@ export type Mutation = {
   /** Publish many Class documents */
   publishManyClassesConnection: ClassConnection;
   /**
+   * Publish many CurrentCourseDate documents
+   * @deprecated Please use the new paginated many mutation (publishManyCurrentCourseDatesConnection)
+   */
+  publishManyCurrentCourseDates: BatchPayload;
+  /** Publish many CurrentCourseDate documents */
+  publishManyCurrentCourseDatesConnection: CurrentCourseDateConnection;
+  /**
    * Publish many Homepage documents
    * @deprecated Please use the new paginated many mutation (publishManyHomepagesConnection)
    */
@@ -2217,6 +2670,13 @@ export type Mutation = {
   /** Publish many NextUser documents */
   publishManyNextUsersConnection: NextUserConnection;
   /**
+   * Publish many SubscriptionDate documents
+   * @deprecated Please use the new paginated many mutation (publishManySubscriptionDatesConnection)
+   */
+  publishManySubscriptionDates: BatchPayload;
+  /** Publish many SubscriptionDate documents */
+  publishManySubscriptionDatesConnection: SubscriptionDateConnection;
+  /**
    * Publish many Teacher documents
    * @deprecated Please use the new paginated many mutation (publishManyTeachersConnection)
    */
@@ -2225,32 +2685,44 @@ export type Mutation = {
   publishManyTeachersConnection: TeacherConnection;
   /** Publish one nextUser */
   publishNextUser?: Maybe<NextUser>;
+  /** Publish one subscriptionDate */
+  publishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Publish one teacher */
   publishTeacher?: Maybe<Teacher>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
   /** Schedule to publish one class */
   schedulePublishClass?: Maybe<Class>;
+  /** Schedule to publish one currentCourseDate */
+  schedulePublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Schedule to publish one homepage */
   schedulePublishHomepage?: Maybe<Homepage>;
   /** Schedule to publish one nextUser */
   schedulePublishNextUser?: Maybe<NextUser>;
+  /** Schedule to publish one subscriptionDate */
+  schedulePublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Schedule to publish one teacher */
   schedulePublishTeacher?: Maybe<Teacher>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
   /** Unpublish one class from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishClass?: Maybe<Class>;
+  /** Unpublish one currentCourseDate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishHomepage?: Maybe<Homepage>;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishNextUser?: Maybe<NextUser>;
+  /** Unpublish one subscriptionDate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Unpublish one teacher from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishTeacher?: Maybe<Teacher>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one class from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishClass?: Maybe<Class>;
+  /** Unpublish one currentCourseDate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishHomepage?: Maybe<Homepage>;
   /**
@@ -2268,6 +2740,13 @@ export type Mutation = {
   /** Find many Class documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyClassesConnection: ClassConnection;
   /**
+   * Unpublish many CurrentCourseDate documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyCurrentCourseDatesConnection)
+   */
+  unpublishManyCurrentCourseDates: BatchPayload;
+  /** Find many CurrentCourseDate documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyCurrentCourseDatesConnection: CurrentCourseDateConnection;
+  /**
    * Unpublish many Homepage documents
    * @deprecated Please use the new paginated many mutation (unpublishManyHomepagesConnection)
    */
@@ -2282,6 +2761,13 @@ export type Mutation = {
   /** Find many NextUser documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyNextUsersConnection: NextUserConnection;
   /**
+   * Unpublish many SubscriptionDate documents
+   * @deprecated Please use the new paginated many mutation (unpublishManySubscriptionDatesConnection)
+   */
+  unpublishManySubscriptionDates: BatchPayload;
+  /** Find many SubscriptionDate documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManySubscriptionDatesConnection: SubscriptionDateConnection;
+  /**
    * Unpublish many Teacher documents
    * @deprecated Please use the new paginated many mutation (unpublishManyTeachersConnection)
    */
@@ -2290,12 +2776,16 @@ export type Mutation = {
   unpublishManyTeachersConnection: TeacherConnection;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishNextUser?: Maybe<NextUser>;
+  /** Unpublish one subscriptionDate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Unpublish one teacher from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishTeacher?: Maybe<Teacher>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
   /** Update one class */
   updateClass?: Maybe<Class>;
+  /** Update one currentCourseDate */
+  updateCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Update one homepage */
   updateHomepage?: Maybe<Homepage>;
   /**
@@ -2313,6 +2803,13 @@ export type Mutation = {
   /** Update many Class documents */
   updateManyClassesConnection: ClassConnection;
   /**
+   * Update many currentCourseDates
+   * @deprecated Please use the new paginated many mutation (updateManyCurrentCourseDatesConnection)
+   */
+  updateManyCurrentCourseDates: BatchPayload;
+  /** Update many CurrentCourseDate documents */
+  updateManyCurrentCourseDatesConnection: CurrentCourseDateConnection;
+  /**
    * Update many homepages
    * @deprecated Please use the new paginated many mutation (updateManyHomepagesConnection)
    */
@@ -2327,6 +2824,13 @@ export type Mutation = {
   /** Update many NextUser documents */
   updateManyNextUsersConnection: NextUserConnection;
   /**
+   * Update many subscriptionDates
+   * @deprecated Please use the new paginated many mutation (updateManySubscriptionDatesConnection)
+   */
+  updateManySubscriptionDates: BatchPayload;
+  /** Update many SubscriptionDate documents */
+  updateManySubscriptionDatesConnection: SubscriptionDateConnection;
+  /**
    * Update many teachers
    * @deprecated Please use the new paginated many mutation (updateManyTeachersConnection)
    */
@@ -2337,16 +2841,22 @@ export type Mutation = {
   updateNextUser?: Maybe<NextUser>;
   /** Update one scheduledRelease */
   updateScheduledRelease?: Maybe<ScheduledRelease>;
+  /** Update one subscriptionDate */
+  updateSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Update one teacher */
   updateTeacher?: Maybe<Teacher>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
   /** Upsert one class */
   upsertClass?: Maybe<Class>;
+  /** Upsert one currentCourseDate */
+  upsertCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Upsert one homepage */
   upsertHomepage?: Maybe<Homepage>;
   /** Upsert one nextUser */
   upsertNextUser?: Maybe<NextUser>;
+  /** Upsert one subscriptionDate */
+  upsertSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Upsert one teacher */
   upsertTeacher?: Maybe<Teacher>;
 };
@@ -2359,6 +2869,11 @@ export type MutationCreateAssetArgs = {
 
 export type MutationCreateClassArgs = {
   data: ClassCreateInput;
+};
+
+
+export type MutationCreateCurrentCourseDateArgs = {
+  data: CurrentCourseDateCreateInput;
 };
 
 
@@ -2377,6 +2892,11 @@ export type MutationCreateScheduledReleaseArgs = {
 };
 
 
+export type MutationCreateSubscriptionDateArgs = {
+  data: SubscriptionDateCreateInput;
+};
+
+
 export type MutationCreateTeacherArgs = {
   data: TeacherCreateInput;
 };
@@ -2389,6 +2909,11 @@ export type MutationDeleteAssetArgs = {
 
 export type MutationDeleteClassArgs = {
   where: ClassWhereUniqueInput;
+};
+
+
+export type MutationDeleteCurrentCourseDateArgs = {
+  where: CurrentCourseDateWhereUniqueInput;
 };
 
 
@@ -2427,6 +2952,21 @@ export type MutationDeleteManyClassesConnectionArgs = {
 };
 
 
+export type MutationDeleteManyCurrentCourseDatesArgs = {
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCurrentCourseDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
 export type MutationDeleteManyHomepagesArgs = {
   where?: InputMaybe<HomepageManyWhereInput>;
 };
@@ -2454,6 +2994,21 @@ export type MutationDeleteManyNextUsersConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<NextUserManyWhereInput>;
+};
+
+
+export type MutationDeleteManySubscriptionDatesArgs = {
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
+};
+
+
+export type MutationDeleteManySubscriptionDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
 };
 
 
@@ -2487,6 +3042,11 @@ export type MutationDeleteScheduledReleaseArgs = {
 };
 
 
+export type MutationDeleteSubscriptionDateArgs = {
+  where: SubscriptionDateWhereUniqueInput;
+};
+
+
 export type MutationDeleteTeacherArgs = {
   where: TeacherWhereUniqueInput;
 };
@@ -2504,6 +3064,12 @@ export type MutationPublishAssetArgs = {
 export type MutationPublishClassArgs = {
   to?: Array<Stage>;
   where: ClassWhereUniqueInput;
+};
+
+
+export type MutationPublishCurrentCourseDateArgs = {
+  to?: Array<Stage>;
+  where: CurrentCourseDateWhereUniqueInput;
 };
 
 
@@ -2555,6 +3121,24 @@ export type MutationPublishManyClassesConnectionArgs = {
 };
 
 
+export type MutationPublishManyCurrentCourseDatesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
+export type MutationPublishManyCurrentCourseDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
 export type MutationPublishManyHomepagesArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<HomepageManyWhereInput>;
@@ -2591,6 +3175,24 @@ export type MutationPublishManyNextUsersConnectionArgs = {
 };
 
 
+export type MutationPublishManySubscriptionDatesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
+};
+
+
+export type MutationPublishManySubscriptionDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
+};
+
+
 export type MutationPublishManyTeachersArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<TeacherManyWhereInput>;
@@ -2612,6 +3214,12 @@ export type MutationPublishManyTeachersConnectionArgs = {
 export type MutationPublishNextUserArgs = {
   to?: Array<Stage>;
   where: NextUserWhereUniqueInput;
+};
+
+
+export type MutationPublishSubscriptionDateArgs = {
+  to?: Array<Stage>;
+  where: SubscriptionDateWhereUniqueInput;
 };
 
 
@@ -2640,6 +3248,14 @@ export type MutationSchedulePublishClassArgs = {
 };
 
 
+export type MutationSchedulePublishCurrentCourseDateArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: CurrentCourseDateWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishHomepageArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -2653,6 +3269,14 @@ export type MutationSchedulePublishNextUserArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: NextUserWhereUniqueInput;
+};
+
+
+export type MutationSchedulePublishSubscriptionDateArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: SubscriptionDateWhereUniqueInput;
 };
 
 
@@ -2682,6 +3306,14 @@ export type MutationScheduleUnpublishClassArgs = {
 };
 
 
+export type MutationScheduleUnpublishCurrentCourseDateArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: CurrentCourseDateWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishHomepageArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
@@ -2695,6 +3327,14 @@ export type MutationScheduleUnpublishNextUserArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: NextUserWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishSubscriptionDateArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: SubscriptionDateWhereUniqueInput;
 };
 
 
@@ -2717,6 +3357,12 @@ export type MutationUnpublishAssetArgs = {
 export type MutationUnpublishClassArgs = {
   from?: Array<Stage>;
   where: ClassWhereUniqueInput;
+};
+
+
+export type MutationUnpublishCurrentCourseDateArgs = {
+  from?: Array<Stage>;
+  where: CurrentCourseDateWhereUniqueInput;
 };
 
 
@@ -2766,6 +3412,24 @@ export type MutationUnpublishManyClassesConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyCurrentCourseDatesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCurrentCourseDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyHomepagesArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<HomepageManyWhereInput>;
@@ -2802,6 +3466,24 @@ export type MutationUnpublishManyNextUsersConnectionArgs = {
 };
 
 
+export type MutationUnpublishManySubscriptionDatesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
+};
+
+
+export type MutationUnpublishManySubscriptionDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyTeachersArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<TeacherManyWhereInput>;
@@ -2826,6 +3508,12 @@ export type MutationUnpublishNextUserArgs = {
 };
 
 
+export type MutationUnpublishSubscriptionDateArgs = {
+  from?: Array<Stage>;
+  where: SubscriptionDateWhereUniqueInput;
+};
+
+
 export type MutationUnpublishTeacherArgs = {
   from?: Array<Stage>;
   where: TeacherWhereUniqueInput;
@@ -2841,6 +3529,12 @@ export type MutationUpdateAssetArgs = {
 export type MutationUpdateClassArgs = {
   data: ClassUpdateInput;
   where: ClassWhereUniqueInput;
+};
+
+
+export type MutationUpdateCurrentCourseDateArgs = {
+  data: CurrentCourseDateUpdateInput;
+  where: CurrentCourseDateWhereUniqueInput;
 };
 
 
@@ -2884,6 +3578,23 @@ export type MutationUpdateManyClassesConnectionArgs = {
 };
 
 
+export type MutationUpdateManyCurrentCourseDatesArgs = {
+  data: CurrentCourseDateUpdateManyInput;
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCurrentCourseDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: CurrentCourseDateUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CurrentCourseDateManyWhereInput>;
+};
+
+
 export type MutationUpdateManyHomepagesArgs = {
   data: HomepageUpdateManyInput;
   where?: InputMaybe<HomepageManyWhereInput>;
@@ -2918,6 +3629,23 @@ export type MutationUpdateManyNextUsersConnectionArgs = {
 };
 
 
+export type MutationUpdateManySubscriptionDatesArgs = {
+  data: SubscriptionDateUpdateManyInput;
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
+};
+
+
+export type MutationUpdateManySubscriptionDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: SubscriptionDateUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SubscriptionDateManyWhereInput>;
+};
+
+
 export type MutationUpdateManyTeachersArgs = {
   data: TeacherUpdateManyInput;
   where?: InputMaybe<TeacherManyWhereInput>;
@@ -2947,6 +3675,12 @@ export type MutationUpdateScheduledReleaseArgs = {
 };
 
 
+export type MutationUpdateSubscriptionDateArgs = {
+  data: SubscriptionDateUpdateInput;
+  where: SubscriptionDateWhereUniqueInput;
+};
+
+
 export type MutationUpdateTeacherArgs = {
   data: TeacherUpdateInput;
   where: TeacherWhereUniqueInput;
@@ -2965,6 +3699,12 @@ export type MutationUpsertClassArgs = {
 };
 
 
+export type MutationUpsertCurrentCourseDateArgs = {
+  upsert: CurrentCourseDateUpsertInput;
+  where: CurrentCourseDateWhereUniqueInput;
+};
+
+
 export type MutationUpsertHomepageArgs = {
   upsert: HomepageUpsertInput;
   where: HomepageWhereUniqueInput;
@@ -2974,6 +3714,12 @@ export type MutationUpsertHomepageArgs = {
 export type MutationUpsertNextUserArgs = {
   upsert: NextUserUpsertInput;
   where: NextUserWhereUniqueInput;
+};
+
+
+export type MutationUpsertSubscriptionDateArgs = {
+  upsert: SubscriptionDateUpsertInput;
+  where: SubscriptionDateWhereUniqueInput;
 };
 
 
@@ -3530,6 +4276,14 @@ export type Query = {
   classes: Array<Class>;
   /** Retrieve multiple classes using the Relay connection interface */
   classesConnection: ClassConnection;
+  /** Retrieve a single currentCourseDate */
+  currentCourseDate?: Maybe<CurrentCourseDate>;
+  /** Retrieve document version */
+  currentCourseDateVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple currentCourseDates */
+  currentCourseDates: Array<CurrentCourseDate>;
+  /** Retrieve multiple currentCourseDates using the Relay connection interface */
+  currentCourseDatesConnection: CurrentCourseDateConnection;
   /** Retrieve a single homepage */
   homepage?: Maybe<Homepage>;
   /** Retrieve document version */
@@ -3560,6 +4314,14 @@ export type Query = {
   scheduledReleases: Array<ScheduledRelease>;
   /** Retrieve multiple scheduledReleases using the Relay connection interface */
   scheduledReleasesConnection: ScheduledReleaseConnection;
+  /** Retrieve a single subscriptionDate */
+  subscriptionDate?: Maybe<SubscriptionDate>;
+  /** Retrieve document version */
+  subscriptionDateVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple subscriptionDates */
+  subscriptionDates: Array<SubscriptionDate>;
+  /** Retrieve multiple subscriptionDates using the Relay connection interface */
+  subscriptionDatesConnection: SubscriptionDateConnection;
   /** Retrieve a single teacher */
   teacher?: Maybe<Teacher>;
   /** Retrieve document version */
@@ -3650,6 +4412,44 @@ export type QueryClassesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<ClassWhereInput>;
+};
+
+
+export type QueryCurrentCourseDateArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: CurrentCourseDateWhereUniqueInput;
+};
+
+
+export type QueryCurrentCourseDateVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryCurrentCourseDatesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CurrentCourseDateOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<CurrentCourseDateWhereInput>;
+};
+
+
+export type QueryCurrentCourseDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CurrentCourseDateOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<CurrentCourseDateWhereInput>;
 };
 
 
@@ -3799,6 +4599,44 @@ export type QueryScheduledReleasesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<ScheduledReleaseWhereInput>;
+};
+
+
+export type QuerySubscriptionDateArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: SubscriptionDateWhereUniqueInput;
+};
+
+
+export type QuerySubscriptionDateVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QuerySubscriptionDatesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<SubscriptionDateOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<SubscriptionDateWhereInput>;
+};
+
+
+export type QuerySubscriptionDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<SubscriptionDateOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<SubscriptionDateWhereInput>;
 };
 
 
@@ -3979,7 +4817,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Class | Homepage | NextUser | Teacher;
+export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | NextUser | SubscriptionDate | Teacher;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -4897,6 +5735,488 @@ export enum Stage {
   /** The Published stage is where you can publish your content to. */
   Published = 'PUBLISHED'
 }
+
+/** Insert here the subscriptions dates (even the course has started, please insert the next class avaliable subscription dates) */
+export type SubscriptionDate = Node & {
+  __typename?: 'SubscriptionDate';
+  /** Inserte here the name of the class */
+  class: Scalars['String'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<SubscriptionDate>;
+  finalDate: Scalars['Date'];
+  /** List of SubscriptionDate versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  initialDate: Scalars['Date'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+/** Insert here the subscriptions dates (even the course has started, please insert the next class avaliable subscription dates) */
+export type SubscriptionDateCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Insert here the subscriptions dates (even the course has started, please insert the next class avaliable subscription dates) */
+export type SubscriptionDateDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+/** Insert here the subscriptions dates (even the course has started, please insert the next class avaliable subscription dates) */
+export type SubscriptionDateHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+/** Insert here the subscriptions dates (even the course has started, please insert the next class avaliable subscription dates) */
+export type SubscriptionDatePublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Insert here the subscriptions dates (even the course has started, please insert the next class avaliable subscription dates) */
+export type SubscriptionDateScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+/** Insert here the subscriptions dates (even the course has started, please insert the next class avaliable subscription dates) */
+export type SubscriptionDateUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type SubscriptionDateConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: SubscriptionDateWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type SubscriptionDateConnection = {
+  __typename?: 'SubscriptionDateConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<SubscriptionDateEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type SubscriptionDateCreateInput = {
+  cl3q6znny7uxd01z1g95q90tq?: InputMaybe<HomepageCreateManyInlineInput>;
+  class: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  finalDate: Scalars['Date'];
+  initialDate: Scalars['Date'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type SubscriptionDateCreateManyInlineInput = {
+  /** Connect multiple existing SubscriptionDate documents */
+  connect?: InputMaybe<Array<SubscriptionDateWhereUniqueInput>>;
+  /** Create and connect multiple existing SubscriptionDate documents */
+  create?: InputMaybe<Array<SubscriptionDateCreateInput>>;
+};
+
+export type SubscriptionDateCreateOneInlineInput = {
+  /** Connect one existing SubscriptionDate document */
+  connect?: InputMaybe<SubscriptionDateWhereUniqueInput>;
+  /** Create and connect one SubscriptionDate document */
+  create?: InputMaybe<SubscriptionDateCreateInput>;
+};
+
+/** An edge in a connection. */
+export type SubscriptionDateEdge = {
+  __typename?: 'SubscriptionDateEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: SubscriptionDate;
+};
+
+/** Identifies documents */
+export type SubscriptionDateManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<SubscriptionDateWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<SubscriptionDateWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<SubscriptionDateWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  class?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  class_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  class_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  class_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  class_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  class_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  class_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  class_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  class_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  class_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  finalDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  finalDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  finalDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  finalDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  finalDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  finalDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  finalDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  finalDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  initialDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  initialDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  initialDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  initialDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  initialDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  initialDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  initialDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum SubscriptionDateOrderByInput {
+  ClassAsc = 'class_ASC',
+  ClassDesc = 'class_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  FinalDateAsc = 'finalDate_ASC',
+  FinalDateDesc = 'finalDate_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  InitialDateAsc = 'initialDate_ASC',
+  InitialDateDesc = 'initialDate_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type SubscriptionDateUpdateInput = {
+  cl3q6znny7uxd01z1g95q90tq?: InputMaybe<HomepageUpdateManyInlineInput>;
+  class?: InputMaybe<Scalars['String']>;
+  finalDate?: InputMaybe<Scalars['Date']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+};
+
+export type SubscriptionDateUpdateManyInlineInput = {
+  /** Connect multiple existing SubscriptionDate documents */
+  connect?: InputMaybe<Array<SubscriptionDateConnectInput>>;
+  /** Create and connect multiple SubscriptionDate documents */
+  create?: InputMaybe<Array<SubscriptionDateCreateInput>>;
+  /** Delete multiple SubscriptionDate documents */
+  delete?: InputMaybe<Array<SubscriptionDateWhereUniqueInput>>;
+  /** Disconnect multiple SubscriptionDate documents */
+  disconnect?: InputMaybe<Array<SubscriptionDateWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing SubscriptionDate documents */
+  set?: InputMaybe<Array<SubscriptionDateWhereUniqueInput>>;
+  /** Update multiple SubscriptionDate documents */
+  update?: InputMaybe<Array<SubscriptionDateUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple SubscriptionDate documents */
+  upsert?: InputMaybe<Array<SubscriptionDateUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type SubscriptionDateUpdateManyInput = {
+  class?: InputMaybe<Scalars['String']>;
+  finalDate?: InputMaybe<Scalars['Date']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+};
+
+export type SubscriptionDateUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: SubscriptionDateUpdateManyInput;
+  /** Document search */
+  where: SubscriptionDateWhereInput;
+};
+
+export type SubscriptionDateUpdateOneInlineInput = {
+  /** Connect existing SubscriptionDate document */
+  connect?: InputMaybe<SubscriptionDateWhereUniqueInput>;
+  /** Create and connect one SubscriptionDate document */
+  create?: InputMaybe<SubscriptionDateCreateInput>;
+  /** Delete currently connected SubscriptionDate document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected SubscriptionDate document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single SubscriptionDate document */
+  update?: InputMaybe<SubscriptionDateUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single SubscriptionDate document */
+  upsert?: InputMaybe<SubscriptionDateUpsertWithNestedWhereUniqueInput>;
+};
+
+export type SubscriptionDateUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: SubscriptionDateUpdateInput;
+  /** Unique document search */
+  where: SubscriptionDateWhereUniqueInput;
+};
+
+export type SubscriptionDateUpsertInput = {
+  /** Create document if it didn't exist */
+  create: SubscriptionDateCreateInput;
+  /** Update document if it exists */
+  update: SubscriptionDateUpdateInput;
+};
+
+export type SubscriptionDateUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: SubscriptionDateUpsertInput;
+  /** Unique document search */
+  where: SubscriptionDateWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type SubscriptionDateWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<SubscriptionDateWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<SubscriptionDateWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<SubscriptionDateWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  class?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  class_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  class_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  class_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  class_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  class_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  class_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  class_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  class_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  class_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  finalDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  finalDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  finalDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  finalDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  finalDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  finalDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  finalDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  finalDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  initialDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  initialDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  initialDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  initialDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  initialDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  initialDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  initialDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  initialDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References SubscriptionDate record uniquely */
+export type SubscriptionDateWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
 
 export enum SystemDateTimeFieldVariation {
   Base = 'BASE',
@@ -5972,4 +7292,4 @@ export type MyQueryQuery = { __typename?: 'Query', classes: Array<{ __typename?:
 export type CourseHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CourseHomepageQuery = { __typename?: 'Query', homepages: Array<{ __typename?: 'Homepage', id: string, courseClassPlataform?: string | null, initialCurrentCourseDate?: any | null, possibleSubscriptions?: boolean | null, title: string, slogan?: string | null, valuePerMonth: number, finalCourseDate?: any | null, teachers: Array<{ __typename?: 'Teacher', name: string, scholarExperience: Array<string>, about?: { __typename?: 'RichText', html: string } | null, profilePhoto?: { __typename?: 'Asset', url: string } | null }> }> };
+export type CourseHomepageQuery = { __typename?: 'Query', homepages: Array<{ __typename?: 'Homepage', id: string, courseClassPlataform?: string | null, possibleSubscriptions?: boolean | null, title: string, slogan?: string | null, valuePerMonth: number, subscriptionDate?: { __typename?: 'SubscriptionDate', initialDate: any, finalDate: any } | null, teachers: Array<{ __typename?: 'Teacher', name: string, scholarExperience: Array<string>, about?: { __typename?: 'RichText', html: string } | null, profilePhoto?: { __typename?: 'Asset', url: string } | null }> }> };

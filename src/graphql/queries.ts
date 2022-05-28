@@ -13,7 +13,10 @@ export const GET_HOMEPAGE_PROPS = gql`
     homepages(last: 1) {
       id
       courseClassPlataform
-      initialCurrentCourseDate
+      subscriptionDate {
+        initialDate
+        finalDate
+      }
       possibleSubscriptions
       title
       slogan
@@ -28,7 +31,6 @@ export const GET_HOMEPAGE_PROPS = gql`
         scholarExperience
       }
       valuePerMonth
-      finalCourseDate
     }
   }
 `
