@@ -8,7 +8,7 @@ type generateSubscriptionStepsParams = {
 export function generateSubscriptionSteps({ isOpen, initialDate, finalDate }: generateSubscriptionStepsParams) {
   if (isOpen) {
     const messageArray = [
-      `Inscreva-se`,
+      `Inscrições abertas`,
       `De ${dayjs(initialDate).format('DD/MM/YYYY')}`,
       `Até ${dayjs(finalDate).format('DD/MM/YYYY')}`
     ]
@@ -22,7 +22,7 @@ export function generateSubscriptionSteps({ isOpen, initialDate, finalDate }: ge
     messageArray: [
       `Inscrições encerradas!`,
       `Abrem em ${dayjs(initialDate).format('DD/MM/YYYY')}`,
-      `E vão até \n${dayjs(finalDate).format('DD/MM/YYYY')}`
+      `E vão até ${dayjs(finalDate).format('DD/MM/YYYY')}`
     ],
     activeSteps: 0
   }
