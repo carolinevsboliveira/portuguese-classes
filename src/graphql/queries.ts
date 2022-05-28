@@ -22,6 +22,7 @@ export const GET_HOMEPAGE_PROPS = gql`
       slogan
       teachers {
         name
+        id
         about {
           html
         }
