@@ -1,16 +1,18 @@
-import { Button, Card, CardContent, CardMedia, Stack, Step, Stepper, StepLabel, Orientation } from '@mui/material'
+import { Button, Stack } from '@mui/material'
 import * as S from './styles'
-import animationData from 'assets/lotties/falling-books.json'
+import FallingBooks from 'assets/lotties/falling-books.json'
+import AccessibleValue from 'assets/lotties/accessible-value.json'
+import OnlineClasses from 'assets/lotties/online-class.json'
+import ClassTime from 'assets/lotties/class-time.json'
 import Lottie from 'react-lottie'
-import { useWindowSize } from 'hooks/use-window-size'
 import { generateSubscriptionSteps } from 'helpers/translate-user-messages'
-import { useState } from 'react'
 import ResponsiveStepper from 'components/responsive-steper/reponsive-steper'
+import CustomPaper from 'components/custom-paper'
 //TODO: type teachers
 const defaultOptions = {
   loop: false,
   autoplay: true,
-  animationData: animationData,
+  animationData: FallingBooks,
   rendererSettings: {
     preserveAspectRatio: 'xMidYMid slice'
   }
@@ -24,6 +26,8 @@ type HomeTemplateProps = {
     finalDate: Date | string
   }
   possibleSubscriptions: boolean
+  valuePerMonth: number
+  courseClassPlataform: string
 }
 
 const HomeTemplate = ({
@@ -31,14 +35,20 @@ const HomeTemplate = ({
   slogan,
   teachers,
   subscriptionDate: { initialDate, finalDate },
-  possibleSubscriptions
+  possibleSubscriptions,
+  courseClassPlataform,
+  valuePerMonth
 }: HomeTemplateProps) => {
   const { messageArray, activeSteps } = generateSubscriptionSteps({
     isOpen: possibleSubscriptions,
     initialDate,
     finalDate
   })
-
+  const papers = [
+    { animationData: ClassTime, title: 'Aulas aos sábados', subtitle: '8:30h as 11:00h' },
+    { animationData: OnlineClasses, title: 'Aulas online', subtitle: `Via ${courseClassPlataform}` },
+    { animationData: AccessibleValue, title: `R$ ${valuePerMonth},00`, subtitle: '8:30h as 11:00h' }
+  ]
   return (
     <Stack spacing={2}>
       <S.FullHeightWrapper>
@@ -55,26 +65,16 @@ const HomeTemplate = ({
         </S.InformationTextContainer>
         <S.AdditionalInfoWrapper>
           <ResponsiveStepper steps={messageArray} activeSteps={activeSteps} />
-          {/* {teachers?.map((teacher) => {
-            const profilePhoto = teacher.profilePhoto.url
-            const professionalExperience = teacher.scholarExperience
-            return (
-              <Card key={`teacher-${teacher.id}`} sx={{ minWidth: 345 }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={profilePhoto}
-                  alt={`Foto do Professor ${teacher.name}`}
-                />
-                <CardContent>
-                  <h4>{teacher.name}</h4>
-                  {professionalExperience.map((experience: string, index: number) => (
-                    <h5 key={index}>{experience}</h5>
-                  ))}
-                </CardContent>
-              </Card>
-            )
-          })} */}
+          <S.PapersWrapper>
+            {papers.map((paper) => (
+              <CustomPaper
+                key={`paper-${paper.title}`}
+                defaultOptions={{ ...defaultOptions, animationData: paper.animationData }}
+                title={paper.title}
+                subtitle={paper.subtitle}
+              />
+            ))}
+          </S.PapersWrapper>
         </S.AdditionalInfoWrapper>
       </S.FullHeightWrapper>
     </Stack>

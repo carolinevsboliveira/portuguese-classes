@@ -50,13 +50,25 @@ export const InformationTextContainer = styled.div`
 export const AdditionalInfoWrapper = styled.div`
   background-color: var(--light);
   display: flex;
+  flex-direction: column;
   border-radius: 60px 60px 0 0;
   width: 100%;
   padding: 3rem;
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  @media (max-width: 500px) {
+`
+export const PapersWrapper = styled.div`
+  background-color: var(--light);
+  display: flex;
+  flex-direction: row;
+  border-radius: 60px 60px 0 0;
+  width: 100%;
+  margin: 0 2rem;
+  justify-content: center;
+  gap: 3rem;
+  @media (max-width: 730px) {
     flex-direction: column;
+    flex-wrap: wrap;
   }
 `
