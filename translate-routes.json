@@ -1,0 +1,10 @@
+[
+    {
+        "source": "/cadastrar",
+        "destination": "/registration"
+    },
+    {
+        "source": "/cadastrar/sucesso",
+        "destination": "/registration/success"
+    }  
+]
