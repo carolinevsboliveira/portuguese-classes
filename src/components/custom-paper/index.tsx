@@ -8,7 +8,7 @@ type CustomPaperProps = {
 }
 function CustomPaper({ defaultOptions, title, subtitle }: CustomPaperProps) {
   return (
-    <Paper elevation={3} sx={{ width: '100%', maxWidth: '500px' }}>
+    <Paper elevation={3}>
       <Stack spacing={2}>
         <S.ContainerWrapper>
           <Lottie options={defaultOptions} height={200} width={200} />

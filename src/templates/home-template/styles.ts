@@ -51,22 +51,42 @@ export const AdditionalInfoWrapper = styled.div`
   background-color: var(--light);
   display: flex;
   flex-direction: column;
-  border-radius: 60px 60px 0 0;
+  border-radius: 60px;
+  padding: 0.5rem;
   width: 100%;
-  padding: 3rem;
   justify-content: center;
   align-items: center;
   gap: 5rem;
+  @media (max-width: 290px) {
+    padding: 0;
+  }
 `
 export const PapersWrapper = styled.div`
-  background-color: var(--light);
   display: flex;
-  flex-direction: row;
-  border-radius: 60px 60px 0 0;
   width: 100%;
   margin: 0 2rem;
   justify-content: center;
+  align-items: center;
   gap: 3rem;
+  @media (max-width: 730px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+`
+
+export const TeacherCardsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 2rem 0;
+  padding: 2rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  h1 {
+    color: var(--primary);
+    text-align: center;
+  }
   @media (max-width: 730px) {
     flex-direction: column;
     flex-wrap: wrap;

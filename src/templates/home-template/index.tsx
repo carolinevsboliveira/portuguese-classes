@@ -1,4 +1,4 @@
-import { Button, Stack } from '@mui/material'
+import { Button, Card, CardContent, CardMedia, Stack } from '@mui/material'
 import * as S from './styles'
 import FallingBooks from 'assets/lotties/falling-books.json'
 import AccessibleValue from 'assets/lotties/accessible-value.json'
@@ -8,6 +8,8 @@ import Lottie from 'react-lottie'
 import { generateSubscriptionSteps } from 'helpers/translate-user-messages'
 import ResponsiveStepper from 'components/responsive-steper/reponsive-steper'
 import CustomPaper from 'components/custom-paper'
+import { useRouter } from 'next/router'
+import CardWithFixedHeight from 'components/card-with-fixed-height/card-with-fixed-height'
 //TODO: type teachers
 const defaultOptions = {
   loop: false,
@@ -39,6 +41,7 @@ const HomeTemplate = ({
   courseClassPlataform,
   valuePerMonth
 }: HomeTemplateProps) => {
+  const { push } = useRouter()
   const { messageArray, activeSteps } = generateSubscriptionSteps({
     isOpen: possibleSubscriptions,
     initialDate,
@@ -75,7 +78,18 @@ const HomeTemplate = ({
               />
             ))}
           </S.PapersWrapper>
+          {possibleSubscriptions && (
+            <Button variant="contained" onClick={() => push('/registration', '/cadastrar')}>
+              Inscreva-se já
+            </Button>
+          )}
         </S.AdditionalInfoWrapper>
+        <S.TeacherCardsWrapper>
+          <h1>Um curso ministrado por:</h1>
+          {teachers?.map((teacher) => (
+            <CardWithFixedHeight teacher={teacher} key={teacher.id} />
+          ))}
+        </S.TeacherCardsWrapper>
       </S.FullHeightWrapper>
     </Stack>
   )
