@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-//TODO: Add google fonts API
 export const FullHeightWrapper = styled.div`
   height: 100%;
   background-color: var(--highlight);
 `
-export const NavBarWrapper = styled.div`
+export const NavBarWrapper = styled.nav`
   display: flex;
   width: 100%;
   align-content: stretch;
