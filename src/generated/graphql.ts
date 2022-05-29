@@ -7957,3 +7957,10 @@ export type CourseHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CourseHomepageQuery = { __typename?: 'Query', homepages: Array<{ __typename?: 'Homepage', id: string, courseClassPlataform?: string | null, possibleSubscriptions?: boolean | null, title: string, slogan?: string | null, valuePerMonth: number, subscriptionDate?: { __typename?: 'SubscriptionDate', initialDate: any, finalDate: any } | null, teachers: Array<{ __typename?: 'Teacher', name: string, id: string, scholarExperience: Array<string>, about?: { __typename?: 'RichText', html: string } | null, profilePhoto?: { __typename?: 'Asset', url: string } | null }>, whatsappContact?: { __typename?: 'WhatsappContact', phone?: string | null, link?: string | null } | null }> };
+
+export type IndexedClassesQueryQueryVariables = Exact<{
+  offset: Scalars['Int'];
+}>;
+
+
+export type IndexedClassesQueryQuery = { __typename?: 'Query', classesConnection: { __typename?: 'ClassConnection', aggregate: { __typename?: 'Aggregate', count: number }, classes: Array<{ __typename?: 'ClassEdge', node: { __typename?: 'Class', id: string, name: string, scheduledTime: any, teachers: Array<{ __typename?: 'Teacher', id: string }> } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, pageSize?: number | null } } };
