@@ -2,7 +2,6 @@ import Document, { DocumentContext, DocumentInitialProps } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import createEmotionCache from 'utils/createEmotionCache'
 import createEmotionServer from '@emotion/server/create-instance'
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet()
