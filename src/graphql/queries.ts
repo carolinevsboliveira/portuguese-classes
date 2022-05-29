@@ -32,6 +32,10 @@ export const GET_HOMEPAGE_PROPS = gql`
         scholarExperience
       }
       valuePerMonth
+      whatsappContact {
+        phone
+        link
+      }
     }
   }
 `

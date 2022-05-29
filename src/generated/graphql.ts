@@ -1940,6 +1940,7 @@ export type Homepage = Node & {
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
   valuePerMonth: Scalars['Int'];
+  whatsappContact?: Maybe<WhatsappContact>;
 };
 
 
@@ -2004,6 +2005,11 @@ export type HomepageUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
+
+export type HomepageWhatsappContactArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
 export type HomepageConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
   position?: InputMaybe<ConnectPositionInput>;
@@ -2032,6 +2038,7 @@ export type HomepageCreateInput = {
   title: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   valuePerMonth: Scalars['Int'];
+  whatsappContact?: InputMaybe<WhatsappContactCreateOneInlineInput>;
 };
 
 export type HomepageCreateManyInlineInput = {
@@ -2217,6 +2224,7 @@ export type HomepageManyWhereInput = {
   valuePerMonth_not?: InputMaybe<Scalars['Int']>;
   /** All values that are not contained in given list. */
   valuePerMonth_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  whatsappContact?: InputMaybe<WhatsappContactWhereInput>;
 };
 
 export enum HomepageOrderByInput {
@@ -2249,6 +2257,7 @@ export type HomepageUpdateInput = {
   teachers?: InputMaybe<TeacherUpdateManyInlineInput>;
   title?: InputMaybe<Scalars['String']>;
   valuePerMonth?: InputMaybe<Scalars['Int']>;
+  whatsappContact?: InputMaybe<WhatsappContactUpdateOneInlineInput>;
 };
 
 export type HomepageUpdateManyInlineInput = {
@@ -2479,6 +2488,7 @@ export type HomepageWhereInput = {
   valuePerMonth_not?: InputMaybe<Scalars['Int']>;
   /** All values that are not contained in given list. */
   valuePerMonth_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  whatsappContact?: InputMaybe<WhatsappContactWhereInput>;
 };
 
 /** References Homepage record uniquely */
@@ -2559,6 +2569,8 @@ export type Mutation = {
   createSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Create one teacher */
   createTeacher?: Maybe<Teacher>;
+  /** Create one whatsappContact */
+  createWhatsappContact?: Maybe<WhatsappContact>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
   /** Delete one class from _all_ existing stages. Returns deleted document. */
@@ -2616,6 +2628,13 @@ export type Mutation = {
   deleteManyTeachers: BatchPayload;
   /** Delete many Teacher documents, return deleted documents */
   deleteManyTeachersConnection: TeacherConnection;
+  /**
+   * Delete many WhatsappContact documents
+   * @deprecated Please use the new paginated many mutation (deleteManyWhatsappContactsConnection)
+   */
+  deleteManyWhatsappContacts: BatchPayload;
+  /** Delete many WhatsappContact documents, return deleted documents */
+  deleteManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Delete one nextUser from _all_ existing stages. Returns deleted document. */
   deleteNextUser?: Maybe<NextUser>;
   /** Delete and return scheduled operation */
@@ -2626,6 +2645,8 @@ export type Mutation = {
   deleteSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Delete one teacher from _all_ existing stages. Returns deleted document. */
   deleteTeacher?: Maybe<Teacher>;
+  /** Delete one whatsappContact from _all_ existing stages. Returns deleted document. */
+  deleteWhatsappContact?: Maybe<WhatsappContact>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
   /** Publish one class */
@@ -2683,12 +2704,21 @@ export type Mutation = {
   publishManyTeachers: BatchPayload;
   /** Publish many Teacher documents */
   publishManyTeachersConnection: TeacherConnection;
+  /**
+   * Publish many WhatsappContact documents
+   * @deprecated Please use the new paginated many mutation (publishManyWhatsappContactsConnection)
+   */
+  publishManyWhatsappContacts: BatchPayload;
+  /** Publish many WhatsappContact documents */
+  publishManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Publish one nextUser */
   publishNextUser?: Maybe<NextUser>;
   /** Publish one subscriptionDate */
   publishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Publish one teacher */
   publishTeacher?: Maybe<Teacher>;
+  /** Publish one whatsappContact */
+  publishWhatsappContact?: Maybe<WhatsappContact>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
   /** Schedule to publish one class */
@@ -2703,6 +2733,8 @@ export type Mutation = {
   schedulePublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Schedule to publish one teacher */
   schedulePublishTeacher?: Maybe<Teacher>;
+  /** Schedule to publish one whatsappContact */
+  schedulePublishWhatsappContact?: Maybe<WhatsappContact>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
   /** Unpublish one class from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2717,6 +2749,8 @@ export type Mutation = {
   scheduleUnpublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Unpublish one teacher from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishTeacher?: Maybe<Teacher>;
+  /** Unpublish one whatsappContact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishWhatsappContact?: Maybe<WhatsappContact>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one class from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2774,12 +2808,21 @@ export type Mutation = {
   unpublishManyTeachers: BatchPayload;
   /** Find many Teacher documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyTeachersConnection: TeacherConnection;
+  /**
+   * Unpublish many WhatsappContact documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyWhatsappContactsConnection)
+   */
+  unpublishManyWhatsappContacts: BatchPayload;
+  /** Find many WhatsappContact documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishNextUser?: Maybe<NextUser>;
   /** Unpublish one subscriptionDate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Unpublish one teacher from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishTeacher?: Maybe<Teacher>;
+  /** Unpublish one whatsappContact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishWhatsappContact?: Maybe<WhatsappContact>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
   /** Update one class */
@@ -2837,6 +2880,13 @@ export type Mutation = {
   updateManyTeachers: BatchPayload;
   /** Update many Teacher documents */
   updateManyTeachersConnection: TeacherConnection;
+  /**
+   * Update many whatsappContacts
+   * @deprecated Please use the new paginated many mutation (updateManyWhatsappContactsConnection)
+   */
+  updateManyWhatsappContacts: BatchPayload;
+  /** Update many WhatsappContact documents */
+  updateManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Update one nextUser */
   updateNextUser?: Maybe<NextUser>;
   /** Update one scheduledRelease */
@@ -2845,6 +2895,8 @@ export type Mutation = {
   updateSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Update one teacher */
   updateTeacher?: Maybe<Teacher>;
+  /** Update one whatsappContact */
+  updateWhatsappContact?: Maybe<WhatsappContact>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
   /** Upsert one class */
@@ -2859,6 +2911,8 @@ export type Mutation = {
   upsertSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Upsert one teacher */
   upsertTeacher?: Maybe<Teacher>;
+  /** Upsert one whatsappContact */
+  upsertWhatsappContact?: Maybe<WhatsappContact>;
 };
 
 
@@ -2899,6 +2953,11 @@ export type MutationCreateSubscriptionDateArgs = {
 
 export type MutationCreateTeacherArgs = {
   data: TeacherCreateInput;
+};
+
+
+export type MutationCreateWhatsappContactArgs = {
+  data: WhatsappContactCreateInput;
 };
 
 
@@ -3027,6 +3086,21 @@ export type MutationDeleteManyTeachersConnectionArgs = {
 };
 
 
+export type MutationDeleteManyWhatsappContactsArgs = {
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
+export type MutationDeleteManyWhatsappContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
 export type MutationDeleteNextUserArgs = {
   where: NextUserWhereUniqueInput;
 };
@@ -3049,6 +3123,11 @@ export type MutationDeleteSubscriptionDateArgs = {
 
 export type MutationDeleteTeacherArgs = {
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationDeleteWhatsappContactArgs = {
+  where: WhatsappContactWhereUniqueInput;
 };
 
 
@@ -3211,6 +3290,24 @@ export type MutationPublishManyTeachersConnectionArgs = {
 };
 
 
+export type MutationPublishManyWhatsappContactsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
+export type MutationPublishManyWhatsappContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
 export type MutationPublishNextUserArgs = {
   to?: Array<Stage>;
   where: NextUserWhereUniqueInput;
@@ -3226,6 +3323,12 @@ export type MutationPublishSubscriptionDateArgs = {
 export type MutationPublishTeacherArgs = {
   to?: Array<Stage>;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationPublishWhatsappContactArgs = {
+  to?: Array<Stage>;
+  where: WhatsappContactWhereUniqueInput;
 };
 
 
@@ -3288,6 +3391,14 @@ export type MutationSchedulePublishTeacherArgs = {
 };
 
 
+export type MutationSchedulePublishWhatsappContactArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: WhatsappContactWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishAssetArgs = {
   from?: Array<Stage>;
   locales?: InputMaybe<Array<Locale>>;
@@ -3343,6 +3454,14 @@ export type MutationScheduleUnpublishTeacherArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishWhatsappContactArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: WhatsappContactWhereUniqueInput;
 };
 
 
@@ -3502,6 +3621,24 @@ export type MutationUnpublishManyTeachersConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyWhatsappContactsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyWhatsappContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
 export type MutationUnpublishNextUserArgs = {
   from?: Array<Stage>;
   where: NextUserWhereUniqueInput;
@@ -3517,6 +3654,12 @@ export type MutationUnpublishSubscriptionDateArgs = {
 export type MutationUnpublishTeacherArgs = {
   from?: Array<Stage>;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationUnpublishWhatsappContactArgs = {
+  from?: Array<Stage>;
+  where: WhatsappContactWhereUniqueInput;
 };
 
 
@@ -3663,6 +3806,23 @@ export type MutationUpdateManyTeachersConnectionArgs = {
 };
 
 
+export type MutationUpdateManyWhatsappContactsArgs = {
+  data: WhatsappContactUpdateManyInput;
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
+export type MutationUpdateManyWhatsappContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: WhatsappContactUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
 export type MutationUpdateNextUserArgs = {
   data: NextUserUpdateInput;
   where: NextUserWhereUniqueInput;
@@ -3684,6 +3844,12 @@ export type MutationUpdateSubscriptionDateArgs = {
 export type MutationUpdateTeacherArgs = {
   data: TeacherUpdateInput;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationUpdateWhatsappContactArgs = {
+  data: WhatsappContactUpdateInput;
+  where: WhatsappContactWhereUniqueInput;
 };
 
 
@@ -3726,6 +3892,12 @@ export type MutationUpsertSubscriptionDateArgs = {
 export type MutationUpsertTeacherArgs = {
   upsert: TeacherUpsertInput;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationUpsertWhatsappContactArgs = {
+  upsert: WhatsappContactUpsertInput;
+  where: WhatsappContactWhereUniqueInput;
 };
 
 export type NextUser = Node & {
@@ -4336,6 +4508,14 @@ export type Query = {
   users: Array<User>;
   /** Retrieve multiple users using the Relay connection interface */
   usersConnection: UserConnection;
+  /** Retrieve a single whatsappContact */
+  whatsappContact?: Maybe<WhatsappContact>;
+  /** Retrieve document version */
+  whatsappContactVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple whatsappContacts */
+  whatsappContacts: Array<WhatsappContact>;
+  /** Retrieve multiple whatsappContacts using the Relay connection interface */
+  whatsappContactsConnection: WhatsappContactConnection;
 };
 
 
@@ -4710,6 +4890,44 @@ export type QueryUsersConnectionArgs = {
   where?: InputMaybe<UserWhereInput>;
 };
 
+
+export type QueryWhatsappContactArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: WhatsappContactWhereUniqueInput;
+};
+
+
+export type QueryWhatsappContactVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryWhatsappContactsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<WhatsappContactOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<WhatsappContactWhereInput>;
+};
+
+
+export type QueryWhatsappContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<WhatsappContactOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<WhatsappContactWhereInput>;
+};
+
 /** Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
 export type Rgba = {
   __typename?: 'RGBA';
@@ -4817,7 +5035,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | NextUser | SubscriptionDate | Teacher;
+export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | NextUser | SubscriptionDate | Teacher | WhatsappContact;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -7196,6 +7414,452 @@ export type VersionWhereInput = {
   stage: Stage;
 };
 
+export type WhatsappContact = Node & {
+  __typename?: 'WhatsappContact';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<WhatsappContact>;
+  /** List of WhatsappContact versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  link?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type WhatsappContactCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type WhatsappContactDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type WhatsappContactHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type WhatsappContactPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type WhatsappContactScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type WhatsappContactUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type WhatsappContactConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: WhatsappContactWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type WhatsappContactConnection = {
+  __typename?: 'WhatsappContactConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<WhatsappContactEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type WhatsappContactCreateInput = {
+  cl3qmebm88ahr01xk9aikfu1s?: InputMaybe<HomepageCreateManyInlineInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  link?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type WhatsappContactCreateManyInlineInput = {
+  /** Connect multiple existing WhatsappContact documents */
+  connect?: InputMaybe<Array<WhatsappContactWhereUniqueInput>>;
+  /** Create and connect multiple existing WhatsappContact documents */
+  create?: InputMaybe<Array<WhatsappContactCreateInput>>;
+};
+
+export type WhatsappContactCreateOneInlineInput = {
+  /** Connect one existing WhatsappContact document */
+  connect?: InputMaybe<WhatsappContactWhereUniqueInput>;
+  /** Create and connect one WhatsappContact document */
+  create?: InputMaybe<WhatsappContactCreateInput>;
+};
+
+/** An edge in a connection. */
+export type WhatsappContactEdge = {
+  __typename?: 'WhatsappContactEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: WhatsappContact;
+};
+
+/** Identifies documents */
+export type WhatsappContactManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<WhatsappContactWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<WhatsappContactWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<WhatsappContactWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  phone_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  phone_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  phone_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  phone_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  phone_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  phone_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  phone_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  phone_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  phone_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum WhatsappContactOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LinkAsc = 'link_ASC',
+  LinkDesc = 'link_DESC',
+  PhoneAsc = 'phone_ASC',
+  PhoneDesc = 'phone_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type WhatsappContactUpdateInput = {
+  cl3qmebm88ahr01xk9aikfu1s?: InputMaybe<HomepageUpdateManyInlineInput>;
+  link?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+};
+
+export type WhatsappContactUpdateManyInlineInput = {
+  /** Connect multiple existing WhatsappContact documents */
+  connect?: InputMaybe<Array<WhatsappContactConnectInput>>;
+  /** Create and connect multiple WhatsappContact documents */
+  create?: InputMaybe<Array<WhatsappContactCreateInput>>;
+  /** Delete multiple WhatsappContact documents */
+  delete?: InputMaybe<Array<WhatsappContactWhereUniqueInput>>;
+  /** Disconnect multiple WhatsappContact documents */
+  disconnect?: InputMaybe<Array<WhatsappContactWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing WhatsappContact documents */
+  set?: InputMaybe<Array<WhatsappContactWhereUniqueInput>>;
+  /** Update multiple WhatsappContact documents */
+  update?: InputMaybe<Array<WhatsappContactUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple WhatsappContact documents */
+  upsert?: InputMaybe<Array<WhatsappContactUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type WhatsappContactUpdateManyInput = {
+  phone?: InputMaybe<Scalars['String']>;
+};
+
+export type WhatsappContactUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: WhatsappContactUpdateManyInput;
+  /** Document search */
+  where: WhatsappContactWhereInput;
+};
+
+export type WhatsappContactUpdateOneInlineInput = {
+  /** Connect existing WhatsappContact document */
+  connect?: InputMaybe<WhatsappContactWhereUniqueInput>;
+  /** Create and connect one WhatsappContact document */
+  create?: InputMaybe<WhatsappContactCreateInput>;
+  /** Delete currently connected WhatsappContact document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected WhatsappContact document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single WhatsappContact document */
+  update?: InputMaybe<WhatsappContactUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single WhatsappContact document */
+  upsert?: InputMaybe<WhatsappContactUpsertWithNestedWhereUniqueInput>;
+};
+
+export type WhatsappContactUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: WhatsappContactUpdateInput;
+  /** Unique document search */
+  where: WhatsappContactWhereUniqueInput;
+};
+
+export type WhatsappContactUpsertInput = {
+  /** Create document if it didn't exist */
+  create: WhatsappContactCreateInput;
+  /** Update document if it exists */
+  update: WhatsappContactUpdateInput;
+};
+
+export type WhatsappContactUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: WhatsappContactUpsertInput;
+  /** Unique document search */
+  where: WhatsappContactWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type WhatsappContactWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<WhatsappContactWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<WhatsappContactWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<WhatsappContactWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  phone_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  phone_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  phone_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  phone_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  phone_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  phone_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  phone_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  phone_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  phone_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References WhatsappContact record uniquely */
+export type WhatsappContactWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  link?: InputMaybe<Scalars['String']>;
+};
+
 export enum _FilterKind {
   And = 'AND',
   Not = 'NOT',
@@ -7292,4 +7956,4 @@ export type MyQueryQuery = { __typename?: 'Query', classes: Array<{ __typename?:
 export type CourseHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CourseHomepageQuery = { __typename?: 'Query', homepages: Array<{ __typename?: 'Homepage', id: string, courseClassPlataform?: string | null, possibleSubscriptions?: boolean | null, title: string, slogan?: string | null, valuePerMonth: number, subscriptionDate?: { __typename?: 'SubscriptionDate', initialDate: any, finalDate: any } | null, teachers: Array<{ __typename?: 'Teacher', name: string, id: string, scholarExperience: Array<string>, about?: { __typename?: 'RichText', html: string } | null, profilePhoto?: { __typename?: 'Asset', url: string } | null }> }> };
+export type CourseHomepageQuery = { __typename?: 'Query', homepages: Array<{ __typename?: 'Homepage', id: string, courseClassPlataform?: string | null, possibleSubscriptions?: boolean | null, title: string, slogan?: string | null, valuePerMonth: number, subscriptionDate?: { __typename?: 'SubscriptionDate', initialDate: any, finalDate: any } | null, teachers: Array<{ __typename?: 'Teacher', name: string, id: string, scholarExperience: Array<string>, about?: { __typename?: 'RichText', html: string } | null, profilePhoto?: { __typename?: 'Asset', url: string } | null }>, whatsappContact?: { __typename?: 'WhatsappContact', phone?: string | null, link?: string | null } | null }> };

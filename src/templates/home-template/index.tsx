@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardMedia, Stack } from '@mui/material'
+import { Button, Stack } from '@mui/material'
 import * as S from './styles'
 import FallingBooks from 'assets/lotties/falling-books.json'
 import AccessibleValue from 'assets/lotties/accessible-value.json'
@@ -10,7 +10,9 @@ import ResponsiveStepper from 'components/responsive-steper/reponsive-steper'
 import CustomPaper from 'components/custom-paper'
 import { useRouter } from 'next/router'
 import CardWithFixedHeight from 'components/card-with-fixed-height/card-with-fixed-height'
+import { WhatsApp } from '@mui/icons-material'
 //TODO: type teachers
+
 const defaultOptions = {
   loop: false,
   autoplay: true,
@@ -30,6 +32,10 @@ type HomeTemplateProps = {
   possibleSubscriptions: boolean
   valuePerMonth: number
   courseClassPlataform: string
+  whatsappContact: {
+    phone: string
+    link: string
+  }
 }
 
 const HomeTemplate = ({
@@ -39,7 +45,8 @@ const HomeTemplate = ({
   subscriptionDate: { initialDate, finalDate },
   possibleSubscriptions,
   courseClassPlataform,
-  valuePerMonth
+  valuePerMonth,
+  whatsappContact: { phone, link }
 }: HomeTemplateProps) => {
   const { push } = useRouter()
   const { messageArray, activeSteps } = generateSubscriptionSteps({
@@ -52,10 +59,17 @@ const HomeTemplate = ({
     { animationData: OnlineClasses, title: 'Aulas online', subtitle: `Via ${courseClassPlataform}` },
     { animationData: AccessibleValue, title: `R$ ${valuePerMonth},00`, subtitle: '8:30h as 11:00h' }
   ]
+  const handleWhatsAppButtonOnClick = () => {
+    const url = new URL(link)
+    window.open(url, '_blank')
+  }
   return (
     <Stack spacing={2}>
       <S.FullHeightWrapper>
         <S.NavBarWrapper>
+          <Button variant="text" startIcon={<WhatsApp />} onClick={() => handleWhatsAppButtonOnClick()}>
+            {phone}
+          </Button>
           <Button variant="outlined">Login</Button>
           <Button variant="contained">Cadastrar</Button>
         </S.NavBarWrapper>

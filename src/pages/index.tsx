@@ -9,7 +9,15 @@ import { CourseHomepageQuery } from 'generated/graphql'
 //TODO: Use an fixed wave at the botton
 
 export default function Home({ homepage }: any) {
-  const { title, slogan, subscriptionDate, possibleSubscriptions, valuePerMonth, courseClassPlataform } = homepage
+  const {
+    title,
+    slogan,
+    subscriptionDate,
+    possibleSubscriptions,
+    valuePerMonth,
+    courseClassPlataform,
+    whatsappContact
+  } = homepage
   return (
     <HomeTemplate
       title={title}
@@ -19,6 +27,7 @@ export default function Home({ homepage }: any) {
       possibleSubscriptions={possibleSubscriptions}
       valuePerMonth={valuePerMonth}
       courseClassPlataform={courseClassPlataform}
+      whatsappContact={whatsappContact}
     />
   )
 }
