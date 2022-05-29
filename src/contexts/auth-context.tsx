@@ -56,7 +56,12 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user ? user : null)
+      if (user) {
+        setCurrentUser(user)
+        localStorage.setItem('isLoggedUser', JSON.stringify(true))
+      } else {
+        setCurrentUser(null)
+      }
     })
     return () => {
       unsubscribe()

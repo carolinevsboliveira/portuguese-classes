@@ -3,7 +3,7 @@ import client from 'graphql/client'
 import { GET_INDEXED_CLASSES } from 'graphql/queries'
 import { GetServerSideProps } from 'next'
 import ClassListTemplate from 'templates/class-list'
-
+import WithAuth from 'hocs/with-auth/with-auth'
 //TODO: Change 1 to be the first in the query
 function ClassesList({ classesConnection, page }: any) {
   const {
@@ -12,7 +12,7 @@ function ClassesList({ classesConnection, page }: any) {
   return <ClassListTemplate selectedPage={page} totalPage={Math.ceil(count / 2)} />
 }
 
-export default ClassesList
+export default WithAuth(ClassesList)
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { classesConnection } = await client.request<IndexedClassesQueryQuery>(GET_INDEXED_CLASSES, {
