@@ -8,9 +8,18 @@ type ControlledTextFieldProps = {
   required?: string
   type: string
   multiline?: boolean
+  onFocus?: () => void
 }
 
-const ControlledTextField = ({ name, label, control, required, type, multiline }: ControlledTextFieldProps) => {
+const ControlledTextField = ({
+  name,
+  label,
+  control,
+  required,
+  type,
+  multiline,
+  onFocus
+}: ControlledTextFieldProps) => {
   return (
     <>
       <Controller
@@ -22,6 +31,7 @@ const ControlledTextField = ({ name, label, control, required, type, multiline }
             label={label}
             value={value}
             onChange={onChange}
+            onFocus={onFocus}
             multiline={multiline}
             error={!!error}
             helperText={error ? error.message : null}
