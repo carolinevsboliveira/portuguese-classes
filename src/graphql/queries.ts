@@ -41,7 +41,7 @@ export const GET_HOMEPAGE_PROPS = gql`
 `
 export const GET_INDEXED_CLASSES = gql`
   query indexedClassesQuery($offset: Int!) {
-    classesConnection(first: 2, skip: $offset) {
+    classesConnection(first: 10, skip: $offset) {
       aggregate {
         count
       }
@@ -52,7 +52,14 @@ export const GET_INDEXED_CLASSES = gql`
             id
           }
           name
+          shortDescription
           scheduledTime
+          image {
+            url
+          }
+          avaliableSlides {
+            url
+          }
         }
       }
       pageInfo {

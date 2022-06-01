@@ -7963,4 +7963,4 @@ export type IndexedClassesQueryQueryVariables = Exact<{
 }>;
 
 
-export type IndexedClassesQueryQuery = { __typename?: 'Query', classesConnection: { __typename?: 'ClassConnection', aggregate: { __typename?: 'Aggregate', count: number }, classes: Array<{ __typename?: 'ClassEdge', node: { __typename?: 'Class', id: string, name: string, scheduledTime: any, teachers: Array<{ __typename?: 'Teacher', id: string }> } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, pageSize?: number | null } } };
+export type IndexedClassesQueryQuery = { __typename?: 'Query', classesConnection: { __typename?: 'ClassConnection', aggregate: { __typename?: 'Aggregate', count: number }, classes: Array<{ __typename?: 'ClassEdge', node: { __typename?: 'Class', id: string, name: string, shortDescription?: string | null, scheduledTime: any, teachers: Array<{ __typename?: 'Teacher', id: string }>, image?: { __typename?: 'Asset', url: string } | null, avaliableSlides?: { __typename?: 'Asset', url: string } | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, pageSize?: number | null } } };

@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/img/icon-512" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="description" content=" An free plataform to display small online courses" />
-        <meta name="theme-color" content="#06092b" />
+        <meta name="theme-color" content="#00115b" />
       </Head>
       <CacheProvider value={clientSideEmotionCache}>
         <GlobalStyles />
