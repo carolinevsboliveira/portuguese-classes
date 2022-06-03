@@ -1,15 +1,15 @@
 import { ArrowRight } from '@mui/icons-material'
-import { Button, Pagination } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useAuth } from 'contexts/auth-context'
 import * as S from './styles'
+import ClassesTable from 'components/class-table'
 type ClassListProps = {
-  selectedPage: number
-  totalPage: number
+  classes: Array<any>
 }
 
-function ClassListTemplate({ selectedPage, totalPage }: ClassListProps) {
-  const { replace, push } = useRouter()
+function ClassListTemplate({ classes }: ClassListProps) {
+  const { push } = useRouter()
   const { logoutTheCurrentUser } = useAuth()
 
   const handleLogoutButton = async () => {
@@ -20,22 +20,16 @@ function ClassListTemplate({ selectedPage, totalPage }: ClassListProps) {
       return
     }
   }
-  const handlePaginationChanges = (event: React.ChangeEvent<unknown>, value: number) => {
-    replace(`/classes/${value}`)
-  }
+
   return (
-    <S.NavBarWrapper>
-      <Button variant="text" endIcon={<ArrowRight />} onClick={handleLogoutButton}>
-        Sair
-      </Button>
-      {/* <Pagination
-        page={selectedPage}
-        count={totalPage}
-        variant="outlined"
-        color="primary"
-        onChange={handlePaginationChanges}
-      /> */}
-    </S.NavBarWrapper>
+    <Box>
+      <S.NavBarWrapper>
+        <Button variant="text" endIcon={<ArrowRight />} onClick={handleLogoutButton}>
+          Sair
+        </Button>
+      </S.NavBarWrapper>
+      <ClassesTable classes={classes} />
+    </Box>
   )
 }
 

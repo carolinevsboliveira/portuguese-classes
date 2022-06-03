@@ -3,16 +3,34 @@ import client from 'graphql/client'
 import { GET_INDEXED_CLASSES } from 'graphql/queries'
 import { GetServerSideProps } from 'next'
 import ClassListTemplate from 'templates/class-list'
-import WithAuth from 'hocs/with-auth/with-auth'
+import { Pagination } from '@mui/material'
+import { useRouter } from 'next/router'
 //TODO: Change 1 to be the first in the query
 function ClassesList({ classesConnection, page }: any) {
+  const { replace } = useRouter()
+  const handlePaginationChanges = (event: React.ChangeEvent<unknown>, value: number) => {
+    replace(`/classes/${value}`)
+  }
   const {
-    aggregate: { count }
+    aggregate: { count },
+    classes
   } = classesConnection
-  return <ClassListTemplate selectedPage={page} totalPage={Math.ceil(count / 2)} />
+
+  return (
+    <>
+      <ClassListTemplate classes={classes} />
+      <Pagination
+        page={page}
+        count={Math.ceil((count - 1) / 2)}
+        variant="outlined"
+        color="primary"
+        onChange={handlePaginationChanges}
+      />
+    </>
+  )
 }
 
-export default WithAuth(ClassesList)
+export default ClassesList
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { classesConnection } = await client.request<IndexedClassesQueryQuery>(GET_INDEXED_CLASSES, {

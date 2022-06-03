@@ -6,6 +6,5 @@ export const NavBarWrapper = styled.nav`
   justify-content: end;
   position: fixed;
   top: 0;
-  z-index: 2;
   padding: 1rem;
 `
