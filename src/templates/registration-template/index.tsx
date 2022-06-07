@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as S from './styles'
+
 function RegistrationTemplate() {
   const { control, handleSubmit, getValues } = useForm()
   const [isSubmitting, setIsSubmitting] = useState(false)

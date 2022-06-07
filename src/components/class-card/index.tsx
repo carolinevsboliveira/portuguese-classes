@@ -8,10 +8,11 @@ type ClassCardProps = {
   scheduledTime: Date | string
   shortDescription: string
   availableSlideUrl?: string
+  imageUrl?: string | undefined
 }
 const fallbackImageUrl = 'https://media.graphassets.com/NJTWYuucRyyBRR5vXAX1'
 
-function ClassCard({ teachers, name, scheduledTime, shortDescription, availableSlideUrl }: ClassCardProps) {
+function ClassCard({ teachers, name, scheduledTime, shortDescription, availableSlideUrl, imageUrl }: ClassCardProps) {
   return (
     <Box sx={{ padding: '10px', alignItems: 'stretch' }}>
       <Card>
@@ -24,7 +25,7 @@ function ClassCard({ teachers, name, scheduledTime, shortDescription, availableS
           title={teachers.length > 1 ? `${teachers[0].name} & ${teachers[1].name}` : `${teachers[0].name}`}
           subheader={`${dayjs(scheduledTime).format('MM/DD/YYYY HH:mm')}`}
         />
-        <CardMedia component="img" height="150" image={fallbackImageUrl} alt="Paella dish" />
+        <CardMedia component="img" height="150" image={imageUrl ? imageUrl : fallbackImageUrl} alt="Paella dish" />
         <CardContent>
           <Typography variant="h5" color="text.secondary">
             {name}

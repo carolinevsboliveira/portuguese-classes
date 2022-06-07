@@ -10,16 +10,20 @@ function ClassesTable({ classes }: ClassesTableProps) {
   return (
     <S.Table>
       <S.Row>
-        {classes.map((currentClass) => (
-          <S.Cell key={currentClass.node.id}>
-            <ClassCard
-              teachers={currentClass.node.teachers}
-              name={currentClass.node.name}
-              shortDescription={currentClass.node.shortDescription}
-              scheduledTime={currentClass.node.scheduledTime}
-            />
-          </S.Cell>
-        ))}
+        {classes.map((currentClass) => {
+          const thisClass = currentClass.node
+          return (
+            <S.Cell key={thisClass.id}>
+              <ClassCard
+                teachers={thisClass.teachers}
+                name={thisClass.name}
+                shortDescription={thisClass.shortDescription}
+                scheduledTime={thisClass.scheduledTime}
+                imageUrl={thisClass.image?.url}
+              />
+            </S.Cell>
+          )
+        })}
       </S.Row>
     </S.Table>
   )
