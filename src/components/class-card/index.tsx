@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardContent, CardHeader, CardMedia, Typography, CardActions } from '@mui/material'
+import { Avatar, Button, Card, CardContent, CardHeader, CardMedia, Typography, CardActions, Stack } from '@mui/material'
 import { Box } from '@mui/system'
 import dayjs from 'dayjs'
 
@@ -9,10 +9,19 @@ type ClassCardProps = {
   shortDescription: string
   availableSlideUrl?: string
   imageUrl?: string | undefined
+  meetLink: string
 }
 const fallbackImageUrl = 'https://media.graphassets.com/NJTWYuucRyyBRR5vXAX1'
 
-function ClassCard({ teachers, name, scheduledTime, shortDescription, availableSlideUrl, imageUrl }: ClassCardProps) {
+function ClassCard({
+  teachers,
+  name,
+  scheduledTime,
+  shortDescription,
+  availableSlideUrl,
+  imageUrl,
+  meetLink
+}: ClassCardProps) {
   return (
     <Box sx={{ padding: '10px', alignItems: 'stretch' }}>
       <Card>
@@ -34,17 +43,25 @@ function ClassCard({ teachers, name, scheduledTime, shortDescription, availableS
             {shortDescription}
           </Typography>
         </CardContent>
-        {availableSlideUrl && (
-          <CardActions disableSpacing>
+        <CardActions disableSpacing>
+          <Stack direction="row" justifyContent="space-between" spacing={5} sx={{ width: '100%' }}>
             <Button
               variant="outlined"
-              onClick={() => window.open(new URL(availableSlideUrl), '_blank')}
+              disabled={!availableSlideUrl}
+              onClick={() => availableSlideUrl && window.open(new URL(availableSlideUrl), '_blank')}
               name="download file"
             >
               Baixar slide da aula
             </Button>
-          </CardActions>
-        )}
+            <Button
+              variant="outlined"
+              onClick={() => availableSlideUrl && window.open(new URL(meetLink), '_blank')}
+              name="download file"
+            >
+              Meet
+            </Button>
+          </Stack>
+        </CardActions>
       </Card>
     </Box>
   )

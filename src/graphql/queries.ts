@@ -48,6 +48,7 @@ export const GET_INDEXED_CLASSES = gql`
       classes: edges {
         node {
           id
+          meetLink
           teachers {
             id
             name

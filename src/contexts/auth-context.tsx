@@ -82,15 +82,13 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
       }
     })
   }, [])
-
   useEffect(() => {
     const handle = setInterval(async () => {
       if (currentUser) await currentUser.getIdToken(true)
-    }, 10 * 60 * 1000)
+    }, 10 * 60 * 10000)
 
     return () => clearInterval(handle)
   }, [currentUser])
-
   const value = {
     currentUser,
     registerAnAccount,

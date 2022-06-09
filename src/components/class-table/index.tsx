@@ -15,11 +15,13 @@ function ClassesTable({ classes }: ClassesTableProps) {
           return (
             <S.Cell key={thisClass.id}>
               <ClassCard
+                meetLink={thisClass.meetLink}
                 teachers={thisClass.teachers}
                 name={thisClass.name}
                 shortDescription={thisClass.shortDescription}
                 scheduledTime={thisClass.scheduledTime}
                 imageUrl={thisClass.image?.url}
+                availableSlideUrl={thisClass.avaliableSlides?.url}
               />
             </S.Cell>
           )

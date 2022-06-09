@@ -18,7 +18,6 @@ try {
       projectId
     })
   })
-  console.log('Initialized.')
 } catch (error: any) {
   /*
    * We skip the "already exists" message which is

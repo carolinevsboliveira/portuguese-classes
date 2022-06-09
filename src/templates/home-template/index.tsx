@@ -11,7 +11,6 @@ import CustomPaper from 'components/custom-paper'
 import { useRouter } from 'next/router'
 import CardWithFixedHeight from 'components/card-with-fixed-height/card-with-fixed-height'
 import { WhatsApp } from '@mui/icons-material'
-//TODO: type teachers
 
 const defaultOptions = {
   loop: false,
