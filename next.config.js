@@ -15,10 +15,11 @@ const nextConfig = {
     REACT_FIREBASE_STORAGE_BUCKET: process.env.REACT_FIREBASE_STORAGE_BUCKET,
     REACT_FIREBASE_MESSAGING_SENDER_ID: process.env.REACT_FIREBASE_MESSAGING_SENDER_ID,
     REACT_FIREBASE_APP_ID: process.env.REACT_FIREBASE_APP_ID,
-    REACT_FIREBASE_MEASUREMENT_ID: process.env.REACT_FIREBASE_MEASUREMENT_ID,
     REACT_SANITY_PROJECT_ID: process.env.REACT_SANITY_PROJECT_ID,
     REACT_SANITY_API_TOKEN: process.env.REACT_SANITY_API_TOKEN,
-    REACT_CLASSROOM_DEFAULT_IMAGE_ID: process.env.REACT_CLASSROOM_DEFAULT_IMAGE_ID
+    REACT_CLASSROOM_DEFAULT_IMAGE_ID: process.env.REACT_CLASSROOM_DEFAULT_IMAGE_ID,
+    REACT_FIREBASE_ADMIN_CLIENT_EMAIL: process.env.REACT_FIREBASE_ADMIN_CLIENT_EMAIL,
+    REACT_FIREBASE_ADMIN_PRIVATE_KEY: process.env.REACT_FIREBASE_ADMIN_PRIVATE_KEY
   },
   async rewrites() {
     return translatedRoutes
@@ -30,7 +31,6 @@ module.exports = nextConfig
 module.exports = withPWA({
   swcMinify: true,
   experimental: {
-    // Enables the styled-components SWC transform
     styledComponents: true
   },
   pwa: {

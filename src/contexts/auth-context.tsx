@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { auth } from 'utils/firebase-config'
+import nookies from 'nookies'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -8,7 +9,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   User,
-  UserCredential
+  UserCredential,
+  onIdTokenChanged
 } from 'firebase/auth'
 
 interface UserSignInData {
@@ -56,13 +58,37 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user ? user : null)
+      if (user) {
+        setCurrentUser(user)
+        localStorage.setItem('isLoggedUser', JSON.stringify(true))
+      } else {
+        setCurrentUser(null)
+      }
     })
     return () => {
       unsubscribe()
     }
   }, [])
 
+  useEffect(() => {
+    return onIdTokenChanged(auth, async (user) => {
+      if (!user) {
+        setCurrentUser(null)
+        nookies.set(undefined, 'token', '', { path: '/' })
+      } else {
+        const token = await user.getIdToken()
+        setCurrentUser(user)
+        nookies.set(undefined, 'token', token, { path: '/' })
+      }
+    })
+  }, [])
+  useEffect(() => {
+    const handle = setInterval(async () => {
+      if (currentUser) await currentUser.getIdToken(true)
+    }, 10 * 60 * 10000)
+
+    return () => clearInterval(handle)
+  }, [currentUser])
   const value = {
     currentUser,
     registerAnAccount,

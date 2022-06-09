@@ -39,3 +39,35 @@ export const GET_HOMEPAGE_PROPS = gql`
     }
   }
 `
+export const GET_INDEXED_CLASSES = gql`
+  query indexedClassesQuery($offset: Int!) {
+    classesConnection(first: 4, skip: $offset) {
+      aggregate {
+        count
+      }
+      classes: edges {
+        node {
+          id
+          meetLink
+          teachers {
+            id
+            name
+          }
+          name
+          shortDescription
+          scheduledTime
+          image {
+            url
+          }
+          avaliableSlides {
+            url
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        pageSize
+      }
+    }
+  }
+`

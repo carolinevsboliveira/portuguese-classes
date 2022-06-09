@@ -11,7 +11,6 @@ import CustomPaper from 'components/custom-paper'
 import { useRouter } from 'next/router'
 import CardWithFixedHeight from 'components/card-with-fixed-height/card-with-fixed-height'
 import { WhatsApp } from '@mui/icons-material'
-//TODO: type teachers
 
 const defaultOptions = {
   loop: false,
@@ -70,7 +69,9 @@ const HomeTemplate = ({
           <Button variant="text" startIcon={<WhatsApp />} onClick={() => handleWhatsAppButtonOnClick()}>
             {phone}
           </Button>
-          <Button variant="outlined">Login</Button>
+          <Button variant="outlined" onClick={() => push('/login')}>
+            Login
+          </Button>
           <Button variant="contained">Cadastrar</Button>
         </S.NavBarWrapper>
         <S.LottieSection>
