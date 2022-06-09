@@ -746,7 +746,7 @@ export type Class = Node & {
   /** The unique identifier */
   id: Scalars['ID'];
   image?: Maybe<Asset>;
-  meetLink: Scalars['String'];
+  meetLink?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
@@ -864,7 +864,7 @@ export type ClassCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['RichTextAST']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
-  meetLink: Scalars['String'];
+  meetLink?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
   scheduledTime: Scalars['DateTime'];
   shortDescription?: InputMaybe<Scalars['String']>;
@@ -8604,7 +8604,8 @@ export type CourseHomepageQuery = { __typename?: 'Query', homepages: Array<{ __t
 
 export type IndexedClassesQueryQueryVariables = Exact<{
   offset: Scalars['Int'];
+  email: Scalars['String'];
 }>;
 
 
-export type IndexedClassesQueryQuery = { __typename?: 'Query', classesConnection: { __typename?: 'ClassConnection', aggregate: { __typename?: 'Aggregate', count: number }, classes: Array<{ __typename?: 'ClassEdge', node: { __typename?: 'Class', id: string, meetLink: string, name: string, shortDescription?: string | null, scheduledTime: any, teachers: Array<{ __typename?: 'Teacher', id: string, name: string }>, image?: { __typename?: 'Asset', url: string } | null, avaliableSlides?: { __typename?: 'Asset', url: string } | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, pageSize?: number | null } } };
+export type IndexedClassesQueryQuery = { __typename?: 'Query', classesConnection: { __typename?: 'ClassConnection', aggregate: { __typename?: 'Aggregate', count: number }, classes: Array<{ __typename?: 'ClassEdge', node: { __typename?: 'Class', id: string, meetLink?: string | null, name: string, shortDescription?: string | null, scheduledTime: any, teachers: Array<{ __typename?: 'Teacher', id: string, name: string }>, image?: { __typename?: 'Asset', url: string } | null, avaliableSlides?: { __typename?: 'Asset', url: string } | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, pageSize?: number | null } }, studentFrequencies: Array<{ __typename?: 'StudentFrequencie', totalPeriodClasses: number, missedClasses: Array<{ __typename?: 'Class', id: string }> }> };

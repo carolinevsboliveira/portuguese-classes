@@ -40,7 +40,7 @@ export const GET_HOMEPAGE_PROPS = gql`
   }
 `
 export const GET_INDEXED_CLASSES = gql`
-  query indexedClassesQuery($offset: Int!) {
+  query indexedClassesQuery($offset: Int!, $email: String!) {
     classesConnection(first: 4, skip: $offset) {
       aggregate {
         count
@@ -68,6 +68,12 @@ export const GET_INDEXED_CLASSES = gql`
         hasNextPage
         pageSize
       }
+    }
+    studentFrequencies(where: { nextUser: { email: $email } }) {
+      missedClasses {
+        id
+      }
+      totalPeriodClasses
     }
   }
 `

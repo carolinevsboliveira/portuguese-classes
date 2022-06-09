@@ -7,7 +7,11 @@ import { useRouter } from 'next/router'
 import nookies from 'nookies'
 import admin from 'firebase-config/admin'
 
-function ClassesList({ classesConnection, page }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function ClassesList({
+  classesConnection,
+  studentFrequencies,
+  page
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { replace } = useRouter()
 
   const handlePaginationChanges = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -17,10 +21,13 @@ function ClassesList({ classesConnection, page }: InferGetServerSidePropsType<ty
     aggregate: { count },
     classes
   } = classesConnection
+  const currentStudentFrequencies = studentFrequencies[0]
 
   return (
     <>
       <ClassListTemplate
+        missedClasses={currentStudentFrequencies.missedClasses}
+        totalPeriodClasses={Number(currentStudentFrequencies.totalPeriodClasses)}
         classes={classes}
         page={page}
         count={count}
@@ -37,11 +44,22 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
     const cookies = nookies.get(ctx)
     const token = await admin.auth().verifyIdToken(cookies.token)
     const { uid, email } = token
-    const { classesConnection } = await client.request<IndexedClassesQueryQuery>(GET_INDEXED_CLASSES, {
-      offset: parseInt(ctx.params?.page as string) - 1
-    })
+    const { classesConnection, studentFrequencies } = await client.request<IndexedClassesQueryQuery>(
+      GET_INDEXED_CLASSES,
+      {
+        offset: parseInt(ctx.params?.page as string) - 1,
+        email: email
+      }
+    )
+
     return {
-      props: { userEmail: email, userId: uid, classesConnection, page: parseInt(ctx.params?.page as string) }
+      props: {
+        userEmail: email,
+        userId: uid,
+        classesConnection,
+        page: parseInt(ctx.params?.page as string),
+        studentFrequencies
+      }
     }
   } catch (err) {
     return {
