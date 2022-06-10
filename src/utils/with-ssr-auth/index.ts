@@ -1,10 +1,9 @@
 import admin from 'firebase-config/admin'
-import { VerifyAuthorizationQuery } from 'generated/graphql'
 import client from 'graphql/client'
-import { GET_IF_STUDENT_IS_AUTHORIZED } from 'graphql/queries'
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import nookies from 'nookies'
-
+import { VerifyAuthorizationQuery } from 'generated/graphql'
+import { GET_IF_USER_IS_AUTHORIZED } from 'graphql/queries'
 type FnReturnType = {
   uid: string
   email: string
@@ -18,11 +17,8 @@ export function withSSRAuth<P>(
       const cookies = nookies.get(ctx)
       const token = await admin.auth().verifyIdToken(cookies.token)
       const { uid, email } = token
-      const isActive = await client.request<VerifyAuthorizationQuery>(GET_IF_STUDENT_IS_AUTHORIZED, { email: email })
+      const isActive = await client.request<VerifyAuthorizationQuery>(GET_IF_USER_IS_AUTHORIZED, { email: email })
 
-      if (!email) {
-        throw new Error()
-      }
       if (!isActive.nextUser?.active) {
         return {
           redirect: {
@@ -31,7 +27,7 @@ export function withSSRAuth<P>(
           }
         }
       }
-      return await fn(ctx, { uid, email: email })
+      return await fn(ctx, { uid, email: email as string })
     } catch (e) {
       return {
         redirect: {
