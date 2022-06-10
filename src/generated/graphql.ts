@@ -861,6 +861,7 @@ export type ClassConnection = {
 
 export type ClassCreateInput = {
   avaliableSlides?: InputMaybe<AssetCreateOneInlineInput>;
+  cl47kpfoq3qhe01yw64jy479q?: InputMaybe<MissedClassesJustificationCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['RichTextAST']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
@@ -1077,6 +1078,7 @@ export enum ClassOrderByInput {
 
 export type ClassUpdateInput = {
   avaliableSlides?: InputMaybe<AssetUpdateOneInlineInput>;
+  cl47kpfoq3qhe01yw64jy479q?: InputMaybe<MissedClassesJustificationUpdateManyInlineInput>;
   description?: InputMaybe<Scalars['RichTextAST']>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
   meetLink?: InputMaybe<Scalars['String']>;
@@ -2559,6 +2561,426 @@ export type LocationInput = {
   longitude: Scalars['Float'];
 };
 
+export type MissedClassesJustification = Node & {
+  __typename?: 'MissedClassesJustification';
+  class?: Maybe<Class>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<MissedClassesJustification>;
+  /** List of MissedClassesJustification versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  justification?: Maybe<Scalars['String']>;
+  nextUser?: Maybe<NextUser>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type MissedClassesJustificationClassArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type MissedClassesJustificationCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type MissedClassesJustificationDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type MissedClassesJustificationHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type MissedClassesJustificationNextUserArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type MissedClassesJustificationPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type MissedClassesJustificationScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type MissedClassesJustificationUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type MissedClassesJustificationConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: MissedClassesJustificationWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type MissedClassesJustificationConnection = {
+  __typename?: 'MissedClassesJustificationConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<MissedClassesJustificationEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type MissedClassesJustificationCreateInput = {
+  class?: InputMaybe<ClassCreateOneInlineInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  justification?: InputMaybe<Scalars['String']>;
+  nextUser?: InputMaybe<NextUserCreateOneInlineInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type MissedClassesJustificationCreateManyInlineInput = {
+  /** Connect multiple existing MissedClassesJustification documents */
+  connect?: InputMaybe<Array<MissedClassesJustificationWhereUniqueInput>>;
+  /** Create and connect multiple existing MissedClassesJustification documents */
+  create?: InputMaybe<Array<MissedClassesJustificationCreateInput>>;
+};
+
+export type MissedClassesJustificationCreateOneInlineInput = {
+  /** Connect one existing MissedClassesJustification document */
+  connect?: InputMaybe<MissedClassesJustificationWhereUniqueInput>;
+  /** Create and connect one MissedClassesJustification document */
+  create?: InputMaybe<MissedClassesJustificationCreateInput>;
+};
+
+/** An edge in a connection. */
+export type MissedClassesJustificationEdge = {
+  __typename?: 'MissedClassesJustificationEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: MissedClassesJustification;
+};
+
+/** Identifies documents */
+export type MissedClassesJustificationManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MissedClassesJustificationWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MissedClassesJustificationWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MissedClassesJustificationWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  class?: InputMaybe<ClassWhereInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  justification?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  justification_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  justification_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  justification_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  justification_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  justification_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  justification_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  justification_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  justification_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  justification_starts_with?: InputMaybe<Scalars['String']>;
+  nextUser?: InputMaybe<NextUserWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum MissedClassesJustificationOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  JustificationAsc = 'justification_ASC',
+  JustificationDesc = 'justification_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type MissedClassesJustificationUpdateInput = {
+  class?: InputMaybe<ClassUpdateOneInlineInput>;
+  justification?: InputMaybe<Scalars['String']>;
+  nextUser?: InputMaybe<NextUserUpdateOneInlineInput>;
+};
+
+export type MissedClassesJustificationUpdateManyInlineInput = {
+  /** Connect multiple existing MissedClassesJustification documents */
+  connect?: InputMaybe<Array<MissedClassesJustificationConnectInput>>;
+  /** Create and connect multiple MissedClassesJustification documents */
+  create?: InputMaybe<Array<MissedClassesJustificationCreateInput>>;
+  /** Delete multiple MissedClassesJustification documents */
+  delete?: InputMaybe<Array<MissedClassesJustificationWhereUniqueInput>>;
+  /** Disconnect multiple MissedClassesJustification documents */
+  disconnect?: InputMaybe<Array<MissedClassesJustificationWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing MissedClassesJustification documents */
+  set?: InputMaybe<Array<MissedClassesJustificationWhereUniqueInput>>;
+  /** Update multiple MissedClassesJustification documents */
+  update?: InputMaybe<Array<MissedClassesJustificationUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple MissedClassesJustification documents */
+  upsert?: InputMaybe<Array<MissedClassesJustificationUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type MissedClassesJustificationUpdateManyInput = {
+  justification?: InputMaybe<Scalars['String']>;
+};
+
+export type MissedClassesJustificationUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: MissedClassesJustificationUpdateManyInput;
+  /** Document search */
+  where: MissedClassesJustificationWhereInput;
+};
+
+export type MissedClassesJustificationUpdateOneInlineInput = {
+  /** Connect existing MissedClassesJustification document */
+  connect?: InputMaybe<MissedClassesJustificationWhereUniqueInput>;
+  /** Create and connect one MissedClassesJustification document */
+  create?: InputMaybe<MissedClassesJustificationCreateInput>;
+  /** Delete currently connected MissedClassesJustification document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected MissedClassesJustification document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single MissedClassesJustification document */
+  update?: InputMaybe<MissedClassesJustificationUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single MissedClassesJustification document */
+  upsert?: InputMaybe<MissedClassesJustificationUpsertWithNestedWhereUniqueInput>;
+};
+
+export type MissedClassesJustificationUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: MissedClassesJustificationUpdateInput;
+  /** Unique document search */
+  where: MissedClassesJustificationWhereUniqueInput;
+};
+
+export type MissedClassesJustificationUpsertInput = {
+  /** Create document if it didn't exist */
+  create: MissedClassesJustificationCreateInput;
+  /** Update document if it exists */
+  update: MissedClassesJustificationUpdateInput;
+};
+
+export type MissedClassesJustificationUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: MissedClassesJustificationUpsertInput;
+  /** Unique document search */
+  where: MissedClassesJustificationWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type MissedClassesJustificationWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MissedClassesJustificationWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MissedClassesJustificationWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MissedClassesJustificationWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  class?: InputMaybe<ClassWhereInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  justification?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  justification_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  justification_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  justification_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  justification_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  justification_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  justification_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  justification_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  justification_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  justification_starts_with?: InputMaybe<Scalars['String']>;
+  nextUser?: InputMaybe<NextUserWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References MissedClassesJustification record uniquely */
+export type MissedClassesJustificationWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /**
@@ -2572,6 +2994,8 @@ export type Mutation = {
   createCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Create one homepage */
   createHomepage?: Maybe<Homepage>;
+  /** Create one missedClassesJustification */
+  createMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Create one nextUser */
   createNextUser?: Maybe<NextUser>;
   /** Create one scheduledRelease */
@@ -2621,6 +3045,13 @@ export type Mutation = {
   /** Delete many Homepage documents, return deleted documents */
   deleteManyHomepagesConnection: HomepageConnection;
   /**
+   * Delete many MissedClassesJustification documents
+   * @deprecated Please use the new paginated many mutation (deleteManyMissedClassesJustificationsConnection)
+   */
+  deleteManyMissedClassesJustifications: BatchPayload;
+  /** Delete many MissedClassesJustification documents, return deleted documents */
+  deleteManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
+  /**
    * Delete many NextUser documents
    * @deprecated Please use the new paginated many mutation (deleteManyNextUsersConnection)
    */
@@ -2655,6 +3086,8 @@ export type Mutation = {
   deleteManyWhatsappContacts: BatchPayload;
   /** Delete many WhatsappContact documents, return deleted documents */
   deleteManyWhatsappContactsConnection: WhatsappContactConnection;
+  /** Delete one missedClassesJustification from _all_ existing stages. Returns deleted document. */
+  deleteMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Delete one nextUser from _all_ existing stages. Returns deleted document. */
   deleteNextUser?: Maybe<NextUser>;
   /** Delete and return scheduled operation */
@@ -2706,6 +3139,13 @@ export type Mutation = {
   /** Publish many Homepage documents */
   publishManyHomepagesConnection: HomepageConnection;
   /**
+   * Publish many MissedClassesJustification documents
+   * @deprecated Please use the new paginated many mutation (publishManyMissedClassesJustificationsConnection)
+   */
+  publishManyMissedClassesJustifications: BatchPayload;
+  /** Publish many MissedClassesJustification documents */
+  publishManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
+  /**
    * Publish many NextUser documents
    * @deprecated Please use the new paginated many mutation (publishManyNextUsersConnection)
    */
@@ -2740,6 +3180,8 @@ export type Mutation = {
   publishManyWhatsappContacts: BatchPayload;
   /** Publish many WhatsappContact documents */
   publishManyWhatsappContactsConnection: WhatsappContactConnection;
+  /** Publish one missedClassesJustification */
+  publishMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Publish one nextUser */
   publishNextUser?: Maybe<NextUser>;
   /** Publish one studentFrequencie */
@@ -2758,6 +3200,8 @@ export type Mutation = {
   schedulePublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Schedule to publish one homepage */
   schedulePublishHomepage?: Maybe<Homepage>;
+  /** Schedule to publish one missedClassesJustification */
+  schedulePublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Schedule to publish one nextUser */
   schedulePublishNextUser?: Maybe<NextUser>;
   /** Schedule to publish one studentFrequencie */
@@ -2776,6 +3220,8 @@ export type Mutation = {
   scheduleUnpublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishHomepage?: Maybe<Homepage>;
+  /** Unpublish one missedClassesJustification from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishNextUser?: Maybe<NextUser>;
   /** Unpublish one studentFrequencie from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2823,6 +3269,13 @@ export type Mutation = {
   /** Find many Homepage documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyHomepagesConnection: HomepageConnection;
   /**
+   * Unpublish many MissedClassesJustification documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyMissedClassesJustificationsConnection)
+   */
+  unpublishManyMissedClassesJustifications: BatchPayload;
+  /** Find many MissedClassesJustification documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
+  /**
    * Unpublish many NextUser documents
    * @deprecated Please use the new paginated many mutation (unpublishManyNextUsersConnection)
    */
@@ -2857,6 +3310,8 @@ export type Mutation = {
   unpublishManyWhatsappContacts: BatchPayload;
   /** Find many WhatsappContact documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyWhatsappContactsConnection: WhatsappContactConnection;
+  /** Unpublish one missedClassesJustification from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishNextUser?: Maybe<NextUser>;
   /** Unpublish one studentFrequencie from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2904,6 +3359,13 @@ export type Mutation = {
   /** Update many Homepage documents */
   updateManyHomepagesConnection: HomepageConnection;
   /**
+   * Update many missedClassesJustifications
+   * @deprecated Please use the new paginated many mutation (updateManyMissedClassesJustificationsConnection)
+   */
+  updateManyMissedClassesJustifications: BatchPayload;
+  /** Update many MissedClassesJustification documents */
+  updateManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
+  /**
    * Update many nextUsers
    * @deprecated Please use the new paginated many mutation (updateManyNextUsersConnection)
    */
@@ -2938,6 +3400,8 @@ export type Mutation = {
   updateManyWhatsappContacts: BatchPayload;
   /** Update many WhatsappContact documents */
   updateManyWhatsappContactsConnection: WhatsappContactConnection;
+  /** Update one missedClassesJustification */
+  updateMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Update one nextUser */
   updateNextUser?: Maybe<NextUser>;
   /** Update one scheduledRelease */
@@ -2958,6 +3422,8 @@ export type Mutation = {
   upsertCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Upsert one homepage */
   upsertHomepage?: Maybe<Homepage>;
+  /** Upsert one missedClassesJustification */
+  upsertMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Upsert one nextUser */
   upsertNextUser?: Maybe<NextUser>;
   /** Upsert one studentFrequencie */
@@ -2988,6 +3454,11 @@ export type MutationCreateCurrentCourseDateArgs = {
 
 export type MutationCreateHomepageArgs = {
   data: HomepageCreateInput;
+};
+
+
+export type MutationCreateMissedClassesJustificationArgs = {
+  data: MissedClassesJustificationCreateInput;
 };
 
 
@@ -3101,6 +3572,21 @@ export type MutationDeleteManyHomepagesConnectionArgs = {
 };
 
 
+export type MutationDeleteManyMissedClassesJustificationsArgs = {
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
+export type MutationDeleteManyMissedClassesJustificationsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
 export type MutationDeleteManyNextUsersArgs = {
   where?: InputMaybe<NextUserManyWhereInput>;
 };
@@ -3173,6 +3659,11 @@ export type MutationDeleteManyWhatsappContactsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
+export type MutationDeleteMissedClassesJustificationArgs = {
+  where: MissedClassesJustificationWhereUniqueInput;
 };
 
 
@@ -3316,6 +3807,24 @@ export type MutationPublishManyHomepagesConnectionArgs = {
 };
 
 
+export type MutationPublishManyMissedClassesJustificationsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
+export type MutationPublishManyMissedClassesJustificationsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
 export type MutationPublishManyNextUsersArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<NextUserManyWhereInput>;
@@ -3406,6 +3915,12 @@ export type MutationPublishManyWhatsappContactsConnectionArgs = {
 };
 
 
+export type MutationPublishMissedClassesJustificationArgs = {
+  to?: Array<Stage>;
+  where: MissedClassesJustificationWhereUniqueInput;
+};
+
+
 export type MutationPublishNextUserArgs = {
   to?: Array<Stage>;
   where: NextUserWhereUniqueInput;
@@ -3468,6 +3983,14 @@ export type MutationSchedulePublishHomepageArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationSchedulePublishMissedClassesJustificationArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: MissedClassesJustificationWhereUniqueInput;
 };
 
 
@@ -3542,6 +4065,14 @@ export type MutationScheduleUnpublishHomepageArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishMissedClassesJustificationArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: MissedClassesJustificationWhereUniqueInput;
 };
 
 
@@ -3687,6 +4218,24 @@ export type MutationUnpublishManyHomepagesConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyMissedClassesJustificationsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyMissedClassesJustificationsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyNextUsersArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<NextUserManyWhereInput>;
@@ -3774,6 +4323,12 @@ export type MutationUnpublishManyWhatsappContactsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
   where?: InputMaybe<WhatsappContactManyWhereInput>;
+};
+
+
+export type MutationUnpublishMissedClassesJustificationArgs = {
+  from?: Array<Stage>;
+  where: MissedClassesJustificationWhereUniqueInput;
 };
 
 
@@ -3899,6 +4454,23 @@ export type MutationUpdateManyHomepagesConnectionArgs = {
 };
 
 
+export type MutationUpdateManyMissedClassesJustificationsArgs = {
+  data: MissedClassesJustificationUpdateManyInput;
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
+export type MutationUpdateManyMissedClassesJustificationsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: MissedClassesJustificationUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MissedClassesJustificationManyWhereInput>;
+};
+
+
 export type MutationUpdateManyNextUsersArgs = {
   data: NextUserUpdateManyInput;
   where?: InputMaybe<NextUserManyWhereInput>;
@@ -3984,6 +4556,12 @@ export type MutationUpdateManyWhatsappContactsConnectionArgs = {
 };
 
 
+export type MutationUpdateMissedClassesJustificationArgs = {
+  data: MissedClassesJustificationUpdateInput;
+  where: MissedClassesJustificationWhereUniqueInput;
+};
+
+
 export type MutationUpdateNextUserArgs = {
   data: NextUserUpdateInput;
   where: NextUserWhereUniqueInput;
@@ -4041,6 +4619,12 @@ export type MutationUpsertCurrentCourseDateArgs = {
 export type MutationUpsertHomepageArgs = {
   upsert: HomepageUpsertInput;
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationUpsertMissedClassesJustificationArgs = {
+  upsert: MissedClassesJustificationUpsertInput;
+  where: MissedClassesJustificationWhereUniqueInput;
 };
 
 
@@ -4162,6 +4746,7 @@ export type NextUserConnection = {
 export type NextUserCreateInput = {
   active?: InputMaybe<Scalars['Boolean']>;
   cl43kly135ghr01xj4er21ypu?: InputMaybe<StudentFrequencieCreateManyInlineInput>;
+  cl47kprgl3ulv01z37u4xda42?: InputMaybe<MissedClassesJustificationCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email: Scalars['String'];
   name: Scalars['String'];
@@ -4356,6 +4941,7 @@ export enum NextUserOrderByInput {
 export type NextUserUpdateInput = {
   active?: InputMaybe<Scalars['Boolean']>;
   cl43kly135ghr01xj4er21ypu?: InputMaybe<StudentFrequencieUpdateManyInlineInput>;
+  cl47kprgl3ulv01z37u4xda42?: InputMaybe<MissedClassesJustificationUpdateManyInlineInput>;
   email?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   surname?: InputMaybe<Scalars['String']>;
@@ -4639,6 +5225,14 @@ export type Query = {
   homepages: Array<Homepage>;
   /** Retrieve multiple homepages using the Relay connection interface */
   homepagesConnection: HomepageConnection;
+  /** Retrieve a single missedClassesJustification */
+  missedClassesJustification?: Maybe<MissedClassesJustification>;
+  /** Retrieve document version */
+  missedClassesJustificationVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple missedClassesJustifications */
+  missedClassesJustifications: Array<MissedClassesJustification>;
+  /** Retrieve multiple missedClassesJustifications using the Relay connection interface */
+  missedClassesJustificationsConnection: MissedClassesJustificationConnection;
   /** Retrieve a single nextUser */
   nextUser?: Maybe<NextUser>;
   /** Retrieve document version */
@@ -4851,6 +5445,44 @@ export type QueryHomepagesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<HomepageWhereInput>;
+};
+
+
+export type QueryMissedClassesJustificationArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: MissedClassesJustificationWhereUniqueInput;
+};
+
+
+export type QueryMissedClassesJustificationVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryMissedClassesJustificationsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<MissedClassesJustificationOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<MissedClassesJustificationWhereInput>;
+};
+
+
+export type QueryMissedClassesJustificationsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<MissedClassesJustificationOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<MissedClassesJustificationWhereInput>;
 };
 
 
@@ -5256,7 +5888,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | NextUser | StudentFrequencie | SubscriptionDate | Teacher | WhatsappContact;
+export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | MissedClassesJustification | NextUser | StudentFrequencie | SubscriptionDate | Teacher | WhatsappContact;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -8592,6 +9224,15 @@ export type NewStudentMutationVariables = Exact<{
 
 export type NewStudentMutation = { __typename?: 'Mutation', createNextUser?: { __typename?: 'NextUser', name: string, surname?: string | null, email: string } | null };
 
+export type CreateJustificationMutationVariables = Exact<{
+  classId: Scalars['ID'];
+  justification?: InputMaybe<Scalars['String']>;
+  nextUserEmail: Scalars['String'];
+}>;
+
+
+export type CreateJustificationMutation = { __typename?: 'Mutation', createMissedClassesJustification?: { __typename?: 'MissedClassesJustification', id: string } | null };
+
 export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -8609,3 +9250,17 @@ export type IndexedClassesQueryQueryVariables = Exact<{
 
 
 export type IndexedClassesQueryQuery = { __typename?: 'Query', classesConnection: { __typename?: 'ClassConnection', aggregate: { __typename?: 'Aggregate', count: number }, classes: Array<{ __typename?: 'ClassEdge', node: { __typename?: 'Class', id: string, meetLink?: string | null, name: string, shortDescription?: string | null, scheduledTime: any, teachers: Array<{ __typename?: 'Teacher', id: string, name: string }>, image?: { __typename?: 'Asset', url: string } | null, avaliableSlides?: { __typename?: 'Asset', url: string } | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, pageSize?: number | null } }, studentFrequencies: Array<{ __typename?: 'StudentFrequencie', totalPeriodClasses: number, missedClasses: Array<{ __typename?: 'Class', id: string }> }> };
+
+export type VerifyAuthorizationQueryVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type VerifyAuthorizationQuery = { __typename?: 'Query', nextUser?: { __typename?: 'NextUser', active?: boolean | null } | null };
+
+export type StudentFrequenciesQueryVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type StudentFrequenciesQuery = { __typename?: 'Query', studentFrequencies: Array<{ __typename?: 'StudentFrequencie', missedClasses: Array<{ __typename?: 'Class', id: string, name: string, scheduledTime: any, shortDescription?: string | null }> }> };

@@ -9,3 +9,16 @@ export const CREATE_NEW_STUDENT = gql`
     }
   }
 `
+export const CREATE_NEW_JUSTIFYING = gql`
+  mutation CreateJustification($classId: ID!, $justification: String, $nextUserEmail: String!) {
+    createMissedClassesJustification(
+      data: {
+        class: { connect: { id: $classId } }
+        justification: $justification
+        nextUser: { connect: { email: $nextUserEmail } }
+      }
+    ) {
+      id
+    }
+  }
+`

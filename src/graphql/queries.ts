@@ -77,3 +77,22 @@ export const GET_INDEXED_CLASSES = gql`
     }
   }
 `
+export const GET_IF_USER_IS_AUTHORIZED = gql`
+  query VerifyAuthorization($email: String!) {
+    nextUser(where: { email: $email }) {
+      active
+    }
+  }
+`
+export const GET_STUDENT_FREQUENCIES = gql`
+  query StudentFrequencies($email: String!) {
+    studentFrequencies(where: { nextUser: { email: $email } }) {
+      missedClasses {
+        id
+        name
+        scheduledTime
+        shortDescription
+      }
+    }
+  }
+`
