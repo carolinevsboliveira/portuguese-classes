@@ -4,8 +4,7 @@ import { GET_INDEXED_CLASSES } from 'graphql/queries'
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import ClassListTemplate from 'templates/class-list'
 import { useRouter } from 'next/router'
-import nookies from 'nookies'
-import admin from 'firebase-config/admin'
+import { withSSRAuth } from 'utils/with-ssr-auth'
 
 function ClassesList({
   classesConnection,
@@ -39,35 +38,22 @@ function ClassesList({
 
 export default ClassesList
 
-export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  try {
-    const cookies = nookies.get(ctx)
-    const token = await admin.auth().verifyIdToken(cookies.token)
-    const { uid, email } = token
-    const { classesConnection, studentFrequencies } = await client.request<IndexedClassesQueryQuery>(
-      GET_INDEXED_CLASSES,
-      {
-        offset: parseInt(ctx.params?.page as string) - 1,
-        email: email
-      }
-    )
-
-    return {
-      props: {
-        userEmail: email,
-        userId: uid,
-        classesConnection,
-        page: parseInt(ctx.params?.page as string),
-        studentFrequencies
-      }
+export const getServerSideProps: GetServerSideProps = withSSRAuth(async (ctx: GetServerSidePropsContext, userData) => {
+  const { classesConnection, studentFrequencies } = await client.request<IndexedClassesQueryQuery>(
+    GET_INDEXED_CLASSES,
+    {
+      offset: parseInt(ctx.params?.page as string) - 1,
+      email: userData.email
     }
-  } catch (err) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login'
-      },
-      props: {} as never
+  )
+
+  return {
+    props: {
+      userEmail: userData.email,
+      userId: userData.uid,
+      classesConnection,
+      page: parseInt(ctx.params?.page as string),
+      studentFrequencies
     }
   }
-}
+})

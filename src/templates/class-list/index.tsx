@@ -45,7 +45,7 @@ function ClassListTemplate({
   }
 
   const actionButton = () => {
-    push('/justify')
+    push('/classes/justification')
   }
   const missedClassesQuantity = missedClasses.length
 
