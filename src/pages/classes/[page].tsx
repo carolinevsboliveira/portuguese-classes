@@ -5,7 +5,7 @@ import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsT
 import ClassListTemplate from 'templates/class-list'
 import { useRouter } from 'next/router'
 import { withSSRAuth } from 'utils/with-ssr-auth'
-
+//TODO: Transactional email to send the missing students
 function ClassesList({
   classesConnection,
   studentFrequencies,

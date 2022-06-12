@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 import { GlobalStyles } from '../styles'
-import createEmotionCache from 'utils/createEmotionCache'
+import createEmotionCache from 'utils/create-emotion-cache'
 import AuthContextProvider from 'contexts/auth-context'
 import DevelopedByLayout from 'templates/developed-by-layout/developed-by-layout'
 
