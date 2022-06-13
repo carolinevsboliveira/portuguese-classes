@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
 import Lottie from 'react-lottie'
 import Warning from 'assets/lotties/warning.json'
 import GoodJob from 'assets/lotties/good-job.json'

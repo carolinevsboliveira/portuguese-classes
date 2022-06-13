@@ -1,8 +1,9 @@
 import { ArrowRight } from '@mui/icons-material'
-import { Box, Button, Pagination, Stack } from '@mui/material'
+import { Box, Button, Pagination, Stack, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useAuth } from 'contexts/auth-context'
 import Learning from 'assets/lotties/learning.json'
+import TeacherWarning from 'assets/lotties/teacher-warning.json'
 import * as S from './styles'
 import ClassesTable from 'components/class-table'
 import Lottie from 'react-lottie'
@@ -14,6 +15,7 @@ type ClassListProps = {
   handlePaginationChanges: (event: React.ChangeEvent<unknown>, value: number) => void
   missedClasses: Array<{ id: string }>
   totalPeriodClasses: number
+  isTeacher: boolean
 }
 const defaultOptions = {
   loop: true,
@@ -30,7 +32,8 @@ function ClassListTemplate({
   count,
   handlePaginationChanges,
   missedClasses,
-  totalPeriodClasses
+  totalPeriodClasses,
+  isTeacher
 }: ClassListProps) {
   const { push } = useRouter()
   const { logoutTheCurrentUser } = useAuth()
@@ -43,7 +46,9 @@ function ClassListTemplate({
       return
     }
   }
-
+  const handleReportClick = () => {
+    push('/dashboard')
+  }
   const actionButton = () => {
     push('/classes/justification')
   }
@@ -58,11 +63,26 @@ function ClassListTemplate({
       </S.NavBarWrapper>
 
       <S.ContentWrapper>
-        <Stack spacing={3} sx={{ justifyContent: 'center', alignItems: 'center' }}>
-          <S.LottieInfoWrapper>
-            <Lottie options={defaultOptions} height={200} width={200} />
-          </S.LottieInfoWrapper>
-
+        <Stack spacing={4} sx={{ justifyContent: 'center', alignItems: 'center' }}>
+          {!isTeacher ? (
+            <S.LottieInfoWrapper>
+              <Lottie options={defaultOptions} height={200} width={200} />
+            </S.LottieInfoWrapper>
+          ) : (
+            <>
+              <Lottie
+                options={{ ...defaultOptions, animationData: TeacherWarning, loop: false }}
+                height={150}
+                width={150}
+              />
+              <Button variant="outlined" color="error" onClick={handleReportClick}>
+                Acompanhe o relatório de faltas
+              </Button>
+            </>
+          )}
+          <Typography variant="h4" component="h4">
+            Aulas cadastradas
+          </Typography>
           <S.ClassListWrapper>
             <ClassesTable classes={classes} />
           </S.ClassListWrapper>
@@ -73,12 +93,14 @@ function ClassListTemplate({
             color="primary"
             onChange={handlePaginationChanges}
           />
-          <MissedClassesMessage
-            hasMissedClasses={missedClassesQuantity > 0}
-            missedClassesQuantity={missedClassesQuantity}
-            totalClassesQuantity={totalPeriodClasses}
-            actionButton={actionButton}
-          />
+          {!isTeacher && (
+            <MissedClassesMessage
+              hasMissedClasses={missedClassesQuantity > 0}
+              missedClassesQuantity={missedClassesQuantity}
+              totalClassesQuantity={totalPeriodClasses}
+              actionButton={actionButton}
+            />
+          )}
         </Stack>
       </S.ContentWrapper>
     </Box>

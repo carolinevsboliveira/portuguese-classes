@@ -96,3 +96,38 @@ export const GET_STUDENT_FREQUENCIES = gql`
     }
   }
 `
+
+export const CHECK_IF_IS_TEACHER = gql`
+  query CheckIfIsTeacher($email: String!) {
+    teachers(where: { nextUser: { email: $email } }) {
+      user: nextUser {
+        email
+      }
+    }
+  }
+`
+
+export const GET_ALL_STUDENT_FREQUENCIES = gql`
+  query GetAllStudentFrequencies {
+    studentFrequencies {
+      totalPeriodClasses
+      missedClasses {
+        id
+      }
+      nextUser {
+        id
+        name
+        surname
+        email
+      }
+    }
+  }
+`
+
+export const GET_LAST_WARNING_SEND_EMAIL = gql`
+  query GetLastWarningDatesForStudents {
+    lastSendWarningDates(orderBy: createdAt_DESC) {
+      lastSendWarningDate
+    }
+  }
+`

@@ -1,25 +1,25 @@
 import emailjs from 'emailjs-com'
+import dayjs from 'dayjs'
 
 export const sendEmailForWarnedStudents = async (
-  emailsToSend: Array<string>,
-  missedClass: number,
+  emailsToSend: Array<{ email: string; missedClass: number }>,
   totalClasses: number,
   link: string
 ) => {
   const templateParams = {
-    missedClass,
     totalClasses,
     link
   }
 
   try {
-    const promises = emailsToSend.map((email) =>
+    const promises = emailsToSend.map((emailData) =>
       emailjs.send(
         String(process.env.EMAIL_SERVICE_ID),
         String(process.env.EMAIL_SERVICE_TEMPLATE_ID),
         {
           ...templateParams,
-          email
+          email: emailData.email,
+          missedClass: emailData.missedClass
         },
         String(process.env.EMAIL_SERVICE_USER_ID)
       )

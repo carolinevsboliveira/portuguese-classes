@@ -2535,6 +2535,398 @@ export type ImageTransformationInput = {
   resize?: InputMaybe<ImageResizeInput>;
 };
 
+export type LastSendWarningDate = Node & {
+  __typename?: 'LastSendWarningDate';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<LastSendWarningDate>;
+  /** List of LastSendWarningDate versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  lastSendWarningDate?: Maybe<Scalars['Date']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type LastSendWarningDateCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type LastSendWarningDateDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type LastSendWarningDateHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type LastSendWarningDatePublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type LastSendWarningDateScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type LastSendWarningDateUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type LastSendWarningDateConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type LastSendWarningDateConnection = {
+  __typename?: 'LastSendWarningDateConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<LastSendWarningDateEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type LastSendWarningDateCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  lastSendWarningDate?: InputMaybe<Scalars['Date']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type LastSendWarningDateCreateManyInlineInput = {
+  /** Connect multiple existing LastSendWarningDate documents */
+  connect?: InputMaybe<Array<LastSendWarningDateWhereUniqueInput>>;
+  /** Create and connect multiple existing LastSendWarningDate documents */
+  create?: InputMaybe<Array<LastSendWarningDateCreateInput>>;
+};
+
+export type LastSendWarningDateCreateOneInlineInput = {
+  /** Connect one existing LastSendWarningDate document */
+  connect?: InputMaybe<LastSendWarningDateWhereUniqueInput>;
+  /** Create and connect one LastSendWarningDate document */
+  create?: InputMaybe<LastSendWarningDateCreateInput>;
+};
+
+/** An edge in a connection. */
+export type LastSendWarningDateEdge = {
+  __typename?: 'LastSendWarningDateEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: LastSendWarningDate;
+};
+
+/** Identifies documents */
+export type LastSendWarningDateManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<LastSendWarningDateWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<LastSendWarningDateWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<LastSendWarningDateWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  lastSendWarningDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  lastSendWarningDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  lastSendWarningDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  lastSendWarningDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  lastSendWarningDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  lastSendWarningDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  lastSendWarningDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  lastSendWarningDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum LastSendWarningDateOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LastSendWarningDateAsc = 'lastSendWarningDate_ASC',
+  LastSendWarningDateDesc = 'lastSendWarningDate_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type LastSendWarningDateUpdateInput = {
+  lastSendWarningDate?: InputMaybe<Scalars['Date']>;
+};
+
+export type LastSendWarningDateUpdateManyInlineInput = {
+  /** Connect multiple existing LastSendWarningDate documents */
+  connect?: InputMaybe<Array<LastSendWarningDateConnectInput>>;
+  /** Create and connect multiple LastSendWarningDate documents */
+  create?: InputMaybe<Array<LastSendWarningDateCreateInput>>;
+  /** Delete multiple LastSendWarningDate documents */
+  delete?: InputMaybe<Array<LastSendWarningDateWhereUniqueInput>>;
+  /** Disconnect multiple LastSendWarningDate documents */
+  disconnect?: InputMaybe<Array<LastSendWarningDateWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing LastSendWarningDate documents */
+  set?: InputMaybe<Array<LastSendWarningDateWhereUniqueInput>>;
+  /** Update multiple LastSendWarningDate documents */
+  update?: InputMaybe<Array<LastSendWarningDateUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple LastSendWarningDate documents */
+  upsert?: InputMaybe<Array<LastSendWarningDateUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type LastSendWarningDateUpdateManyInput = {
+  lastSendWarningDate?: InputMaybe<Scalars['Date']>;
+};
+
+export type LastSendWarningDateUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: LastSendWarningDateUpdateManyInput;
+  /** Document search */
+  where: LastSendWarningDateWhereInput;
+};
+
+export type LastSendWarningDateUpdateOneInlineInput = {
+  /** Connect existing LastSendWarningDate document */
+  connect?: InputMaybe<LastSendWarningDateWhereUniqueInput>;
+  /** Create and connect one LastSendWarningDate document */
+  create?: InputMaybe<LastSendWarningDateCreateInput>;
+  /** Delete currently connected LastSendWarningDate document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected LastSendWarningDate document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single LastSendWarningDate document */
+  update?: InputMaybe<LastSendWarningDateUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single LastSendWarningDate document */
+  upsert?: InputMaybe<LastSendWarningDateUpsertWithNestedWhereUniqueInput>;
+};
+
+export type LastSendWarningDateUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: LastSendWarningDateUpdateInput;
+  /** Unique document search */
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+export type LastSendWarningDateUpsertInput = {
+  /** Create document if it didn't exist */
+  create: LastSendWarningDateCreateInput;
+  /** Update document if it exists */
+  update: LastSendWarningDateUpdateInput;
+};
+
+export type LastSendWarningDateUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: LastSendWarningDateUpsertInput;
+  /** Unique document search */
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type LastSendWarningDateWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<LastSendWarningDateWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<LastSendWarningDateWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<LastSendWarningDateWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  lastSendWarningDate?: InputMaybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  lastSendWarningDate_gt?: InputMaybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  lastSendWarningDate_gte?: InputMaybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  lastSendWarningDate_in?: InputMaybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  lastSendWarningDate_lt?: InputMaybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  lastSendWarningDate_lte?: InputMaybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  lastSendWarningDate_not?: InputMaybe<Scalars['Date']>;
+  /** All values that are not contained in given list. */
+  lastSendWarningDate_not_in?: InputMaybe<Array<Scalars['Date']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References LastSendWarningDate record uniquely */
+export type LastSendWarningDateWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
@@ -2994,6 +3386,8 @@ export type Mutation = {
   createCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Create one homepage */
   createHomepage?: Maybe<Homepage>;
+  /** Create one lastSendWarningDate */
+  createLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Create one missedClassesJustification */
   createMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Create one nextUser */
@@ -3016,6 +3410,8 @@ export type Mutation = {
   deleteCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Delete one homepage from _all_ existing stages. Returns deleted document. */
   deleteHomepage?: Maybe<Homepage>;
+  /** Delete one lastSendWarningDate from _all_ existing stages. Returns deleted document. */
+  deleteLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -3044,6 +3440,13 @@ export type Mutation = {
   deleteManyHomepages: BatchPayload;
   /** Delete many Homepage documents, return deleted documents */
   deleteManyHomepagesConnection: HomepageConnection;
+  /**
+   * Delete many LastSendWarningDate documents
+   * @deprecated Please use the new paginated many mutation (deleteManyLastSendWarningDatesConnection)
+   */
+  deleteManyLastSendWarningDates: BatchPayload;
+  /** Delete many LastSendWarningDate documents, return deleted documents */
+  deleteManyLastSendWarningDatesConnection: LastSendWarningDateConnection;
   /**
    * Delete many MissedClassesJustification documents
    * @deprecated Please use the new paginated many mutation (deleteManyMissedClassesJustificationsConnection)
@@ -3110,6 +3513,8 @@ export type Mutation = {
   publishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Publish one homepage */
   publishHomepage?: Maybe<Homepage>;
+  /** Publish one lastSendWarningDate */
+  publishLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -3138,6 +3543,13 @@ export type Mutation = {
   publishManyHomepages: BatchPayload;
   /** Publish many Homepage documents */
   publishManyHomepagesConnection: HomepageConnection;
+  /**
+   * Publish many LastSendWarningDate documents
+   * @deprecated Please use the new paginated many mutation (publishManyLastSendWarningDatesConnection)
+   */
+  publishManyLastSendWarningDates: BatchPayload;
+  /** Publish many LastSendWarningDate documents */
+  publishManyLastSendWarningDatesConnection: LastSendWarningDateConnection;
   /**
    * Publish many MissedClassesJustification documents
    * @deprecated Please use the new paginated many mutation (publishManyMissedClassesJustificationsConnection)
@@ -3200,6 +3612,8 @@ export type Mutation = {
   schedulePublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Schedule to publish one homepage */
   schedulePublishHomepage?: Maybe<Homepage>;
+  /** Schedule to publish one lastSendWarningDate */
+  schedulePublishLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Schedule to publish one missedClassesJustification */
   schedulePublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Schedule to publish one nextUser */
@@ -3220,6 +3634,8 @@ export type Mutation = {
   scheduleUnpublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishHomepage?: Maybe<Homepage>;
+  /** Unpublish one lastSendWarningDate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Unpublish one missedClassesJustification from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3240,6 +3656,8 @@ export type Mutation = {
   unpublishCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishHomepage?: Maybe<Homepage>;
+  /** Unpublish one lastSendWarningDate from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -3268,6 +3686,13 @@ export type Mutation = {
   unpublishManyHomepages: BatchPayload;
   /** Find many Homepage documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyHomepagesConnection: HomepageConnection;
+  /**
+   * Unpublish many LastSendWarningDate documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyLastSendWarningDatesConnection)
+   */
+  unpublishManyLastSendWarningDates: BatchPayload;
+  /** Find many LastSendWarningDate documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyLastSendWarningDatesConnection: LastSendWarningDateConnection;
   /**
    * Unpublish many MissedClassesJustification documents
    * @deprecated Please use the new paginated many mutation (unpublishManyMissedClassesJustificationsConnection)
@@ -3330,6 +3755,8 @@ export type Mutation = {
   updateCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Update one homepage */
   updateHomepage?: Maybe<Homepage>;
+  /** Update one lastSendWarningDate */
+  updateLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -3358,6 +3785,13 @@ export type Mutation = {
   updateManyHomepages: BatchPayload;
   /** Update many Homepage documents */
   updateManyHomepagesConnection: HomepageConnection;
+  /**
+   * Update many lastSendWarningDates
+   * @deprecated Please use the new paginated many mutation (updateManyLastSendWarningDatesConnection)
+   */
+  updateManyLastSendWarningDates: BatchPayload;
+  /** Update many LastSendWarningDate documents */
+  updateManyLastSendWarningDatesConnection: LastSendWarningDateConnection;
   /**
    * Update many missedClassesJustifications
    * @deprecated Please use the new paginated many mutation (updateManyMissedClassesJustificationsConnection)
@@ -3422,6 +3856,8 @@ export type Mutation = {
   upsertCurrentCourseDate?: Maybe<CurrentCourseDate>;
   /** Upsert one homepage */
   upsertHomepage?: Maybe<Homepage>;
+  /** Upsert one lastSendWarningDate */
+  upsertLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Upsert one missedClassesJustification */
   upsertMissedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Upsert one nextUser */
@@ -3454,6 +3890,11 @@ export type MutationCreateCurrentCourseDateArgs = {
 
 export type MutationCreateHomepageArgs = {
   data: HomepageCreateInput;
+};
+
+
+export type MutationCreateLastSendWarningDateArgs = {
+  data: LastSendWarningDateCreateInput;
 };
 
 
@@ -3509,6 +3950,11 @@ export type MutationDeleteCurrentCourseDateArgs = {
 
 export type MutationDeleteHomepageArgs = {
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationDeleteLastSendWarningDateArgs = {
+  where: LastSendWarningDateWhereUniqueInput;
 };
 
 
@@ -3569,6 +4015,21 @@ export type MutationDeleteManyHomepagesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<HomepageManyWhereInput>;
+};
+
+
+export type MutationDeleteManyLastSendWarningDatesArgs = {
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
+};
+
+
+export type MutationDeleteManyLastSendWarningDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
 };
 
 
@@ -3729,6 +4190,12 @@ export type MutationPublishHomepageArgs = {
 };
 
 
+export type MutationPublishLastSendWarningDateArgs = {
+  to?: Array<Stage>;
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+
 export type MutationPublishManyAssetsArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -3804,6 +4271,24 @@ export type MutationPublishManyHomepagesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
   where?: InputMaybe<HomepageManyWhereInput>;
+};
+
+
+export type MutationPublishManyLastSendWarningDatesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
+};
+
+
+export type MutationPublishManyLastSendWarningDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
 };
 
 
@@ -3986,6 +4471,14 @@ export type MutationSchedulePublishHomepageArgs = {
 };
 
 
+export type MutationSchedulePublishLastSendWarningDateArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishMissedClassesJustificationArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -4068,6 +4561,14 @@ export type MutationScheduleUnpublishHomepageArgs = {
 };
 
 
+export type MutationScheduleUnpublishLastSendWarningDateArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishMissedClassesJustificationArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
@@ -4139,6 +4640,12 @@ export type MutationUnpublishCurrentCourseDateArgs = {
 export type MutationUnpublishHomepageArgs = {
   from?: Array<Stage>;
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationUnpublishLastSendWarningDateArgs = {
+  from?: Array<Stage>;
+  where: LastSendWarningDateWhereUniqueInput;
 };
 
 
@@ -4215,6 +4722,24 @@ export type MutationUnpublishManyHomepagesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
   where?: InputMaybe<HomepageManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyLastSendWarningDatesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyLastSendWarningDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
 };
 
 
@@ -4386,6 +4911,12 @@ export type MutationUpdateHomepageArgs = {
 };
 
 
+export type MutationUpdateLastSendWarningDateArgs = {
+  data: LastSendWarningDateUpdateInput;
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+
 export type MutationUpdateManyAssetsArgs = {
   data: AssetUpdateManyInput;
   where?: InputMaybe<AssetManyWhereInput>;
@@ -4451,6 +4982,23 @@ export type MutationUpdateManyHomepagesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<HomepageManyWhereInput>;
+};
+
+
+export type MutationUpdateManyLastSendWarningDatesArgs = {
+  data: LastSendWarningDateUpdateManyInput;
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
+};
+
+
+export type MutationUpdateManyLastSendWarningDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: LastSendWarningDateUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LastSendWarningDateManyWhereInput>;
 };
 
 
@@ -4622,6 +5170,12 @@ export type MutationUpsertHomepageArgs = {
 };
 
 
+export type MutationUpsertLastSendWarningDateArgs = {
+  upsert: LastSendWarningDateUpsertInput;
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+
 export type MutationUpsertMissedClassesJustificationArgs = {
   upsert: MissedClassesJustificationUpsertInput;
   where: MissedClassesJustificationWhereUniqueInput;
@@ -4745,6 +5299,7 @@ export type NextUserConnection = {
 
 export type NextUserCreateInput = {
   active?: InputMaybe<Scalars['Boolean']>;
+  cl4bn094634ez01w8ewwy6qis?: InputMaybe<TeacherCreateManyInlineInput>;
   cl43kly135ghr01xj4er21ypu?: InputMaybe<StudentFrequencieCreateManyInlineInput>;
   cl47kprgl3ulv01z37u4xda42?: InputMaybe<MissedClassesJustificationCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
@@ -4940,6 +5495,7 @@ export enum NextUserOrderByInput {
 
 export type NextUserUpdateInput = {
   active?: InputMaybe<Scalars['Boolean']>;
+  cl4bn094634ez01w8ewwy6qis?: InputMaybe<TeacherUpdateManyInlineInput>;
   cl43kly135ghr01xj4er21ypu?: InputMaybe<StudentFrequencieUpdateManyInlineInput>;
   cl47kprgl3ulv01z37u4xda42?: InputMaybe<MissedClassesJustificationUpdateManyInlineInput>;
   email?: InputMaybe<Scalars['String']>;
@@ -5225,6 +5781,14 @@ export type Query = {
   homepages: Array<Homepage>;
   /** Retrieve multiple homepages using the Relay connection interface */
   homepagesConnection: HomepageConnection;
+  /** Retrieve a single lastSendWarningDate */
+  lastSendWarningDate?: Maybe<LastSendWarningDate>;
+  /** Retrieve document version */
+  lastSendWarningDateVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple lastSendWarningDates */
+  lastSendWarningDates: Array<LastSendWarningDate>;
+  /** Retrieve multiple lastSendWarningDates using the Relay connection interface */
+  lastSendWarningDatesConnection: LastSendWarningDateConnection;
   /** Retrieve a single missedClassesJustification */
   missedClassesJustification?: Maybe<MissedClassesJustification>;
   /** Retrieve document version */
@@ -5445,6 +6009,44 @@ export type QueryHomepagesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<HomepageWhereInput>;
+};
+
+
+export type QueryLastSendWarningDateArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: LastSendWarningDateWhereUniqueInput;
+};
+
+
+export type QueryLastSendWarningDateVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryLastSendWarningDatesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<LastSendWarningDateOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<LastSendWarningDateWhereInput>;
+};
+
+
+export type QueryLastSendWarningDatesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<LastSendWarningDateOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<LastSendWarningDateWhereInput>;
 };
 
 
@@ -5888,7 +6490,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | MissedClassesJustification | NextUser | StudentFrequencie | SubscriptionDate | Teacher | WhatsappContact;
+export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | LastSendWarningDate | MissedClassesJustification | NextUser | StudentFrequencie | SubscriptionDate | Teacher | WhatsappContact;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -7736,6 +8338,7 @@ export type Teacher = Node & {
   id: Scalars['ID'];
   instagramLink?: Maybe<Scalars['String']>;
   name: Scalars['String'];
+  nextUser?: Maybe<NextUser>;
   phoneNumber?: Maybe<Scalars['String']>;
   profilePhoto?: Maybe<Asset>;
   /** The time the document was published. Null on documents in draft stage. */
@@ -7773,6 +8376,12 @@ export type TeacherHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
   stageOverride?: InputMaybe<Stage>;
+};
+
+
+/** Archive the information of the teacher */
+export type TeacherNextUserArgs = {
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -7830,6 +8439,7 @@ export type TeacherCreateInput = {
   facebookLink?: InputMaybe<Scalars['String']>;
   instagramLink?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
+  nextUser?: InputMaybe<NextUserCreateOneInlineInput>;
   phoneNumber?: InputMaybe<Scalars['String']>;
   profilePhoto?: InputMaybe<AssetCreateOneInlineInput>;
   scholarExperience?: InputMaybe<Array<Scalars['String']>>;
@@ -7961,6 +8571,7 @@ export type TeacherManyWhereInput = {
   name_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with?: InputMaybe<Scalars['String']>;
+  nextUser?: InputMaybe<NextUserWhereInput>;
   phoneNumber?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   phoneNumber_contains?: InputMaybe<Scalars['String']>;
@@ -8056,6 +8667,7 @@ export type TeacherUpdateInput = {
   facebookLink?: InputMaybe<Scalars['String']>;
   instagramLink?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  nextUser?: InputMaybe<NextUserUpdateOneInlineInput>;
   phoneNumber?: InputMaybe<Scalars['String']>;
   profilePhoto?: InputMaybe<AssetUpdateOneInlineInput>;
   scholarExperience?: InputMaybe<Array<Scalars['String']>>;
@@ -8230,6 +8842,7 @@ export type TeacherWhereInput = {
   name_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with?: InputMaybe<Scalars['String']>;
+  nextUser?: InputMaybe<NextUserWhereInput>;
   phoneNumber?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   phoneNumber_contains?: InputMaybe<Scalars['String']>;
@@ -9233,6 +9846,13 @@ export type CreateJustificationMutationVariables = Exact<{
 
 export type CreateJustificationMutation = { __typename?: 'Mutation', createMissedClassesJustification?: { __typename?: 'MissedClassesJustification', id: string } | null };
 
+export type RegisterLastWarningDatesForStudentsMutationVariables = Exact<{
+  date: Scalars['Date'];
+}>;
+
+
+export type RegisterLastWarningDatesForStudentsMutation = { __typename?: 'Mutation', createLastSendWarningDate?: { __typename?: 'LastSendWarningDate', id: string } | null };
+
 export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -9264,3 +9884,20 @@ export type StudentFrequenciesQueryVariables = Exact<{
 
 
 export type StudentFrequenciesQuery = { __typename?: 'Query', studentFrequencies: Array<{ __typename?: 'StudentFrequencie', missedClasses: Array<{ __typename?: 'Class', id: string, name: string, scheduledTime: any, shortDescription?: string | null }> }> };
+
+export type CheckIfIsTeacherQueryVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type CheckIfIsTeacherQuery = { __typename?: 'Query', teachers: Array<{ __typename?: 'Teacher', user?: { __typename?: 'NextUser', email: string } | null }> };
+
+export type GetAllStudentFrequenciesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllStudentFrequenciesQuery = { __typename?: 'Query', studentFrequencies: Array<{ __typename?: 'StudentFrequencie', totalPeriodClasses: number, missedClasses: Array<{ __typename?: 'Class', id: string }>, nextUser?: { __typename?: 'NextUser', id: string, name: string, surname?: string | null, email: string } | null }> };
+
+export type GetLastWarningDatesForStudentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLastWarningDatesForStudentsQuery = { __typename?: 'Query', lastSendWarningDates: Array<{ __typename?: 'LastSendWarningDate', lastSendWarningDate?: any | null }> };

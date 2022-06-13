@@ -22,3 +22,10 @@ export const CREATE_NEW_JUSTIFYING = gql`
     }
   }
 `
+export const CREATE_NEW_LAST_SEND_DATA_FOR_STUDENTS = gql`
+  mutation RegisterLastWarningDatesForStudents($date: Date!) {
+    createLastSendWarningDate(data: { lastSendWarningDate: $date }) {
+      id
+    }
+  }
+`

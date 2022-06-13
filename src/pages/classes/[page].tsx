@@ -1,6 +1,6 @@
-import { IndexedClassesQueryQuery } from 'generated/graphql'
+import { CheckIfIsTeacherQuery, IndexedClassesQueryQuery } from 'generated/graphql'
 import client from 'graphql/client'
-import { GET_INDEXED_CLASSES } from 'graphql/queries'
+import { CHECK_IF_IS_TEACHER, GET_INDEXED_CLASSES } from 'graphql/queries'
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import ClassListTemplate from 'templates/class-list'
 import { useRouter } from 'next/router'
@@ -9,7 +9,8 @@ import { withSSRAuth } from 'utils/with-ssr-auth'
 function ClassesList({
   classesConnection,
   studentFrequencies,
-  page
+  page,
+  isTeacher
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { replace } = useRouter()
 
@@ -31,6 +32,7 @@ function ClassesList({
         page={page}
         count={count}
         handlePaginationChanges={handlePaginationChanges}
+        isTeacher={isTeacher}
       />
     </>
   )
@@ -46,6 +48,7 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (ctx: Ge
       email: userData.email
     }
   )
+  const { teachers } = await client.request<CheckIfIsTeacherQuery>(CHECK_IF_IS_TEACHER, { email: userData.email })
 
   return {
     props: {
@@ -53,7 +56,8 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (ctx: Ge
       userId: userData.uid,
       classesConnection,
       page: parseInt(ctx.params?.page as string),
-      studentFrequencies
+      studentFrequencies,
+      isTeacher: teachers.length > 0
     }
   }
 })
