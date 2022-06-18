@@ -1,6 +1,7 @@
 import client from 'graphql/client'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { withSSRAuth } from 'utils/with-ssr-auth'
+import { useRouter } from 'next/router'
 import {
   CheckIfIsTeacherQuery,
   GetAllStudentFrequenciesQuery,
@@ -12,9 +13,12 @@ function Dashboard({
   missedInformation,
   emailsToSend,
   totalPeriodClasses,
-  lastSendingDate
+  lastSendingDate,
+  isTeacher
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log('🚀 ~ file: index.tsx ~ line 20 ~ missedInformation', missedInformation)
+  console.log('🚀 ~ file: index.tsx ~ line 19 ~ isTeacher', isTeacher)
+  const { push } = useRouter()
+  if (!isTeacher) push('/404')
   return (
     <DashboardTemplate
       emailsToSend={emailsToSend}
@@ -36,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (_, user
     GET_LAST_WARNING_SEND_EMAIL
   )
 
-  const isTeacher = teachers.length >= 0
+  const isTeacher = teachers.length > 0
   const lastSendingDate = lastSendWarningDates[0].lastSendWarningDate
   const emailsToSend: Array<{ email: string; missedClass: number }> = []
   let totalPeriodClasses = 0
