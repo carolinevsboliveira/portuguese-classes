@@ -1,18 +1,28 @@
-import { Button } from '@mui/material'
 import client from 'graphql/client'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { sendEmailForWarnedStudents } from 'utils/mail-sender'
 import { withSSRAuth } from 'utils/with-ssr-auth'
-import { CheckIfIsTeacherQuery, GetAllStudentFrequenciesQuery } from 'generated/graphql'
-import { CHECK_IF_IS_TEACHER, GET_ALL_STUDENT_FREQUENCIES } from 'graphql/queries'
+import {
+  CheckIfIsTeacherQuery,
+  GetAllStudentFrequenciesQuery,
+  GetLastWarningDatesForStudentsQuery
+} from 'generated/graphql'
+import { CHECK_IF_IS_TEACHER, GET_ALL_STUDENT_FREQUENCIES, GET_LAST_WARNING_SEND_EMAIL } from 'graphql/queries'
+import DashboardTemplate from 'templates/dashboard-template'
 function Dashboard({
-  isTeacher,
   missedInformation,
   emailsToSend,
-  totalPeriodClasses
+  totalPeriodClasses,
+  lastSendingDate
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  //sendEmailForWarnedStudents(emailsToSend, totalPeriodClasses, 'teste.com')
-  return <div>s</div>
+  console.log('🚀 ~ file: index.tsx ~ line 20 ~ missedInformation', missedInformation)
+  return (
+    <DashboardTemplate
+      emailsToSend={emailsToSend}
+      totalPeriodClasses={totalPeriodClasses}
+      sendingDate={lastSendingDate}
+      missedInformation={missedInformation}
+    />
+  )
 }
 
 export default Dashboard
@@ -22,8 +32,12 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (_, user
 
   const { studentFrequencies } = await client.request<GetAllStudentFrequenciesQuery>(GET_ALL_STUDENT_FREQUENCIES)
 
-  const isTeacher = Boolean(teachers.length >= 0)
+  const { lastSendWarningDates } = await client.request<GetLastWarningDatesForStudentsQuery>(
+    GET_LAST_WARNING_SEND_EMAIL
+  )
 
+  const isTeacher = teachers.length >= 0
+  const lastSendingDate = lastSendWarningDates[0].lastSendWarningDate
   const emailsToSend: Array<{ email: string; missedClass: number }> = []
   let totalPeriodClasses = 0
 
@@ -39,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (_, user
       missedClassesPercentagem,
       isWarnedStudent: missedClassesPercentagem > 40,
       email: item.nextUser?.email,
-      name: item.nextUser?.email
+      name: item.nextUser?.name
     }
   })
   return {
@@ -47,7 +61,8 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (_, user
       isTeacher,
       missedInformation,
       emailsToSend,
-      totalPeriodClasses
+      totalPeriodClasses,
+      lastSendingDate
     }
   }
 })
