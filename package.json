@@ -29,6 +29,7 @@
     "@mui/material": "^5.7.0",
     "bcrypt": "^5.0.1",
     "dayjs": "^1.11.2",
+    "emailjs-com": "^3.2.0",
     "firebase": "^9.6.9",
     "firebase-admin": "^10.2.0",
     "graphql": "^16.5.0",

@@ -9,6 +9,7 @@ export const NavBarWrapper = styled.nav`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 3rem;
 `
 export const LottieInfoWrapper = styled.div`
   display: flex;

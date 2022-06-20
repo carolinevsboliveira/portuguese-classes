@@ -9,6 +9,7 @@ type ControlledTextFieldProps = {
   type: string
   multiline?: boolean
   onFocus?: () => void
+  fullWidth?: boolean
 }
 
 const ControlledTextField = ({
@@ -18,6 +19,7 @@ const ControlledTextField = ({
   required,
   type,
   multiline,
+  fullWidth,
   onFocus
 }: ControlledTextFieldProps) => {
   return (
@@ -30,6 +32,7 @@ const ControlledTextField = ({
             type={type}
             label={label}
             value={value}
+            fullWidth={fullWidth}
             onChange={onChange}
             onFocus={onFocus && onFocus}
             multiline={multiline}

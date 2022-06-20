@@ -1,13 +1,17 @@
-import { IndexedClassesQueryQuery } from 'generated/graphql'
+import { CheckIfIsTeacherQuery, IndexedClassesQueryQuery } from 'generated/graphql'
 import client from 'graphql/client'
-import { GET_INDEXED_CLASSES } from 'graphql/queries'
+import { CHECK_IF_IS_TEACHER, GET_INDEXED_CLASSES } from 'graphql/queries'
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import ClassListTemplate from 'templates/class-list'
 import { useRouter } from 'next/router'
-import nookies from 'nookies'
-import admin from 'firebase-config/admin'
-
-function ClassesList({ classesConnection, page }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+import { withSSRAuth } from 'utils/with-ssr-auth'
+//TODO: Transactional email to send the missing students
+function ClassesList({
+  classesConnection,
+  studentFrequencies,
+  page,
+  isTeacher
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { replace } = useRouter()
 
   const handlePaginationChanges = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -17,14 +21,18 @@ function ClassesList({ classesConnection, page }: InferGetServerSidePropsType<ty
     aggregate: { count },
     classes
   } = classesConnection
+  const currentStudentFrequencies = studentFrequencies[0]
 
   return (
     <>
       <ClassListTemplate
+        missedClasses={currentStudentFrequencies.missedClasses}
+        totalPeriodClasses={Number(currentStudentFrequencies.totalPeriodClasses)}
         classes={classes}
         page={page}
         count={count}
         handlePaginationChanges={handlePaginationChanges}
+        isTeacher={isTeacher}
       />
     </>
   )
@@ -32,24 +40,24 @@ function ClassesList({ classesConnection, page }: InferGetServerSidePropsType<ty
 
 export default ClassesList
 
-export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  try {
-    const cookies = nookies.get(ctx)
-    const token = await admin.auth().verifyIdToken(cookies.token)
-    const { uid, email } = token
-    const { classesConnection } = await client.request<IndexedClassesQueryQuery>(GET_INDEXED_CLASSES, {
-      offset: parseInt(ctx.params?.page as string) - 1
-    })
-    return {
-      props: { userEmail: email, userId: uid, classesConnection, page: parseInt(ctx.params?.page as string) }
+export const getServerSideProps: GetServerSideProps = withSSRAuth(async (ctx: GetServerSidePropsContext, userData) => {
+  const { classesConnection, studentFrequencies } = await client.request<IndexedClassesQueryQuery>(
+    GET_INDEXED_CLASSES,
+    {
+      offset: parseInt(ctx.params?.page as string) - 1,
+      email: userData.email
     }
-  } catch (err) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login'
-      },
-      props: {} as never
+  )
+  const { teachers } = await client.request<CheckIfIsTeacherQuery>(CHECK_IF_IS_TEACHER, { email: userData.email })
+
+  return {
+    props: {
+      userEmail: userData.email,
+      userId: userData.uid,
+      classesConnection,
+      page: parseInt(ctx.params?.page as string),
+      studentFrequencies,
+      isTeacher: teachers.length > 0
     }
   }
-}
+})

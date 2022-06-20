@@ -9,3 +9,23 @@ export const CREATE_NEW_STUDENT = gql`
     }
   }
 `
+export const CREATE_NEW_JUSTIFYING = gql`
+  mutation CreateJustification($classId: ID!, $justification: String, $nextUserEmail: String!) {
+    createMissedClassesJustification(
+      data: {
+        class: { connect: { id: $classId } }
+        justification: $justification
+        nextUser: { connect: { email: $nextUserEmail } }
+      }
+    ) {
+      id
+    }
+  }
+`
+export const CREATE_NEW_LAST_SEND_DATA_FOR_STUDENTS = gql`
+  mutation RegisterLastWarningDatesForStudents($date: Date!) {
+    createLastSendWarningDate(data: { lastSendWarningDate: $date }) {
+      id
+    }
+  }
+`
