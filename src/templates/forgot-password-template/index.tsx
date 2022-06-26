@@ -29,10 +29,14 @@ function ForgotPasswordTemplate() {
       setHasErrors(false)
       setIsEmailAlredySend(true)
     } catch (e) {
-      console.log({ e })
       setHasErrors(true)
     }
   }
+  const handleOnFocus = () => {
+    setIsEmailAlredySend(false)
+    setHasErrors(false)
+  }
+
   return (
     <Grid container sx={{ height: '100%' }}>
       <S.BackgroundedGrid xs={false} sm={4} md={6} />
@@ -52,7 +56,7 @@ function ForgotPasswordTemplate() {
                 name="email"
                 type="text"
                 required="Ops! Precisa preencher esse campo!"
-                onFocus={() => setHasErrors(false)}
+                onFocus={() => handleOnFocus()}
               />
               <Button variant="text" color="error" type="submit">
                 Enviar
