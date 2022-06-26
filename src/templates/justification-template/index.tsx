@@ -19,6 +19,7 @@ function JustificationTemplate({ missedClasses, email }: JustificationTemplatePr
       console.log({ e })
     }
   }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl>

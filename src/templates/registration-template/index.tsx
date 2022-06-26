@@ -1,11 +1,22 @@
-import { Alert, Button } from '@mui/material'
+import { Alert, Button, Grid, Paper, Stack } from '@mui/material'
 import BackdropWithLoader from 'components/backdrop-with-loader'
 import ControlledTextField from 'components/controlled-text-field'
+import LoginLottie from 'assets/lotties/login.json'
 import { useAuth } from 'contexts/auth-context'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import Lottie from 'react-lottie'
 import * as S from './styles'
+
+const defaultOptions = {
+  loop: false,
+  autoplay: true,
+  animationData: LoginLottie,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice'
+  }
+}
 
 function RegistrationTemplate() {
   const { control, handleSubmit, getValues } = useForm()
@@ -37,41 +48,40 @@ function RegistrationTemplate() {
     }
   }
   return (
-    <S.BackgroundWrapper>
+    <Grid container sx={{ height: '100%' }}>
+      <S.BackgroundedGrid xs={false} sm={4} md={6} />
       <BackdropWithLoader isLoading={isSubmitting} />
-      {registrationError && <Alert severity="error">Humm. Parece que algo de errado aconteceu...</Alert>}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <S.FormWrapper>
-          <S.FieldsWrapper>
-            <ControlledTextField
-              name="name"
-              label="Nome"
-              control={control}
-              type="text"
-              required="Por favor preencha um nome válido."
-            />
-          </S.FieldsWrapper>
-          <S.FieldsWrapper>
-            <ControlledTextField name="surname" label="Sobrenome" control={control} type="text" />
-          </S.FieldsWrapper>
-          <S.FieldsWrapper>
-            <ControlledTextField
-              name="email"
-              label="E-mail"
-              control={control}
-              type="email"
-              required="Preencha um e-mail válido"
-            />
-          </S.FieldsWrapper>
-          <S.FieldsWrapper>
-            <ControlledTextField name="password" label="Senha" control={control} type="password" />
-          </S.FieldsWrapper>
-          <Button type="submit" variant="contained">
-            Cadastrar
-          </Button>
-        </S.FormWrapper>
-      </form>
-    </S.BackgroundWrapper>
+      <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
+        <S.FullHeightStack>
+          <Lottie options={{ ...defaultOptions, loop: false }} height={80} width={80} />
+          <h3>Cadastre-se</h3>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Stack spacing={2}>
+              <ControlledTextField
+                name="name"
+                label="Nome"
+                control={control}
+                type="text"
+                required="Por favor preencha um nome válido."
+              />
+              <ControlledTextField name="surname" label="Sobrenome" control={control} type="text" />
+              <ControlledTextField
+                name="email"
+                label="E-mail"
+                control={control}
+                type="email"
+                required="Preencha um e-mail válido"
+              />
+              <ControlledTextField name="password" label="Senha" control={control} type="password" />
+              <Button variant="outlined" type="submit">
+                Cadastre-se
+              </Button>
+              {registrationError && <Alert severity="error">Humm. Parece que algo de errado aconteceu...</Alert>}
+            </Stack>
+          </form>
+        </S.FullHeightStack>
+      </Grid>
+    </Grid>
   )
 }
 
