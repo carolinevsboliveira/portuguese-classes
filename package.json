@@ -10,9 +10,7 @@
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
-    "codegen": "graphql-codegen --config codegen.yml",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "lint-staged": {
     "src/**/*": [
@@ -54,14 +52,6 @@
     "@graphql-codegen/typescript": "2.4.11",
     "@graphql-codegen/typescript-operations": "2.4.0",
     "@graphql-codegen/typescript-react-apollo": "3.2.14",
-    "@storybook/addon-actions": "^6.5.6",
-    "@storybook/addon-essentials": "^6.5.6",
-    "@storybook/addon-interactions": "^6.5.6",
-    "@storybook/addon-links": "^6.5.6",
-    "@storybook/builder-webpack5": "^6.5.6",
-    "@storybook/manager-webpack5": "^6.5.6",
-    "@storybook/react": "^6.5.6",
-    "@storybook/testing-library": "^0.0.11",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -81,7 +71,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "eslint-plugin-storybook": "^0.5.12",
     "husky": "^7.0.0",
     "jest": "^28.0.2",
     "jest-environment-jsdom": "^28.0.2",
