@@ -1,5 +1,7 @@
+import NotFoundTemplate from 'templates/not-found-template'
+
 function NotFoundPage() {
-  return <div>NotFoundPage</div>
+  return <NotFoundTemplate />
 }
 
 export default NotFoundPage
