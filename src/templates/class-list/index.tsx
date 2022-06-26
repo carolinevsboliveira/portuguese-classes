@@ -12,6 +12,7 @@ type ClassListProps = {
   classes: Array<any>
   page: number
   count: number
+  pageSize: number
   handlePaginationChanges: (event: React.ChangeEvent<unknown>, value: number) => void
   missedClasses: Array<{ id: string }>
   totalPeriodClasses: number
@@ -31,6 +32,7 @@ function ClassListTemplate({
   page,
   count,
   handlePaginationChanges,
+  pageSize,
   missedClasses,
   totalPeriodClasses,
   isTeacher
@@ -88,7 +90,7 @@ function ClassListTemplate({
           </S.ClassListWrapper>
           <Pagination
             page={page}
-            count={Math.ceil((count - 1) / 2)}
+            count={Math.ceil(count / pageSize)}
             variant="outlined"
             color="primary"
             onChange={handlePaginationChanges}

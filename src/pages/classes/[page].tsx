@@ -5,6 +5,9 @@ import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsT
 import ClassListTemplate from 'templates/class-list'
 import { useRouter } from 'next/router'
 import { withSSRAuth } from 'utils/with-ssr-auth'
+
+const PAGE_SIZE = 4
+
 //TODO: Transactional email to send the missing students
 function ClassesList({
   classesConnection,
@@ -29,6 +32,7 @@ function ClassesList({
         missedClasses={currentStudentFrequencies.missedClasses}
         totalPeriodClasses={Number(currentStudentFrequencies.totalPeriodClasses)}
         classes={classes}
+        pageSize={PAGE_SIZE}
         page={page}
         count={count}
         handlePaginationChanges={handlePaginationChanges}
@@ -44,7 +48,8 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (ctx: Ge
   const { classesConnection, studentFrequencies } = await client.request<IndexedClassesQueryQuery>(
     GET_INDEXED_CLASSES,
     {
-      offset: parseInt(ctx.params?.page as string) - 1,
+      first: PAGE_SIZE,
+      offset: (Number(ctx.params?.page) - 1) * PAGE_SIZE,
       email: userData.email
     }
   )

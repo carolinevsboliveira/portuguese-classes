@@ -40,8 +40,8 @@ export const GET_HOMEPAGE_PROPS = gql`
   }
 `
 export const GET_INDEXED_CLASSES = gql`
-  query indexedClassesQuery($offset: Int!, $email: String!) {
-    classesConnection(first: 4, skip: $offset) {
+  query indexedClassesQuery($offset: Int!, $email: String!, $first: Int!) {
+    classesConnection(first: $first, skip: $offset) {
       aggregate {
         count
       }
