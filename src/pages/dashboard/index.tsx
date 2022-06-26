@@ -9,6 +9,7 @@ import {
 } from 'generated/graphql'
 import { CHECK_IF_IS_TEACHER, GET_ALL_STUDENT_FREQUENCIES, GET_LAST_WARNING_SEND_EMAIL } from 'graphql/queries'
 import DashboardTemplate from 'templates/dashboard-template'
+import { useEffect } from 'react'
 function Dashboard({
   missedInformation,
   emailsToSend,
@@ -16,9 +17,12 @@ function Dashboard({
   lastSendingDate,
   isTeacher
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log('🚀 ~ file: index.tsx ~ line 19 ~ isTeacher', isTeacher)
   const { push } = useRouter()
-  if (!isTeacher) push('/404')
+
+  useEffect(() => {
+    if (!isTeacher) push('/404')
+  }, [isTeacher, push])
+
   return (
     <DashboardTemplate
       emailsToSend={emailsToSend}

@@ -10,7 +10,8 @@ import {
   GoogleAuthProvider,
   User,
   UserCredential,
-  onIdTokenChanged
+  onIdTokenChanged,
+  sendPasswordResetEmail
 } from 'firebase/auth'
 
 interface UserSignInData {
@@ -19,18 +20,25 @@ interface UserSignInData {
   email: string
   password: string
 }
+
+interface ResetPasswordData {
+  email: string
+  url: string
+}
 interface AuthContextData {
   currentUser: User | null
   registerAnAccount: ({ email, password }: UserSignInData) => Promise<UserCredential> | void
   loginWithPasswordAndEmail: ({ email, password }: UserSignInData) => Promise<UserCredential> | void
   logoutTheCurrentUser: () => Promise<void> | void
+  resetPassword: ({ email, url }: ResetPasswordData) => Promise<void> | void
 }
 
 const initialValues: AuthContextData = {
   currentUser: null,
   registerAnAccount: () => {},
   loginWithPasswordAndEmail: () => {},
-  logoutTheCurrentUser: () => {}
+  logoutTheCurrentUser: () => {},
+  resetPassword: () => {}
 }
 const AuthContext = createContext<AuthContextData>(initialValues)
 
@@ -56,11 +64,16 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
     return signInWithPopup(auth, provider)
   }
 
+  const resetPassword = ({ email, url }: ResetPasswordData) => {
+    return sendPasswordResetEmail(auth, email, {
+      url
+    })
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user)
-        localStorage.setItem('isLoggedUser', JSON.stringify(true))
       } else {
         setCurrentUser(null)
       }
@@ -94,7 +107,8 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
     registerAnAccount,
     loginWithPasswordAndEmail,
     logoutTheCurrentUser,
-    signInWithGooglePopup
+    signInWithGooglePopup,
+    resetPassword
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

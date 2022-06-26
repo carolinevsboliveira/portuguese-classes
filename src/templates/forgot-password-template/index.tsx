@@ -1,13 +1,12 @@
 import LoginLottie from 'assets/lotties/login.json'
 import ErrorLottie from 'assets/lotties/error.json'
-import { Button, Grid, Paper, Stack } from '@mui/material'
+import { Alert, Button, Grid, Paper, Stack } from '@mui/material'
 import ControlledTextField from 'components/controlled-text-field'
 import * as S from './styles'
 import { useForm } from 'react-hook-form'
 import Lottie from 'react-lottie'
 import { useState } from 'react'
 import { useAuth } from 'contexts/auth-context'
-import { useRouter } from 'next/router'
 
 const defaultOptions = {
   loop: true,
@@ -18,25 +17,26 @@ const defaultOptions = {
   }
 }
 
-function LoginTemplate() {
+function ForgotPasswordTemplate() {
   const { control, handleSubmit, getValues } = useForm()
   const [hasErrors, setHasErrors] = useState(false)
-  const { push } = useRouter()
-  const { loginWithPasswordAndEmail } = useAuth()
+  const [isEmailAlredySend, setIsEmailAlredySend] = useState(false)
+  const { resetPassword } = useAuth()
 
   const onSubmit = async () => {
     try {
-      await loginWithPasswordAndEmail({ email: getValues().email, password: getValues().password })
-      push('/classes/1')
+      await resetPassword({ email: getValues().email, url: process.env.FIREBASE_RESET_URL as string })
       setHasErrors(false)
+      setIsEmailAlredySend(true)
     } catch (e) {
       setHasErrors(true)
     }
   }
-
-  const handleForgetPassword = () => {
-    push('/forgot-password')
+  const handleOnFocus = () => {
+    setIsEmailAlredySend(false)
+    setHasErrors(false)
   }
+
   return (
     <Grid container sx={{ height: '100%' }}>
       <S.BackgroundedGrid xs={false} sm={4} md={6} />
@@ -47,7 +47,7 @@ function LoginTemplate() {
             height={80}
             width={80}
           />
-          <h3>Log in</h3>
+          <h3>Recupere sua senha</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={1}>
               <ControlledTextField
@@ -56,29 +56,20 @@ function LoginTemplate() {
                 name="email"
                 type="text"
                 required="Ops! Precisa preencher esse campo!"
-                onFocus={() => setHasErrors(false)}
+                onFocus={() => handleOnFocus()}
               />
-              <ControlledTextField
-                control={control}
-                label="Senha"
-                name="password"
-                type="password"
-                required="Ops! Precisa preencher esse campo!"
-                onFocus={() => setHasErrors(false)}
-              />
-              <Button variant="outlined" type="submit">
-                Login
+              <Button variant="text" color="error" type="submit">
+                Enviar
               </Button>
-              <Button variant="text" color="error" onClick={() => handleForgetPassword()} size="small">
-                Esqueceu a senha?
-              </Button>
-              {hasErrors && <h4>Algo deu errado! Tente novamente</h4>}
             </Stack>
           </form>
+          {isEmailAlredySend && (
+            <Alert severity="success">Email enviado com sucesso, verifique sua caixa de entrada</Alert>
+          )}
         </S.FullHeightStack>
       </Grid>
     </Grid>
   )
 }
 
-export default LoginTemplate
+export default ForgotPasswordTemplate

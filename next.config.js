@@ -22,7 +22,8 @@ const nextConfig = {
     REACT_FIREBASE_ADMIN_PRIVATE_KEY: process.env.REACT_FIREBASE_ADMIN_PRIVATE_KEY,
     EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
     EMAIL_SERVICE_TEMPLATE_ID: process.env.EMAIL_SERVICE_TEMPLATE_ID,
-    EMAIL_SERVICE_USER_ID: process.env.EMAIL_SERVICE_USER_ID
+    EMAIL_SERVICE_USER_ID: process.env.EMAIL_SERVICE_USER_ID,
+    FIREBASE_RESET_URL: process.env.FIREBASE_RESET_URL
   },
   async rewrites() {
     return translatedRoutes
