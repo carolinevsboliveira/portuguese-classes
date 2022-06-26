@@ -1,12 +1,13 @@
-/** @type {import('next').NextConfig} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withPWA = require('next-pwa')
-const isProd = process.env.NODE_ENV === 'production'
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const translatedRoutes = require('./translate-routes.json')
 
+const isProd = process.env.NODE_ENV === 'production'
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  swcMinify: true,
+  styledComponents: true,
   reactStrictMode: true,
   env: {
     REACT_FIREBASE_API_KEY: process.env.REACT_FIREBASE_API_KEY,
@@ -31,12 +32,7 @@ const nextConfig = {
   debug: true
 }
 
-module.exports = nextConfig
 module.exports = withPWA({
-  swcMinify: true,
-  experimental: {
-    styledComponents: true
-  },
   pwa: {
     dest: 'public',
     disable: !isProd
