@@ -9,7 +9,7 @@ type ClassCardProps = {
   shortDescription: string
   availableSlideUrl?: string
   imageUrl?: string | undefined
-  meetLink: string
+  meetLink?: string
 }
 const fallbackImageUrl = 'https://media.graphassets.com/NJTWYuucRyyBRR5vXAX1'
 
@@ -49,14 +49,14 @@ function ClassCard({
               variant="outlined"
               disabled={!availableSlideUrl}
               onClick={() => availableSlideUrl && window.open(new URL(availableSlideUrl), '_blank')}
-              name="download file"
+              name="download-file"
             >
               Baixar slide da aula
             </Button>
             <Button
               variant="outlined"
-              onClick={() => availableSlideUrl && window.open(new URL(meetLink), '_blank')}
-              name="download file"
+              onClick={() => meetLink && window.open(new URL(meetLink), '_blank')}
+              name="meet-access"
             >
               Meet
             </Button>
