@@ -19,9 +19,3 @@ function ResponsiveStepper({ steps, activeSteps }: { steps: Array<string>; activ
 }
 
 export default ResponsiveStepper
-
-function ComponenteSimples() {
-  return <h1>Olá, sou um componente</h1>
-}
-
-export { ComponenteSimples }
