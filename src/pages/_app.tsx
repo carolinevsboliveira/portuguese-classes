@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
+import NextNProgress from 'nextjs-progressbar'
 import { GlobalStyles } from '../styles'
 import createEmotionCache from 'utils/create-emotion-cache'
 import AuthContextProvider from 'contexts/auth-context'
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <CacheProvider value={clientSideEmotionCache}>
         <GlobalStyles />
         <AuthContextProvider>
+          <NextNProgress color="#00115b" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow />
           <DevelopedByLayout />
           <Component {...pageProps} />
         </AuthContextProvider>

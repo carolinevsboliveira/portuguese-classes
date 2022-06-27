@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography, Box } from '@mui/material'
 import Lottie from 'react-lottie'
 import Warning from 'assets/lotties/warning.json'
 import GoodJob from 'assets/lotties/good-job.json'
@@ -36,9 +36,11 @@ function MissedClassesMessage({
           : `Parabéns! Você não teve faltas registradas nas ${missedClassesQuantity} aulas deste período.`}
       </Typography>
       {hasMissedClasses && (
-        <Button variant="outlined" color="error" onClick={actionButton && actionButton}>
-          Justificar faltas?
-        </Button>
+        <Box display="flex" justifyContent="center">
+          <Button variant="outlined" color="error" onClick={actionButton && actionButton}>
+            Justificar faltas
+          </Button>
+        </Box>
       )}
     </Stack>
   )
