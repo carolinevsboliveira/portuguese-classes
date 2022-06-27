@@ -6,8 +6,18 @@ import React from 'react'
 import JustificationTemplate from 'templates/justification-template'
 import { withSSRAuth } from 'utils/with-ssr-auth'
 
-function Justification({ missedClasses, email }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <JustificationTemplate missedClasses={missedClasses} email={email} />
+function Justification({
+  missedClasses,
+  email,
+  missedClassesJustifications
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  return (
+    <JustificationTemplate
+      missedClasses={missedClasses}
+      email={email}
+      missedClassesJustifications={missedClassesJustifications}
+    />
+  )
 }
 
 export default Justification
@@ -21,17 +31,18 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async (_, user
   )
 
   const missedClasses = studentFrequencies[0].missedClasses
-  const missedClassesAlredyJustified = missedClassesJustifications.flatMap((item) => item.class?.id)
-  const classAlredyJustifiedSet = new Set(missedClassesAlredyJustified)
+  const missedClassesAlreadyJustified = missedClassesJustifications.flatMap((item) => item.class?.id)
+  const classAlreadyJustifiedSet = new Set(missedClassesAlreadyJustified)
 
-  const avaliableMissedClasses = missedClasses.filter((currentClass) => {
-    return !classAlredyJustifiedSet.has(currentClass.id)
+  const availableMissedClasses = missedClasses.filter((currentClass) => {
+    return !classAlreadyJustifiedSet.has(currentClass.id)
   })
 
   return {
     props: {
-      missedClasses: avaliableMissedClasses,
-      email: userData.email
+      missedClasses: availableMissedClasses,
+      email: userData.email,
+      missedClassesJustifications
     }
   }
 })

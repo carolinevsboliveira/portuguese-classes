@@ -126,6 +126,7 @@ export const GET_MISSED_CLASSES_RELATIONSHIPS = gql`
       class {
         id
         name
+        shortDescription
         scheduledTime
       }
       student: nextUser {
