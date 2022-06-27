@@ -26,9 +26,7 @@ const nextConfig = {
     EMAIL_SERVICE_USER_ID: process.env.EMAIL_SERVICE_USER_ID,
     FIREBASE_RESET_URL: process.env.FIREBASE_RESET_URL
   },
-  async rewrites() {
-    return translatedRoutes
-  },
+  rewrites: async () => translatedRoutes,
   debug: true
 }
 
