@@ -5,7 +5,7 @@ const clientEmail = process.env.REACT_FIREBASE_ADMIN_CLIENT_EMAIL
 const projectId = process.env.REACT_FIREBASE_APP_PROJECT_ID
 
 if (!privateKey || !clientEmail || !projectId) {
-  console.log(
+  console.error(
     `Failed to load Firebase credentials. Follow the instructions in the README to set your Firebase credentials inside environment variables.`
   )
 }
