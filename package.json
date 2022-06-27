@@ -14,8 +14,7 @@
   },
   "lint-staged": {
     "src/**/*": [
-      "eslint --max-warnings=0 --fix",
-      "yarn test --findRelatedTests --bail"
+      "eslint --max-warnings=0 --fix"
     ]
   },
   "dependencies": {
