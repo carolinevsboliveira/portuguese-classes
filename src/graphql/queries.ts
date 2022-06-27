@@ -84,18 +84,6 @@ export const GET_IF_USER_IS_AUTHORIZED = gql`
     }
   }
 `
-export const GET_STUDENT_FREQUENCIES = gql`
-  query StudentFrequencies($email: String!) {
-    studentFrequencies(where: { nextUser: { email: $email } }) {
-      missedClasses {
-        id
-        name
-        scheduledTime
-        shortDescription
-      }
-    }
-  }
-`
 
 export const CHECK_IF_IS_TEACHER = gql`
   query CheckIfIsTeacher($email: String!) {
@@ -128,6 +116,34 @@ export const GET_LAST_WARNING_SEND_EMAIL = gql`
   query GetLastWarningDatesForStudents {
     lastSendWarningDates(orderBy: createdAt_DESC) {
       lastSendWarningDate
+    }
+  }
+`
+
+export const GET_MISSED_CLASSES_RELATIONSHIPS = gql`
+  query FindClassesWithJusti($email: String!) {
+    missedClassesJustifications(where: { nextUser: { email: $email } }) {
+      class {
+        id
+        name
+        scheduledTime
+      }
+      student: nextUser {
+        id
+        name
+        email
+      }
+    }
+    studentFrequencies(where: { nextUser: { email: $email } }) {
+      missedClasses {
+        id
+        name
+        scheduledTime
+        shortDescription
+      }
+      nextUser {
+        email
+      }
     }
   }
 `
