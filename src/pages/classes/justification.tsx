@@ -13,14 +13,24 @@ function Justification({ missedClasses, email }: InferGetServerSidePropsType<typ
 export default Justification
 
 export const getServerSideProps: GetServerSideProps = withSSRAuth(async (_, userData) => {
-  const { studentFrequencies } = await client.request<FindClassesWithJustiQuery>(GET_MISSED_CLASSES_RELATIONSHIPS, {
-    email: userData.email
-  })
+  const { studentFrequencies, missedClassesJustifications } = await client.request<FindClassesWithJustiQuery>(
+    GET_MISSED_CLASSES_RELATIONSHIPS,
+    {
+      email: userData.email
+    }
+  )
 
   const missedClasses = studentFrequencies[0].missedClasses
+  const missedClassesAlredyJustified = missedClassesJustifications.flatMap((item) => item.class?.id)
+  const classAlredyJustifiedSet = new Set(missedClassesAlredyJustified)
+
+  const avaliableMissedClasses = missedClasses.filter((currentClass) => {
+    return !classAlredyJustifiedSet.has(currentClass.id)
+  })
+
   return {
     props: {
-      missedClasses,
+      missedClasses: avaliableMissedClasses,
       email: userData.email
     }
   }
