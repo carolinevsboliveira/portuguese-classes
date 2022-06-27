@@ -20,7 +20,7 @@ function Dashboard({
   const { push } = useRouter()
 
   useEffect(() => {
-    if (!isTeacher) push('/404')
+    if (!isTeacher) push('/404', '/pagina-nao-encontrada')
   }, [isTeacher, push])
 
   return (

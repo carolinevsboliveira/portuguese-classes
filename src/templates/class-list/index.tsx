@@ -52,7 +52,7 @@ function ClassListTemplate({
     push('/dashboard')
   }
   const actionButton = () => {
-    push('/classes/justification')
+    push('/classes/justification', '/aulas/justificar-aula')
   }
   const missedClassesQuantity = missedClasses.length
 

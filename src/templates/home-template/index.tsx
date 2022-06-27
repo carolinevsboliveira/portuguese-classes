@@ -69,7 +69,7 @@ const HomeTemplate = ({
           <Button variant="text" startIcon={<WhatsApp />} onClick={() => handleWhatsAppButtonOnClick()}>
             {phone}
           </Button>
-          <Button variant="outlined" onClick={() => push('/login')}>
+          <Button variant="outlined" onClick={() => push('/login', '/entrar')}>
             Login
           </Button>
           <Button variant="contained">Cadastrar</Button>

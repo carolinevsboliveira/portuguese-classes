@@ -27,7 +27,7 @@ function LoginTemplate() {
   const onSubmit = async () => {
     try {
       await loginWithPasswordAndEmail({ email: getValues().email, password: getValues().password })
-      push('/classes/1')
+      push('/classes/1', '/aulas/1')
       setHasErrors(false)
     } catch (e) {
       setHasErrors(true)
@@ -35,7 +35,7 @@ function LoginTemplate() {
   }
 
   const handleForgetPassword = () => {
-    push('/forgot-password')
+    push('/forgot-password', '/esqueceu-a-senha')
   }
   return (
     <Grid container sx={{ height: '100%' }}>

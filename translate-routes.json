@@ -1,10 +1,9 @@
 [
-    {
-        "source": "/cadastrar",
-        "destination": "/registration"
-    },
-    {
-        "source": "/cadastrar/sucesso",
-        "destination": "/registration/success"
-    }  
+  { "source": "/entrar", "destination": "/login" },
+  { "source": "/cadastrar", "destination": "/registration" },
+  { "source": "/cadastrar/sucesso", "destination": "/registration/success" },
+  { "source": "/esqueceu-a-senha", "destination": "/forgot-password" },
+  { "source": "/aulas/:page", "destination": "/classes/:page" },
+  { "source": "/aulas/justificar-aula", "destination": "/classes/justification" },
+  { "source": "/pagina-nao-encontrada", "destination": "/404" }
 ]

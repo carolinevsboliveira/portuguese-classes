@@ -20,20 +20,20 @@ const defaultOptions = {
 function ForgotPasswordTemplate() {
   const { control, handleSubmit, getValues } = useForm()
   const [hasErrors, setHasErrors] = useState(false)
-  const [isEmailAlredySend, setIsEmailAlredySend] = useState(false)
+  const [isEmailAlreadySend, setIsEmailAlreadySend] = useState(false)
   const { resetPassword } = useAuth()
 
   const onSubmit = async () => {
     try {
       await resetPassword({ email: getValues().email, url: process.env.FIREBASE_RESET_URL as string })
       setHasErrors(false)
-      setIsEmailAlredySend(true)
+      setIsEmailAlreadySend(true)
     } catch (e) {
       setHasErrors(true)
     }
   }
   const handleOnFocus = () => {
-    setIsEmailAlredySend(false)
+    setIsEmailAlreadySend(false)
     setHasErrors(false)
   }
 
@@ -63,8 +63,8 @@ function ForgotPasswordTemplate() {
               </Button>
             </Stack>
           </form>
-          {isEmailAlredySend && (
-            <Alert severity="success">Email enviado com sucesso, verifique sua caixa de entrada</Alert>
+          {isEmailAlreadySend && (
+            <Alert severity="success">Email enviado com sucesso, verifique sua caixa de entrada e spam</Alert>
           )}
         </S.FullHeightStack>
       </Grid>

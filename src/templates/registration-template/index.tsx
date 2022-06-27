@@ -38,7 +38,7 @@ function RegistrationTemplate() {
       })
       if (!response.ok) throw new Error('Algo deu errado com a sua inscrição.')
 
-      push('/registration/success', 'cadastrar/sucesso')
+      push('/registration/success', '/cadastrar/sucesso')
     } catch (error) {
       setRegistrationError(true)
       setIsSubmitting(false)
