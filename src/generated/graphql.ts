@@ -3373,406 +3373,6 @@ export type MissedClassesJustificationWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type ModeloDeExemplo = Node & {
-  __typename?: 'ModeloDeExemplo';
-  campoDeExemplo?: Maybe<Scalars['String']>;
-  /** The time the document was created */
-  createdAt: Scalars['DateTime'];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<ModeloDeExemplo>;
-  /** List of ModeloDeExemplo versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars['DateTime'];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
-
-
-export type ModeloDeExemploCreatedByArgs = {
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ModeloDeExemploDocumentInStagesArgs = {
-  includeCurrent?: Scalars['Boolean'];
-  inheritLocale?: Scalars['Boolean'];
-  stages?: Array<Stage>;
-};
-
-
-export type ModeloDeExemploHistoryArgs = {
-  limit?: Scalars['Int'];
-  skip?: Scalars['Int'];
-  stageOverride?: InputMaybe<Stage>;
-};
-
-
-export type ModeloDeExemploPublishedByArgs = {
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ModeloDeExemploScheduledInArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ScheduledOperationWhereInput>;
-};
-
-
-export type ModeloDeExemploUpdatedByArgs = {
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-export type ModeloDeExemploConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: ModeloDeExemploWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type ModeloDeExemploConnection = {
-  __typename?: 'ModeloDeExemploConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<ModeloDeExemploEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type ModeloDeExemploCreateInput = {
-  campoDeExemplo?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type ModeloDeExemploCreateManyInlineInput = {
-  /** Connect multiple existing ModeloDeExemplo documents */
-  connect?: InputMaybe<Array<ModeloDeExemploWhereUniqueInput>>;
-  /** Create and connect multiple existing ModeloDeExemplo documents */
-  create?: InputMaybe<Array<ModeloDeExemploCreateInput>>;
-};
-
-export type ModeloDeExemploCreateOneInlineInput = {
-  /** Connect one existing ModeloDeExemplo document */
-  connect?: InputMaybe<ModeloDeExemploWhereUniqueInput>;
-  /** Create and connect one ModeloDeExemplo document */
-  create?: InputMaybe<ModeloDeExemploCreateInput>;
-};
-
-/** An edge in a connection. */
-export type ModeloDeExemploEdge = {
-  __typename?: 'ModeloDeExemploEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: ModeloDeExemplo;
-};
-
-/** Identifies documents */
-export type ModeloDeExemploManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ModeloDeExemploWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ModeloDeExemploWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ModeloDeExemploWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  campoDeExemplo?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  campoDeExemplo_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  campoDeExemplo_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  campoDeExemplo_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  campoDeExemplo_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  campoDeExemplo_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  campoDeExemplo_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  campoDeExemplo_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  campoDeExemplo_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  campoDeExemplo_starts_with?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<Scalars['ID']>>;
-  /** All values that are not equal to given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
-};
-
-export enum ModeloDeExemploOrderByInput {
-  CampoDeExemploAsc = 'campoDeExemplo_ASC',
-  CampoDeExemploDesc = 'campoDeExemplo_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  PublishedAtAsc = 'publishedAt_ASC',
-  PublishedAtDesc = 'publishedAt_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC'
-}
-
-export type ModeloDeExemploUpdateInput = {
-  campoDeExemplo?: InputMaybe<Scalars['String']>;
-};
-
-export type ModeloDeExemploUpdateManyInlineInput = {
-  /** Connect multiple existing ModeloDeExemplo documents */
-  connect?: InputMaybe<Array<ModeloDeExemploConnectInput>>;
-  /** Create and connect multiple ModeloDeExemplo documents */
-  create?: InputMaybe<Array<ModeloDeExemploCreateInput>>;
-  /** Delete multiple ModeloDeExemplo documents */
-  delete?: InputMaybe<Array<ModeloDeExemploWhereUniqueInput>>;
-  /** Disconnect multiple ModeloDeExemplo documents */
-  disconnect?: InputMaybe<Array<ModeloDeExemploWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing ModeloDeExemplo documents */
-  set?: InputMaybe<Array<ModeloDeExemploWhereUniqueInput>>;
-  /** Update multiple ModeloDeExemplo documents */
-  update?: InputMaybe<Array<ModeloDeExemploUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple ModeloDeExemplo documents */
-  upsert?: InputMaybe<Array<ModeloDeExemploUpsertWithNestedWhereUniqueInput>>;
-};
-
-export type ModeloDeExemploUpdateManyInput = {
-  campoDeExemplo?: InputMaybe<Scalars['String']>;
-};
-
-export type ModeloDeExemploUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: ModeloDeExemploUpdateManyInput;
-  /** Document search */
-  where: ModeloDeExemploWhereInput;
-};
-
-export type ModeloDeExemploUpdateOneInlineInput = {
-  /** Connect existing ModeloDeExemplo document */
-  connect?: InputMaybe<ModeloDeExemploWhereUniqueInput>;
-  /** Create and connect one ModeloDeExemplo document */
-  create?: InputMaybe<ModeloDeExemploCreateInput>;
-  /** Delete currently connected ModeloDeExemplo document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected ModeloDeExemplo document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
-  /** Update single ModeloDeExemplo document */
-  update?: InputMaybe<ModeloDeExemploUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ModeloDeExemplo document */
-  upsert?: InputMaybe<ModeloDeExemploUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ModeloDeExemploUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: ModeloDeExemploUpdateInput;
-  /** Unique document search */
-  where: ModeloDeExemploWhereUniqueInput;
-};
-
-export type ModeloDeExemploUpsertInput = {
-  /** Create document if it didn't exist */
-  create: ModeloDeExemploCreateInput;
-  /** Update document if it exists */
-  update: ModeloDeExemploUpdateInput;
-};
-
-export type ModeloDeExemploUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: ModeloDeExemploUpsertInput;
-  /** Unique document search */
-  where: ModeloDeExemploWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type ModeloDeExemploWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ModeloDeExemploWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ModeloDeExemploWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ModeloDeExemploWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  campoDeExemplo?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  campoDeExemplo_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  campoDeExemplo_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  campoDeExemplo_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  campoDeExemplo_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  campoDeExemplo_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  campoDeExemplo_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  campoDeExemplo_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  campoDeExemplo_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  campoDeExemplo_starts_with?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<Scalars['ID']>>;
-  /** All values that are not equal to given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
-};
-
-/** References ModeloDeExemplo record uniquely */
-export type ModeloDeExemploWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   /**
@@ -3790,8 +3390,6 @@ export type Mutation = {
   createLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Create one missedClassesJustification */
   createMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Create one modeloDeExemplo */
-  createModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Create one nextUser */
   createNextUser?: Maybe<NextUser>;
   /** Create one scheduledRelease */
@@ -3857,13 +3455,6 @@ export type Mutation = {
   /** Delete many MissedClassesJustification documents, return deleted documents */
   deleteManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
   /**
-   * Delete many ModeloDeExemplo documents
-   * @deprecated Please use the new paginated many mutation (deleteManyModeloDeExemplosConnection)
-   */
-  deleteManyModeloDeExemplos: BatchPayload;
-  /** Delete many ModeloDeExemplo documents, return deleted documents */
-  deleteManyModeloDeExemplosConnection: ModeloDeExemploConnection;
-  /**
    * Delete many NextUser documents
    * @deprecated Please use the new paginated many mutation (deleteManyNextUsersConnection)
    */
@@ -3900,8 +3491,6 @@ export type Mutation = {
   deleteManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Delete one missedClassesJustification from _all_ existing stages. Returns deleted document. */
   deleteMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Delete one modeloDeExemplo from _all_ existing stages. Returns deleted document. */
-  deleteModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Delete one nextUser from _all_ existing stages. Returns deleted document. */
   deleteNextUser?: Maybe<NextUser>;
   /** Delete and return scheduled operation */
@@ -3969,13 +3558,6 @@ export type Mutation = {
   /** Publish many MissedClassesJustification documents */
   publishManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
   /**
-   * Publish many ModeloDeExemplo documents
-   * @deprecated Please use the new paginated many mutation (publishManyModeloDeExemplosConnection)
-   */
-  publishManyModeloDeExemplos: BatchPayload;
-  /** Publish many ModeloDeExemplo documents */
-  publishManyModeloDeExemplosConnection: ModeloDeExemploConnection;
-  /**
    * Publish many NextUser documents
    * @deprecated Please use the new paginated many mutation (publishManyNextUsersConnection)
    */
@@ -4012,8 +3594,6 @@ export type Mutation = {
   publishManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Publish one missedClassesJustification */
   publishMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Publish one modeloDeExemplo */
-  publishModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Publish one nextUser */
   publishNextUser?: Maybe<NextUser>;
   /** Publish one studentFrequencie */
@@ -4036,8 +3616,6 @@ export type Mutation = {
   schedulePublishLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Schedule to publish one missedClassesJustification */
   schedulePublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Schedule to publish one modeloDeExemplo */
-  schedulePublishModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Schedule to publish one nextUser */
   schedulePublishNextUser?: Maybe<NextUser>;
   /** Schedule to publish one studentFrequencie */
@@ -4060,8 +3638,6 @@ export type Mutation = {
   scheduleUnpublishLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Unpublish one missedClassesJustification from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Unpublish one modeloDeExemplo from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  scheduleUnpublishModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishNextUser?: Maybe<NextUser>;
   /** Unpublish one studentFrequencie from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -4125,13 +3701,6 @@ export type Mutation = {
   /** Find many MissedClassesJustification documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
   /**
-   * Unpublish many ModeloDeExemplo documents
-   * @deprecated Please use the new paginated many mutation (unpublishManyModeloDeExemplosConnection)
-   */
-  unpublishManyModeloDeExemplos: BatchPayload;
-  /** Find many ModeloDeExemplo documents that match criteria in specified stage and unpublish from target stages */
-  unpublishManyModeloDeExemplosConnection: ModeloDeExemploConnection;
-  /**
    * Unpublish many NextUser documents
    * @deprecated Please use the new paginated many mutation (unpublishManyNextUsersConnection)
    */
@@ -4168,8 +3737,6 @@ export type Mutation = {
   unpublishManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Unpublish one missedClassesJustification from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Unpublish one modeloDeExemplo from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  unpublishModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Unpublish one nextUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishNextUser?: Maybe<NextUser>;
   /** Unpublish one studentFrequencie from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -4233,13 +3800,6 @@ export type Mutation = {
   /** Update many MissedClassesJustification documents */
   updateManyMissedClassesJustificationsConnection: MissedClassesJustificationConnection;
   /**
-   * Update many modeloDeExemplos
-   * @deprecated Please use the new paginated many mutation (updateManyModeloDeExemplosConnection)
-   */
-  updateManyModeloDeExemplos: BatchPayload;
-  /** Update many ModeloDeExemplo documents */
-  updateManyModeloDeExemplosConnection: ModeloDeExemploConnection;
-  /**
    * Update many nextUsers
    * @deprecated Please use the new paginated many mutation (updateManyNextUsersConnection)
    */
@@ -4276,8 +3836,6 @@ export type Mutation = {
   updateManyWhatsappContactsConnection: WhatsappContactConnection;
   /** Update one missedClassesJustification */
   updateMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Update one modeloDeExemplo */
-  updateModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Update one nextUser */
   updateNextUser?: Maybe<NextUser>;
   /** Update one scheduledRelease */
@@ -4302,8 +3860,6 @@ export type Mutation = {
   upsertLastSendWarningDate?: Maybe<LastSendWarningDate>;
   /** Upsert one missedClassesJustification */
   upsertMissedClassesJustification?: Maybe<MissedClassesJustification>;
-  /** Upsert one modeloDeExemplo */
-  upsertModeloDeExemplo?: Maybe<ModeloDeExemplo>;
   /** Upsert one nextUser */
   upsertNextUser?: Maybe<NextUser>;
   /** Upsert one studentFrequencie */
@@ -4344,11 +3900,6 @@ export type MutationCreateLastSendWarningDateArgs = {
 
 export type MutationCreateMissedClassesJustificationArgs = {
   data: MissedClassesJustificationCreateInput;
-};
-
-
-export type MutationCreateModeloDeExemploArgs = {
-  data: ModeloDeExemploCreateInput;
 };
 
 
@@ -4497,21 +4048,6 @@ export type MutationDeleteManyMissedClassesJustificationsConnectionArgs = {
 };
 
 
-export type MutationDeleteManyModeloDeExemplosArgs = {
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
-export type MutationDeleteManyModeloDeExemplosConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
 export type MutationDeleteManyNextUsersArgs = {
   where?: InputMaybe<NextUserManyWhereInput>;
 };
@@ -4589,11 +4125,6 @@ export type MutationDeleteManyWhatsappContactsConnectionArgs = {
 
 export type MutationDeleteMissedClassesJustificationArgs = {
   where: MissedClassesJustificationWhereUniqueInput;
-};
-
-
-export type MutationDeleteModeloDeExemploArgs = {
-  where: ModeloDeExemploWhereUniqueInput;
 };
 
 
@@ -4779,24 +4310,6 @@ export type MutationPublishManyMissedClassesJustificationsConnectionArgs = {
 };
 
 
-export type MutationPublishManyModeloDeExemplosArgs = {
-  to?: Array<Stage>;
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
-export type MutationPublishManyModeloDeExemplosConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  from?: InputMaybe<Stage>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  to?: Array<Stage>;
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
 export type MutationPublishManyNextUsersArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<NextUserManyWhereInput>;
@@ -4893,12 +4406,6 @@ export type MutationPublishMissedClassesJustificationArgs = {
 };
 
 
-export type MutationPublishModeloDeExemploArgs = {
-  to?: Array<Stage>;
-  where: ModeloDeExemploWhereUniqueInput;
-};
-
-
 export type MutationPublishNextUserArgs = {
   to?: Array<Stage>;
   where: NextUserWhereUniqueInput;
@@ -4977,14 +4484,6 @@ export type MutationSchedulePublishMissedClassesJustificationArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: MissedClassesJustificationWhereUniqueInput;
-};
-
-
-export type MutationSchedulePublishModeloDeExemploArgs = {
-  releaseAt?: InputMaybe<Scalars['DateTime']>;
-  releaseId?: InputMaybe<Scalars['String']>;
-  to?: Array<Stage>;
-  where: ModeloDeExemploWhereUniqueInput;
 };
 
 
@@ -5075,14 +4574,6 @@ export type MutationScheduleUnpublishMissedClassesJustificationArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: MissedClassesJustificationWhereUniqueInput;
-};
-
-
-export type MutationScheduleUnpublishModeloDeExemploArgs = {
-  from?: Array<Stage>;
-  releaseAt?: InputMaybe<Scalars['DateTime']>;
-  releaseId?: InputMaybe<Scalars['String']>;
-  where: ModeloDeExemploWhereUniqueInput;
 };
 
 
@@ -5270,24 +4761,6 @@ export type MutationUnpublishManyMissedClassesJustificationsConnectionArgs = {
 };
 
 
-export type MutationUnpublishManyModeloDeExemplosArgs = {
-  from?: Array<Stage>;
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
-export type MutationUnpublishManyModeloDeExemplosConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  from?: Array<Stage>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: InputMaybe<Stage>;
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
 export type MutationUnpublishManyNextUsersArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<NextUserManyWhereInput>;
@@ -5381,12 +4854,6 @@ export type MutationUnpublishManyWhatsappContactsConnectionArgs = {
 export type MutationUnpublishMissedClassesJustificationArgs = {
   from?: Array<Stage>;
   where: MissedClassesJustificationWhereUniqueInput;
-};
-
-
-export type MutationUnpublishModeloDeExemploArgs = {
-  from?: Array<Stage>;
-  where: ModeloDeExemploWhereUniqueInput;
 };
 
 
@@ -5552,23 +5019,6 @@ export type MutationUpdateManyMissedClassesJustificationsConnectionArgs = {
 };
 
 
-export type MutationUpdateManyModeloDeExemplosArgs = {
-  data: ModeloDeExemploUpdateManyInput;
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
-export type MutationUpdateManyModeloDeExemplosConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  data: ModeloDeExemploUpdateManyInput;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ModeloDeExemploManyWhereInput>;
-};
-
-
 export type MutationUpdateManyNextUsersArgs = {
   data: NextUserUpdateManyInput;
   where?: InputMaybe<NextUserManyWhereInput>;
@@ -5660,12 +5110,6 @@ export type MutationUpdateMissedClassesJustificationArgs = {
 };
 
 
-export type MutationUpdateModeloDeExemploArgs = {
-  data: ModeloDeExemploUpdateInput;
-  where: ModeloDeExemploWhereUniqueInput;
-};
-
-
 export type MutationUpdateNextUserArgs = {
   data: NextUserUpdateInput;
   where: NextUserWhereUniqueInput;
@@ -5735,12 +5179,6 @@ export type MutationUpsertLastSendWarningDateArgs = {
 export type MutationUpsertMissedClassesJustificationArgs = {
   upsert: MissedClassesJustificationUpsertInput;
   where: MissedClassesJustificationWhereUniqueInput;
-};
-
-
-export type MutationUpsertModeloDeExemploArgs = {
-  upsert: ModeloDeExemploUpsertInput;
-  where: ModeloDeExemploWhereUniqueInput;
 };
 
 
@@ -6359,14 +5797,6 @@ export type Query = {
   missedClassesJustifications: Array<MissedClassesJustification>;
   /** Retrieve multiple missedClassesJustifications using the Relay connection interface */
   missedClassesJustificationsConnection: MissedClassesJustificationConnection;
-  /** Retrieve a single modeloDeExemplo */
-  modeloDeExemplo?: Maybe<ModeloDeExemplo>;
-  /** Retrieve document version */
-  modeloDeExemploVersion?: Maybe<DocumentVersion>;
-  /** Retrieve multiple modeloDeExemplos */
-  modeloDeExemplos: Array<ModeloDeExemplo>;
-  /** Retrieve multiple modeloDeExemplos using the Relay connection interface */
-  modeloDeExemplosConnection: ModeloDeExemploConnection;
   /** Retrieve a single nextUser */
   nextUser?: Maybe<NextUser>;
   /** Retrieve document version */
@@ -6655,44 +6085,6 @@ export type QueryMissedClassesJustificationsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<MissedClassesJustificationWhereInput>;
-};
-
-
-export type QueryModeloDeExemploArgs = {
-  locales?: Array<Locale>;
-  stage?: Stage;
-  where: ModeloDeExemploWhereUniqueInput;
-};
-
-
-export type QueryModeloDeExemploVersionArgs = {
-  where: VersionWhereInput;
-};
-
-
-export type QueryModeloDeExemplosArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: InputMaybe<ModeloDeExemploOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: InputMaybe<ModeloDeExemploWhereInput>;
-};
-
-
-export type QueryModeloDeExemplosConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: InputMaybe<ModeloDeExemploOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: InputMaybe<ModeloDeExemploWhereInput>;
 };
 
 
@@ -7098,7 +6490,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | LastSendWarningDate | MissedClassesJustification | ModeloDeExemplo | NextUser | StudentFrequencie | SubscriptionDate | Teacher | WhatsappContact;
+export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | LastSendWarningDate | MissedClassesJustification | NextUser | StudentFrequencie | SubscriptionDate | Teacher | WhatsappContact;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -10487,13 +9879,6 @@ export type VerifyAuthorizationQueryVariables = Exact<{
 
 export type VerifyAuthorizationQuery = { __typename?: 'Query', nextUser?: { __typename?: 'NextUser', active?: boolean | null } | null };
 
-export type StudentFrequenciesQueryVariables = Exact<{
-  email: Scalars['String'];
-}>;
-
-
-export type StudentFrequenciesQuery = { __typename?: 'Query', studentFrequencies: Array<{ __typename?: 'StudentFrequencie', missedClasses: Array<{ __typename?: 'Class', id: string, name: string, scheduledTime: any, shortDescription?: string | null }> }> };
-
 export type CheckIfIsTeacherQueryVariables = Exact<{
   email: Scalars['String'];
 }>;
@@ -10510,3 +9895,10 @@ export type GetLastWarningDatesForStudentsQueryVariables = Exact<{ [key: string]
 
 
 export type GetLastWarningDatesForStudentsQuery = { __typename?: 'Query', lastSendWarningDates: Array<{ __typename?: 'LastSendWarningDate', lastSendWarningDate?: any | null }> };
+
+export type FindClassesWithJustiQueryVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type FindClassesWithJustiQuery = { __typename?: 'Query', missedClassesJustifications: Array<{ __typename?: 'MissedClassesJustification', class?: { __typename?: 'Class', id: string, name: string, scheduledTime: any } | null, student?: { __typename?: 'NextUser', id: string, name: string, email: string } | null }>, studentFrequencies: Array<{ __typename?: 'StudentFrequencie', missedClasses: Array<{ __typename?: 'Class', id: string, name: string, scheduledTime: any, shortDescription?: string | null }>, nextUser?: { __typename?: 'NextUser', email: string } | null }> };

@@ -95,6 +95,13 @@ function DashboardTemplate({
                   </TableRow>
                 ))}
               </TableBody>
+
+              <TableRow>
+                <TableCell align="center" colSpan={4}>
+                  Notificamos os alunos destacados sobre as faltas em:{' '}
+                  <strong>{dayjs(sendingDate).format('DD/MM/YYYY')}</strong>
+                </TableCell>
+              </TableRow>
             </Table>
           </TableContainer>
         </Stack>
