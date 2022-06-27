@@ -19,14 +19,18 @@ import * as S from './styles'
 import { useRouter } from 'next/router'
 import { useAuth } from 'contexts/auth-context'
 import dayjs from 'dayjs'
+
 type JustificationTemplateProps = {
   missedClasses: Array<any>
   email: string
+  missedClassesJustifications: Array<any>
 }
-function JustificationTemplate({ missedClasses, email }: JustificationTemplateProps) {
+
+function JustificationTemplate({ missedClasses, email, missedClassesJustifications }: JustificationTemplateProps) {
   const { back, push } = useRouter()
   const { handleSubmit, getValues, control } = useForm()
   const { logoutTheCurrentUser } = useAuth()
+
   const onSubmit = async () => {
     const { classId, justification } = getValues()
     try {
@@ -61,6 +65,7 @@ function JustificationTemplate({ missedClasses, email }: JustificationTemplatePr
       </S.NavbarWrapper>
       <S.ContentWrapper>
         <h1>Justifique sua falta</h1>
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <FormLabel id="demo-controlled-radio-buttons-group">Selecione uma aula</FormLabel>
@@ -109,6 +114,28 @@ function JustificationTemplate({ missedClasses, email }: JustificationTemplatePr
             </Stack>
           </FormControl>
         </form>
+
+        <S.JustifiedClassesContainer>
+          <h1>Aulas justificadas</h1>
+
+          {missedClassesJustifications.map((currentClass) => (
+            <Accordion key={currentClass.class.id} sx={{ margin: '0.5rem 0' }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  {currentClass.class.name}
+
+                  <Typography sx={{ color: 'text.secondary', marginLeft: '1.5rem' }}>
+                    {dayjs(currentClass.class.scheduledTime).format('DD/MM/YYYY')}
+                  </Typography>
+                </Box>
+              </AccordionSummary>
+
+              <AccordionDetails>
+                <Typography>{currentClass.class.shortDescription}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </S.JustifiedClassesContainer>
       </S.ContentWrapper>
     </>
   )
