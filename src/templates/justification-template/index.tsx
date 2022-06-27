@@ -36,7 +36,7 @@ function JustificationTemplate({ missedClasses, email }: JustificationTemplatePr
       })
       if (!response.ok) throw new Error('Algo deu errado com o upload de sua justificativa.')
     } catch (e) {
-      console.log({ e })
+      return
     }
   }
 

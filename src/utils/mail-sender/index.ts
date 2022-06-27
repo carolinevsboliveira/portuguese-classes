@@ -1,5 +1,4 @@
 import emailjs from 'emailjs-com'
-import dayjs from 'dayjs'
 
 export const sendEmailForWarnedStudents = async (
   emailsToSend: Array<{ email: string; missedClass: number }>,
@@ -26,6 +25,6 @@ export const sendEmailForWarnedStudents = async (
     )
     await Promise.all(promises)
   } catch (error) {
-    console.log({ error })
+    console.error({ error })
   }
 }
