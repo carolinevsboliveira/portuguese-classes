@@ -80,12 +80,7 @@ function JustificationTemplate({ missedClasses, email, missedClassesJustificatio
                         <Accordion key={currentClass.id} sx={{ margin: '0.5rem 0' }}>
                           <AccordionSummary expandIcon={<ExpandMore />}>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                              <FormControlLabel
-                                key={currentClass.id}
-                                value={currentClass.id}
-                                control={<Radio />}
-                                label={currentClass.name}
-                              />
+                              <FormControlLabel value={currentClass.id} control={<Radio />} label={currentClass.name} />
 
                               <Typography sx={{ color: 'text.secondary' }}>
                                 {dayjs(currentClass.scheduledTime).format('DD/MM/YYYY')}

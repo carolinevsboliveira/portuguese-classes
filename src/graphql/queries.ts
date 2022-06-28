@@ -13,6 +13,9 @@ export const GET_ALL_TEACHERS = gql`
     teachers {
       id
       name
+      profilePhoto {
+        url
+      }
     }
   }
 `

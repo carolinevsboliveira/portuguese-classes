@@ -10502,7 +10502,7 @@ export type GetClassesQuery = { __typename?: 'Query', classes: Array<{ __typenam
 export type GetTeachersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTeachersQuery = { __typename?: 'Query', teachers: Array<{ __typename?: 'Teacher', id: string, name: string }> };
+export type GetTeachersQuery = { __typename?: 'Query', teachers: Array<{ __typename?: 'Teacher', id: string, name: string, profilePhoto?: { __typename?: 'Asset', url: string } | null }> };
 
 export type CourseHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -4,13 +4,14 @@ import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult
 import nookies from 'nookies'
 import { VerifyAuthorizationQuery } from 'generated/graphql'
 import { GET_IF_USER_IS_AUTHORIZED } from 'graphql/queries'
-type FnReturnType = {
+
+export type UserData = {
   uid: string
   email: string
 }
 
 export function withSSRAuth<P>(
-  fn: (ctx: GetServerSidePropsContext, userData: FnReturnType) => Promise<GetServerSidePropsResult<P>>
+  fn: (ctx: GetServerSidePropsContext, userData: UserData) => Promise<GetServerSidePropsResult<P>>
 ): GetServerSideProps<P> {
   return async (ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<P>> => {
     try {
