@@ -1,9 +1,18 @@
 import { gql } from 'graphql-request'
 
 export const GET_CLASSES = gql`
-  query MyQuery {
+  query GetClasses {
     classes {
       id
+    }
+  }
+`
+
+export const GET_ALL_TEACHERS = gql`
+  query GetTeachers {
+    teachers {
+      id
+      name
     }
   }
 `

@@ -10494,10 +10494,15 @@ export type CreateNewJustificationMutationVariables = Exact<{
 
 export type CreateNewJustificationMutation = { __typename?: 'Mutation', createTeachersFeedback?: { __typename?: 'TeachersFeedback', id: string } | null };
 
-export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetClassesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyQueryQuery = { __typename?: 'Query', classes: Array<{ __typename?: 'Class', id: string }> };
+export type GetClassesQuery = { __typename?: 'Query', classes: Array<{ __typename?: 'Class', id: string }> };
+
+export type GetTeachersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTeachersQuery = { __typename?: 'Query', teachers: Array<{ __typename?: 'Teacher', id: string, name: string }> };
 
 export type CourseHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
