@@ -29,3 +29,16 @@ export const CREATE_NEW_LAST_SEND_DATA_FOR_STUDENTS = gql`
     }
   }
 `
+export const CREATE_NEW_TEACHER_FEEDBACK = gql`
+  mutation CreateNewJustification($teacherId: ID!, $feedback: String!, $nextUserEmail: String!) {
+    createTeachersFeedback(
+      data: {
+        teacher: { connect: { id: $teacherId } }
+        nextUser: { connect: { email: $nextUserEmail } }
+        studentFeedback: $feedback
+      }
+    ) {
+      id
+    }
+  }
+`
