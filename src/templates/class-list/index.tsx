@@ -53,6 +53,11 @@ function ClassListTemplate({
       return
     }
   }
+
+  const handleGoToPosts = () => {
+    push('/posts', '/publicacoes')
+  }
+
   const handleReportClick = () => {
     push('/dashboard')
   }
@@ -64,6 +69,10 @@ function ClassListTemplate({
   return (
     <Box>
       <S.NavBarWrapper>
+        <Button variant="contained" onClick={handleGoToPosts}>
+          Posts
+        </Button>
+
         <Button variant="text" endIcon={<ArrowRight />} onClick={handleLogoutButton}>
           Sair
         </Button>

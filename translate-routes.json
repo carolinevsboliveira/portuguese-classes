@@ -3,6 +3,7 @@
   { "source": "/cadastrar", "destination": "/registration" },
   { "source": "/cadastrar/sucesso", "destination": "/registration/success" },
   { "source": "/esqueceu-a-senha", "destination": "/forgot-password" },
+  { "source": "/publicacoes", "destination": "/posts" },
   { "source": "/aulas/:page", "destination": "/classes/:page" },
   { "source": "/aulas/justificar-aula", "destination": "/classes/justification" },
   { "source": "/avaliar-professor", "destination": "/feedback" },

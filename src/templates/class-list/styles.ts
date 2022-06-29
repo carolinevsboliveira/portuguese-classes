@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const NavBarWrapper = styled.nav`
   width: 100%;
   display: flex;
+  gap: 1rem;
   justify-content: end;
   padding: 2rem;
 `
