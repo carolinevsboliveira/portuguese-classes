@@ -16,9 +16,11 @@ export const ContentWrapper = styled.div`
 export const TextWrapper = styled.div`
   text-align: center;
   padding: 2rem;
+
   h1 {
     color: #000a36;
   }
+
   h2 {
     color: #17326b;
   }

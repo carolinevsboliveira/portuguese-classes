@@ -27,6 +27,7 @@ export const LottieSection = styled.div`
   align-items: center;
   min-height: 400px;
   margin-bottom: 0;
+  margin-top: 1rem;
 `
 
 export const InformationTextContainer = styled.div`

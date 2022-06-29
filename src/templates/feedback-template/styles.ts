@@ -25,3 +25,16 @@ export const ErrorMessage = styled.span`
   margin-left: 0.5rem;
   font-size: 0.8rem;
 `
+
+export const Title = styled.h1`
+  color: var(--primary);
+`
+
+export const FormWrapper = styled.form`
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 600px;
+`

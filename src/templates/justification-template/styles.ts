@@ -21,4 +21,9 @@ export const NavbarWrapper = styled.nav`
 
 export const JustifiedClassesContainer = styled.div`
   margin-top: 4rem;
+  text-align: center;
+`
+
+export const Title = styled.h1`
+  color: var(--primary);
 `

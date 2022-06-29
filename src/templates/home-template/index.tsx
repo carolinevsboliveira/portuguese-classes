@@ -99,7 +99,9 @@ const HomeTemplate = ({
                 <Button variant="outlined" onClick={() => push('/login', '/entrar')} sx={{ mt: '1rem' }}>
                   Login
                 </Button>
-                <Button variant="contained">Cadastrar</Button>
+                <Button variant="contained" onClick={() => push('/registration', '/cadastrar')}>
+                  Cadastrar
+                </Button>
               </Box>
             </Drawer>
           </>
@@ -113,7 +115,9 @@ const HomeTemplate = ({
             <Button variant="outlined" onClick={() => push('/login', '/entrar')}>
               Login
             </Button>
-            <Button variant="contained">Cadastrar</Button>
+            <Button variant="contained" onClick={() => push('/registration', '/cadastrar')}>
+              Cadastrar
+            </Button>
           </S.NavBarWrapper>
         )}
 

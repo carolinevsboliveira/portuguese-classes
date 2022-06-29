@@ -60,9 +60,9 @@ function FeedbackTemplate({ teachers, userData }: FeedbackTemplateProps) {
         </Button>
       </S.NavbarWrapper>
       <S.ContentWrapper>
-        <h1>Avalie um professor</h1>
+        <S.Title>Avalie um professor</S.Title>
 
-        <form onSubmit={onSubmit}>
+        <S.FormWrapper onSubmit={onSubmit}>
           <FormControl>
             <FormLabel id="demo-controlled-radio-buttons-group">Selecione um professor</FormLabel>
             <Stack spacing={3}>
@@ -98,7 +98,7 @@ function FeedbackTemplate({ teachers, userData }: FeedbackTemplateProps) {
               <Button type="submit">Enviar</Button>
             </Stack>
           </FormControl>
-        </form>
+        </S.FormWrapper>
 
         {showSuccessAlert && (
           <Alert severity="success" sx={{ marginTop: '4rem' }}>

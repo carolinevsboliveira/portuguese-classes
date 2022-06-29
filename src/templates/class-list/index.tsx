@@ -87,7 +87,7 @@ function ClassListTemplate({
               </Button>
             </>
           )}
-          <Typography variant="h4" component="h4">
+          <Typography variant="h4" component="h4" color="text.primary">
             Aulas cadastradas
           </Typography>
           <S.ClassListWrapper>

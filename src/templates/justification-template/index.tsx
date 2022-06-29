@@ -64,7 +64,7 @@ function JustificationTemplate({ missedClasses, email, missedClassesJustificatio
         </Button>
       </S.NavbarWrapper>
       <S.ContentWrapper>
-        <h1>Justifique sua falta</h1>
+        <S.Title>Justifique sua falta</S.Title>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
@@ -111,7 +111,7 @@ function JustificationTemplate({ missedClasses, email, missedClassesJustificatio
         </form>
 
         <S.JustifiedClassesContainer>
-          <h1>Aulas justificadas</h1>
+          <S.Title>Aulas justificadas</S.Title>
 
           {missedClassesJustifications.map((currentClass) => (
             <Accordion key={currentClass.class.id} sx={{ margin: '0.5rem 0' }}>
