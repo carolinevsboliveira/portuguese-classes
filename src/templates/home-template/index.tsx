@@ -1,4 +1,6 @@
-import { Button, Stack } from '@mui/material'
+import { useState } from 'react'
+import { Button, Stack, Drawer, IconButton, Box } from '@mui/material'
+import { Menu } from '@mui/icons-material'
 import * as S from './styles'
 import FallingBooks from 'assets/lotties/falling-books.json'
 import AccessibleValue from 'assets/lotties/accessible-value.json'
@@ -11,6 +13,7 @@ import CustomPaper from 'components/custom-paper'
 import { useRouter } from 'next/router'
 import CardWithFixedHeight from 'components/card-with-fixed-height/card-with-fixed-height'
 import { WhatsApp } from '@mui/icons-material'
+import { useWindowSize } from '../../hooks/use-window-size'
 
 const defaultOptions = {
   loop: false,
@@ -48,32 +51,72 @@ const HomeTemplate = ({
   whatsappContact: { phone, link }
 }: HomeTemplateProps) => {
   const { push } = useRouter()
+  const { width } = useWindowSize()
+  const [open, setOpen] = useState(false)
+
+  const shouldShowBurgerMenu = width < 425
+
   const { messageArray, activeSteps } = generateSubscriptionSteps({
     isOpen: possibleSubscriptions,
     initialDate,
     finalDate
   })
+
   const papers = [
     { animationData: ClassTime, title: 'Aulas aos sábados', subtitle: '8:30h as 11:00h' },
     { animationData: OnlineClasses, title: 'Aulas online', subtitle: `Via ${courseClassPlataform}` },
     { animationData: AccessibleValue, title: `R$ ${valuePerMonth},00`, subtitle: '8:30h as 11:00h' }
   ]
+
   const handleWhatsAppButtonOnClick = () => {
     const url = new URL(link)
     window.open(url, '_blank')
   }
+
   return (
     <Stack spacing={2}>
       <S.FullHeightWrapper>
-        <S.NavBarWrapper>
-          <Button variant="text" startIcon={<WhatsApp />} onClick={() => handleWhatsAppButtonOnClick()}>
-            {phone}
-          </Button>
-          <Button variant="outlined" onClick={() => push('/login', '/entrar')}>
-            Login
-          </Button>
-          <Button variant="contained">Cadastrar</Button>
-        </S.NavBarWrapper>
+        {shouldShowBurgerMenu && (
+          <>
+            <IconButton color="inherit" onClick={() => setOpen(true)} edge="start" sx={{ ml: 2, mt: 2 }}>
+              <Menu />
+            </IconButton>
+
+            <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: '0.5rem',
+                  flexDirection: 'column',
+                  p: '1rem',
+                  pt: '3rem',
+                  minWidth: '75vw'
+                }}
+              >
+                <Button variant="text" startIcon={<WhatsApp />} onClick={() => handleWhatsAppButtonOnClick()}>
+                  {phone}
+                </Button>
+                <Button variant="outlined" onClick={() => push('/login', '/entrar')} sx={{ mt: '1rem' }}>
+                  Login
+                </Button>
+                <Button variant="contained">Cadastrar</Button>
+              </Box>
+            </Drawer>
+          </>
+        )}
+
+        {!shouldShowBurgerMenu && (
+          <S.NavBarWrapper>
+            <Button variant="text" startIcon={<WhatsApp />} onClick={() => handleWhatsAppButtonOnClick()}>
+              {phone}
+            </Button>
+            <Button variant="outlined" onClick={() => push('/login', '/entrar')}>
+              Login
+            </Button>
+            <Button variant="contained">Cadastrar</Button>
+          </S.NavBarWrapper>
+        )}
+
         <S.LottieSection>
           <Lottie options={defaultOptions} height={300} width={300} />
         </S.LottieSection>
