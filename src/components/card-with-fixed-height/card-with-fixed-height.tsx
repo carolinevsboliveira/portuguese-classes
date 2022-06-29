@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, CardMedia } from '@mui/material'
 
-function CardWithFixedHeight({ teacher }: { teacher: any }) {
+export function CardWithFixedHeight({ teacher }: { teacher: any }) {
   const profilePhoto = teacher.profilePhoto.url
   const professionalExperience = teacher.scholarExperience
 
