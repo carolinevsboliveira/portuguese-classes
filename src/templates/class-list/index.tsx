@@ -1,13 +1,17 @@
+import Lottie from 'react-lottie'
 import { ArrowRight } from '@mui/icons-material'
 import { Box, Button, Pagination, Stack, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
-import { useAuth } from 'contexts/auth-context'
-import Learning from 'assets/lotties/learning.json'
-import TeacherWarning from 'assets/lotties/teacher-warning.json'
+
+import { useAuth } from '../../contexts/auth-context'
+import Learning from '../../assets/lotties/learning.json'
+import TeacherWarning from '../../assets/lotties/teacher-warning.json'
+import ClassesTable from '../../components/class-table'
+import MissedClassesMessage from '../../components/missed-classes-messages'
+import FeedbackMessage from '../../components/feedback-message'
+
 import * as S from './styles'
-import ClassesTable from 'components/class-table'
-import Lottie from 'react-lottie'
-import MissedClassesMessage from 'components/missed-classes-messages'
+
 type ClassListProps = {
   classes: Array<any>
   page: number
@@ -18,6 +22,7 @@ type ClassListProps = {
   totalPeriodClasses: number
   isTeacher: boolean
 }
+
 const defaultOptions = {
   loop: true,
   autoplay: true,
@@ -95,14 +100,19 @@ function ClassListTemplate({
             color="primary"
             onChange={handlePaginationChanges}
           />
-          {!isTeacher && (
-            <MissedClassesMessage
-              hasMissedClasses={missedClassesQuantity > 0}
-              missedClassesQuantity={missedClassesQuantity}
-              totalClassesQuantity={totalPeriodClasses}
-              actionButton={actionButton}
-            />
-          )}
+
+          <Box sx={{ display: 'flex', gap: '4rem' }}>
+            {!isTeacher && (
+              <MissedClassesMessage
+                hasMissedClasses={missedClassesQuantity > 0}
+                missedClassesQuantity={missedClassesQuantity}
+                totalClassesQuantity={totalPeriodClasses}
+                actionButton={actionButton}
+              />
+            )}
+
+            {!isTeacher && <FeedbackMessage />}
+          </Box>
         </Stack>
       </S.ContentWrapper>
     </Box>

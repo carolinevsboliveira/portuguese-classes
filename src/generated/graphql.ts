@@ -3400,6 +3400,8 @@ export type Mutation = {
   createSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Create one teacher */
   createTeacher?: Maybe<Teacher>;
+  /** Create one teachersFeedback */
+  createTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Create one whatsappContact */
   createWhatsappContact?: Maybe<WhatsappContact>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
@@ -3483,6 +3485,13 @@ export type Mutation = {
   /** Delete many Teacher documents, return deleted documents */
   deleteManyTeachersConnection: TeacherConnection;
   /**
+   * Delete many TeachersFeedback documents
+   * @deprecated Please use the new paginated many mutation (deleteManyTeachersFeedbacksConnection)
+   */
+  deleteManyTeachersFeedbacks: BatchPayload;
+  /** Delete many TeachersFeedback documents, return deleted documents */
+  deleteManyTeachersFeedbacksConnection: TeachersFeedbackConnection;
+  /**
    * Delete many WhatsappContact documents
    * @deprecated Please use the new paginated many mutation (deleteManyWhatsappContactsConnection)
    */
@@ -3503,6 +3512,8 @@ export type Mutation = {
   deleteSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Delete one teacher from _all_ existing stages. Returns deleted document. */
   deleteTeacher?: Maybe<Teacher>;
+  /** Delete one teachersFeedback from _all_ existing stages. Returns deleted document. */
+  deleteTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Delete one whatsappContact from _all_ existing stages. Returns deleted document. */
   deleteWhatsappContact?: Maybe<WhatsappContact>;
   /** Publish one asset */
@@ -3586,6 +3597,13 @@ export type Mutation = {
   /** Publish many Teacher documents */
   publishManyTeachersConnection: TeacherConnection;
   /**
+   * Publish many TeachersFeedback documents
+   * @deprecated Please use the new paginated many mutation (publishManyTeachersFeedbacksConnection)
+   */
+  publishManyTeachersFeedbacks: BatchPayload;
+  /** Publish many TeachersFeedback documents */
+  publishManyTeachersFeedbacksConnection: TeachersFeedbackConnection;
+  /**
    * Publish many WhatsappContact documents
    * @deprecated Please use the new paginated many mutation (publishManyWhatsappContactsConnection)
    */
@@ -3602,6 +3620,8 @@ export type Mutation = {
   publishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Publish one teacher */
   publishTeacher?: Maybe<Teacher>;
+  /** Publish one teachersFeedback */
+  publishTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Publish one whatsappContact */
   publishWhatsappContact?: Maybe<WhatsappContact>;
   /** Schedule to publish one asset */
@@ -3624,6 +3644,8 @@ export type Mutation = {
   schedulePublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Schedule to publish one teacher */
   schedulePublishTeacher?: Maybe<Teacher>;
+  /** Schedule to publish one teachersFeedback */
+  schedulePublishTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Schedule to publish one whatsappContact */
   schedulePublishWhatsappContact?: Maybe<WhatsappContact>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3646,6 +3668,8 @@ export type Mutation = {
   scheduleUnpublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Unpublish one teacher from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishTeacher?: Maybe<Teacher>;
+  /** Unpublish one teachersFeedback from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Unpublish one whatsappContact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishWhatsappContact?: Maybe<WhatsappContact>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3729,6 +3753,13 @@ export type Mutation = {
   /** Find many Teacher documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyTeachersConnection: TeacherConnection;
   /**
+   * Unpublish many TeachersFeedback documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyTeachersFeedbacksConnection)
+   */
+  unpublishManyTeachersFeedbacks: BatchPayload;
+  /** Find many TeachersFeedback documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyTeachersFeedbacksConnection: TeachersFeedbackConnection;
+  /**
    * Unpublish many WhatsappContact documents
    * @deprecated Please use the new paginated many mutation (unpublishManyWhatsappContactsConnection)
    */
@@ -3745,6 +3776,8 @@ export type Mutation = {
   unpublishSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Unpublish one teacher from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishTeacher?: Maybe<Teacher>;
+  /** Unpublish one teachersFeedback from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Unpublish one whatsappContact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishWhatsappContact?: Maybe<WhatsappContact>;
   /** Update one asset */
@@ -3828,6 +3861,13 @@ export type Mutation = {
   /** Update many Teacher documents */
   updateManyTeachersConnection: TeacherConnection;
   /**
+   * Update many teachersFeedbacks
+   * @deprecated Please use the new paginated many mutation (updateManyTeachersFeedbacksConnection)
+   */
+  updateManyTeachersFeedbacks: BatchPayload;
+  /** Update many TeachersFeedback documents */
+  updateManyTeachersFeedbacksConnection: TeachersFeedbackConnection;
+  /**
    * Update many whatsappContacts
    * @deprecated Please use the new paginated many mutation (updateManyWhatsappContactsConnection)
    */
@@ -3846,6 +3886,8 @@ export type Mutation = {
   updateSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Update one teacher */
   updateTeacher?: Maybe<Teacher>;
+  /** Update one teachersFeedback */
+  updateTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Update one whatsappContact */
   updateWhatsappContact?: Maybe<WhatsappContact>;
   /** Upsert one asset */
@@ -3868,6 +3910,8 @@ export type Mutation = {
   upsertSubscriptionDate?: Maybe<SubscriptionDate>;
   /** Upsert one teacher */
   upsertTeacher?: Maybe<Teacher>;
+  /** Upsert one teachersFeedback */
+  upsertTeachersFeedback?: Maybe<TeachersFeedback>;
   /** Upsert one whatsappContact */
   upsertWhatsappContact?: Maybe<WhatsappContact>;
 };
@@ -3925,6 +3969,11 @@ export type MutationCreateSubscriptionDateArgs = {
 
 export type MutationCreateTeacherArgs = {
   data: TeacherCreateInput;
+};
+
+
+export type MutationCreateTeachersFeedbackArgs = {
+  data: TeachersFeedbackCreateInput;
 };
 
 
@@ -4108,6 +4157,21 @@ export type MutationDeleteManyTeachersConnectionArgs = {
 };
 
 
+export type MutationDeleteManyTeachersFeedbacksArgs = {
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
+export type MutationDeleteManyTeachersFeedbacksConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
 export type MutationDeleteManyWhatsappContactsArgs = {
   where?: InputMaybe<WhatsappContactManyWhereInput>;
 };
@@ -4155,6 +4219,11 @@ export type MutationDeleteSubscriptionDateArgs = {
 
 export type MutationDeleteTeacherArgs = {
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationDeleteTeachersFeedbackArgs = {
+  where: TeachersFeedbackWhereUniqueInput;
 };
 
 
@@ -4382,6 +4451,24 @@ export type MutationPublishManyTeachersConnectionArgs = {
 };
 
 
+export type MutationPublishManyTeachersFeedbacksArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
+export type MutationPublishManyTeachersFeedbacksConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
 export type MutationPublishManyWhatsappContactsArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<WhatsappContactManyWhereInput>;
@@ -4427,6 +4514,12 @@ export type MutationPublishSubscriptionDateArgs = {
 export type MutationPublishTeacherArgs = {
   to?: Array<Stage>;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationPublishTeachersFeedbackArgs = {
+  to?: Array<Stage>;
+  where: TeachersFeedbackWhereUniqueInput;
 };
 
 
@@ -4519,6 +4612,14 @@ export type MutationSchedulePublishTeacherArgs = {
 };
 
 
+export type MutationSchedulePublishTeachersFeedbackArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: TeachersFeedbackWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishWhatsappContactArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -4606,6 +4707,14 @@ export type MutationScheduleUnpublishTeacherArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishTeachersFeedbackArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: TeachersFeedbackWhereUniqueInput;
 };
 
 
@@ -4833,6 +4942,24 @@ export type MutationUnpublishManyTeachersConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyTeachersFeedbacksArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyTeachersFeedbacksConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyWhatsappContactsArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<WhatsappContactManyWhereInput>;
@@ -4878,6 +5005,12 @@ export type MutationUnpublishSubscriptionDateArgs = {
 export type MutationUnpublishTeacherArgs = {
   from?: Array<Stage>;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationUnpublishTeachersFeedbackArgs = {
+  from?: Array<Stage>;
+  where: TeachersFeedbackWhereUniqueInput;
 };
 
 
@@ -5087,6 +5220,23 @@ export type MutationUpdateManyTeachersConnectionArgs = {
 };
 
 
+export type MutationUpdateManyTeachersFeedbacksArgs = {
+  data: TeachersFeedbackUpdateManyInput;
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
+export type MutationUpdateManyTeachersFeedbacksConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: TeachersFeedbackUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TeachersFeedbackManyWhereInput>;
+};
+
+
 export type MutationUpdateManyWhatsappContactsArgs = {
   data: WhatsappContactUpdateManyInput;
   where?: InputMaybe<WhatsappContactManyWhereInput>;
@@ -5137,6 +5287,12 @@ export type MutationUpdateSubscriptionDateArgs = {
 export type MutationUpdateTeacherArgs = {
   data: TeacherUpdateInput;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationUpdateTeachersFeedbackArgs = {
+  data: TeachersFeedbackUpdateInput;
+  where: TeachersFeedbackWhereUniqueInput;
 };
 
 
@@ -5203,6 +5359,12 @@ export type MutationUpsertSubscriptionDateArgs = {
 export type MutationUpsertTeacherArgs = {
   upsert: TeacherUpsertInput;
   where: TeacherWhereUniqueInput;
+};
+
+
+export type MutationUpsertTeachersFeedbackArgs = {
+  upsert: TeachersFeedbackUpsertInput;
+  where: TeachersFeedbackWhereUniqueInput;
 };
 
 
@@ -5300,6 +5462,7 @@ export type NextUserConnection = {
 export type NextUserCreateInput = {
   active?: InputMaybe<Scalars['Boolean']>;
   cl4bn094634ez01w8ewwy6qis?: InputMaybe<TeacherCreateManyInlineInput>;
+  cl4xhmh2t0ngj01tdavqa9lx9?: InputMaybe<TeachersFeedbackCreateManyInlineInput>;
   cl43kly135ghr01xj4er21ypu?: InputMaybe<StudentFrequencieCreateManyInlineInput>;
   cl47kprgl3ulv01z37u4xda42?: InputMaybe<MissedClassesJustificationCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
@@ -5496,6 +5659,7 @@ export enum NextUserOrderByInput {
 export type NextUserUpdateInput = {
   active?: InputMaybe<Scalars['Boolean']>;
   cl4bn094634ez01w8ewwy6qis?: InputMaybe<TeacherUpdateManyInlineInput>;
+  cl4xhmh2t0ngj01tdavqa9lx9?: InputMaybe<TeachersFeedbackUpdateManyInlineInput>;
   cl43kly135ghr01xj4er21ypu?: InputMaybe<StudentFrequencieUpdateManyInlineInput>;
   cl47kprgl3ulv01z37u4xda42?: InputMaybe<MissedClassesJustificationUpdateManyInlineInput>;
   email?: InputMaybe<Scalars['String']>;
@@ -5843,6 +6007,14 @@ export type Query = {
   teachers: Array<Teacher>;
   /** Retrieve multiple teachers using the Relay connection interface */
   teachersConnection: TeacherConnection;
+  /** Retrieve a single teachersFeedback */
+  teachersFeedback?: Maybe<TeachersFeedback>;
+  /** Retrieve document version */
+  teachersFeedbackVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple teachersFeedbacks */
+  teachersFeedbacks: Array<TeachersFeedback>;
+  /** Retrieve multiple teachersFeedbacks using the Relay connection interface */
+  teachersFeedbacksConnection: TeachersFeedbackConnection;
   /** Retrieve a single user */
   user?: Maybe<User>;
   /** Retrieve multiple users */
@@ -6313,6 +6485,44 @@ export type QueryTeachersConnectionArgs = {
 };
 
 
+export type QueryTeachersFeedbackArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: TeachersFeedbackWhereUniqueInput;
+};
+
+
+export type QueryTeachersFeedbackVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryTeachersFeedbacksArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<TeachersFeedbackOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<TeachersFeedbackWhereInput>;
+};
+
+
+export type QueryTeachersFeedbacksConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<TeachersFeedbackOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<TeachersFeedbackWhereInput>;
+};
+
+
 export type QueryUserArgs = {
   locales?: Array<Locale>;
   stage?: Stage;
@@ -6490,7 +6700,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | LastSendWarningDate | MissedClassesJustification | NextUser | StudentFrequencie | SubscriptionDate | Teacher | WhatsappContact;
+export type ScheduledOperationAffectedDocument = Asset | Class | CurrentCourseDate | Homepage | LastSendWarningDate | MissedClassesJustification | NextUser | StudentFrequencie | SubscriptionDate | Teacher | TeachersFeedback | WhatsappContact;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -8434,6 +8644,7 @@ export type TeacherConnection = {
 export type TeacherCreateInput = {
   about?: InputMaybe<Scalars['RichTextAST']>;
   cl3p97zsr766401xk2ko7huzy?: InputMaybe<HomepageCreateManyInlineInput>;
+  cl4xhm2pt0iwz01un85146w6f?: InputMaybe<TeachersFeedbackCreateManyInlineInput>;
   cl39f341p17xz01xsc9dg1q3g?: InputMaybe<ClassCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   facebookLink?: InputMaybe<Scalars['String']>;
@@ -8663,6 +8874,7 @@ export enum TeacherOrderByInput {
 export type TeacherUpdateInput = {
   about?: InputMaybe<Scalars['RichTextAST']>;
   cl3p97zsr766401xk2ko7huzy?: InputMaybe<HomepageUpdateManyInlineInput>;
+  cl4xhm2pt0iwz01un85146w6f?: InputMaybe<TeachersFeedbackUpdateManyInlineInput>;
   cl39f341p17xz01xsc9dg1q3g?: InputMaybe<ClassUpdateManyInlineInput>;
   facebookLink?: InputMaybe<Scalars['String']>;
   instagramLink?: InputMaybe<Scalars['String']>;
@@ -8915,6 +9127,426 @@ export type TeacherWhereUniqueInput = {
   facebookLink?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   instagramLink?: InputMaybe<Scalars['String']>;
+};
+
+export type TeachersFeedback = Node & {
+  __typename?: 'TeachersFeedback';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<TeachersFeedback>;
+  /** List of TeachersFeedback versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  nextUser?: Maybe<NextUser>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  studentFeedback: Scalars['String'];
+  teacher?: Maybe<Teacher>;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type TeachersFeedbackCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type TeachersFeedbackDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type TeachersFeedbackHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type TeachersFeedbackNextUserArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type TeachersFeedbackPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type TeachersFeedbackScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type TeachersFeedbackTeacherArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type TeachersFeedbackUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type TeachersFeedbackConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: TeachersFeedbackWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type TeachersFeedbackConnection = {
+  __typename?: 'TeachersFeedbackConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<TeachersFeedbackEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type TeachersFeedbackCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  nextUser?: InputMaybe<NextUserCreateOneInlineInput>;
+  studentFeedback: Scalars['String'];
+  teacher?: InputMaybe<TeacherCreateOneInlineInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type TeachersFeedbackCreateManyInlineInput = {
+  /** Connect multiple existing TeachersFeedback documents */
+  connect?: InputMaybe<Array<TeachersFeedbackWhereUniqueInput>>;
+  /** Create and connect multiple existing TeachersFeedback documents */
+  create?: InputMaybe<Array<TeachersFeedbackCreateInput>>;
+};
+
+export type TeachersFeedbackCreateOneInlineInput = {
+  /** Connect one existing TeachersFeedback document */
+  connect?: InputMaybe<TeachersFeedbackWhereUniqueInput>;
+  /** Create and connect one TeachersFeedback document */
+  create?: InputMaybe<TeachersFeedbackCreateInput>;
+};
+
+/** An edge in a connection. */
+export type TeachersFeedbackEdge = {
+  __typename?: 'TeachersFeedbackEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: TeachersFeedback;
+};
+
+/** Identifies documents */
+export type TeachersFeedbackManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<TeachersFeedbackWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<TeachersFeedbackWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<TeachersFeedbackWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  nextUser?: InputMaybe<NextUserWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  studentFeedback?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  studentFeedback_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  studentFeedback_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  studentFeedback_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  studentFeedback_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  studentFeedback_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  studentFeedback_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  studentFeedback_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  studentFeedback_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  studentFeedback_starts_with?: InputMaybe<Scalars['String']>;
+  teacher?: InputMaybe<TeacherWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum TeachersFeedbackOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  StudentFeedbackAsc = 'studentFeedback_ASC',
+  StudentFeedbackDesc = 'studentFeedback_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type TeachersFeedbackUpdateInput = {
+  nextUser?: InputMaybe<NextUserUpdateOneInlineInput>;
+  studentFeedback?: InputMaybe<Scalars['String']>;
+  teacher?: InputMaybe<TeacherUpdateOneInlineInput>;
+};
+
+export type TeachersFeedbackUpdateManyInlineInput = {
+  /** Connect multiple existing TeachersFeedback documents */
+  connect?: InputMaybe<Array<TeachersFeedbackConnectInput>>;
+  /** Create and connect multiple TeachersFeedback documents */
+  create?: InputMaybe<Array<TeachersFeedbackCreateInput>>;
+  /** Delete multiple TeachersFeedback documents */
+  delete?: InputMaybe<Array<TeachersFeedbackWhereUniqueInput>>;
+  /** Disconnect multiple TeachersFeedback documents */
+  disconnect?: InputMaybe<Array<TeachersFeedbackWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing TeachersFeedback documents */
+  set?: InputMaybe<Array<TeachersFeedbackWhereUniqueInput>>;
+  /** Update multiple TeachersFeedback documents */
+  update?: InputMaybe<Array<TeachersFeedbackUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple TeachersFeedback documents */
+  upsert?: InputMaybe<Array<TeachersFeedbackUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type TeachersFeedbackUpdateManyInput = {
+  studentFeedback?: InputMaybe<Scalars['String']>;
+};
+
+export type TeachersFeedbackUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: TeachersFeedbackUpdateManyInput;
+  /** Document search */
+  where: TeachersFeedbackWhereInput;
+};
+
+export type TeachersFeedbackUpdateOneInlineInput = {
+  /** Connect existing TeachersFeedback document */
+  connect?: InputMaybe<TeachersFeedbackWhereUniqueInput>;
+  /** Create and connect one TeachersFeedback document */
+  create?: InputMaybe<TeachersFeedbackCreateInput>;
+  /** Delete currently connected TeachersFeedback document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected TeachersFeedback document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single TeachersFeedback document */
+  update?: InputMaybe<TeachersFeedbackUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single TeachersFeedback document */
+  upsert?: InputMaybe<TeachersFeedbackUpsertWithNestedWhereUniqueInput>;
+};
+
+export type TeachersFeedbackUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: TeachersFeedbackUpdateInput;
+  /** Unique document search */
+  where: TeachersFeedbackWhereUniqueInput;
+};
+
+export type TeachersFeedbackUpsertInput = {
+  /** Create document if it didn't exist */
+  create: TeachersFeedbackCreateInput;
+  /** Update document if it exists */
+  update: TeachersFeedbackUpdateInput;
+};
+
+export type TeachersFeedbackUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: TeachersFeedbackUpsertInput;
+  /** Unique document search */
+  where: TeachersFeedbackWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type TeachersFeedbackWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<TeachersFeedbackWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<TeachersFeedbackWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<TeachersFeedbackWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  nextUser?: InputMaybe<NextUserWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  studentFeedback?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  studentFeedback_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  studentFeedback_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  studentFeedback_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  studentFeedback_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  studentFeedback_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  studentFeedback_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  studentFeedback_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  studentFeedback_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  studentFeedback_starts_with?: InputMaybe<Scalars['String']>;
+  teacher?: InputMaybe<TeacherWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References TeachersFeedback record uniquely */
+export type TeachersFeedbackWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 export type UnpublishLocaleInput = {
@@ -9853,10 +10485,24 @@ export type RegisterLastWarningDatesForStudentsMutationVariables = Exact<{
 
 export type RegisterLastWarningDatesForStudentsMutation = { __typename?: 'Mutation', createLastSendWarningDate?: { __typename?: 'LastSendWarningDate', id: string } | null };
 
-export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type CreateNewJustificationMutationVariables = Exact<{
+  teacherId: Scalars['ID'];
+  feedback: Scalars['String'];
+  nextUserEmail: Scalars['String'];
+}>;
 
 
-export type MyQueryQuery = { __typename?: 'Query', classes: Array<{ __typename?: 'Class', id: string }> };
+export type CreateNewJustificationMutation = { __typename?: 'Mutation', createTeachersFeedback?: { __typename?: 'TeachersFeedback', id: string } | null };
+
+export type GetClassesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetClassesQuery = { __typename?: 'Query', classes: Array<{ __typename?: 'Class', id: string }> };
+
+export type GetTeachersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTeachersQuery = { __typename?: 'Query', teachers: Array<{ __typename?: 'Teacher', id: string, name: string, profilePhoto?: { __typename?: 'Asset', url: string } | null }> };
 
 export type CourseHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
