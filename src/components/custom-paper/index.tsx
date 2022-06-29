@@ -1,12 +1,15 @@
 import { Paper, Stack } from '@mui/material'
 import Lottie, { Options } from 'react-lottie'
+
 import * as S from './styles'
-type CustomPaperProps = {
+
+export type CustomPaperProps = {
   defaultOptions: Options
   title: string
   subtitle: string
 }
-function CustomPaper({ defaultOptions, title, subtitle }: CustomPaperProps) {
+
+export function CustomPaper({ defaultOptions, title, subtitle }: CustomPaperProps) {
   return (
     <Paper elevation={3}>
       <Stack spacing={2}>
