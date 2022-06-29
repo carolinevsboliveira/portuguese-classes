@@ -1,8 +1,17 @@
 import { Step, StepLabel, Stepper } from '@mui/material'
-import { useWindowSize } from 'hooks/use-window-size'
+
+import { useWindowSize } from '../../hooks/use-window-size'
+
 import * as S from './styles'
-function ResponsiveStepper({ steps, activeSteps }: { steps: Array<string>; activeSteps: number }) {
+
+export type ResponsiveStepperProps = {
+  steps: Array<string>
+  activeSteps: number
+}
+
+export function ResponsiveStepper({ steps, activeSteps }: ResponsiveStepperProps) {
   const { width } = useWindowSize()
+
   return (
     <S.StepWrapper>
       <Stepper activeStep={activeSteps} orientation={width < 600 ? 'vertical' : 'horizontal'} sx={{ width: '100%' }}>
