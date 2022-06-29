@@ -101,18 +101,20 @@ function ClassListTemplate({
             onChange={handlePaginationChanges}
           />
 
-          <Box sx={{ display: 'flex', gap: '4rem' }}>
-            {!isTeacher && (
-              <MissedClassesMessage
-                hasMissedClasses={missedClassesQuantity > 0}
-                missedClassesQuantity={missedClassesQuantity}
-                totalClassesQuantity={totalPeriodClasses}
-                actionButton={actionButton}
-              />
-            )}
+          <div>
+            <S.BannersWrapper>
+              {!isTeacher && (
+                <MissedClassesMessage
+                  hasMissedClasses={missedClassesQuantity > 0}
+                  missedClassesQuantity={missedClassesQuantity}
+                  totalClassesQuantity={totalPeriodClasses}
+                  actionButton={actionButton}
+                />
+              )}
 
-            {!isTeacher && <FeedbackMessage />}
-          </Box>
+              {!isTeacher && <FeedbackMessage />}
+            </S.BannersWrapper>
+          </div>
         </Stack>
       </S.ContentWrapper>
     </Box>

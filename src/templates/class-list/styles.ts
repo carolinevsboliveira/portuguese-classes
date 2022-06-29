@@ -25,3 +25,14 @@ export const ClassListWrapper = styled.div`
   background: #5d88be;
   border-radius: 40px;
 `
+
+export const BannersWrapper = styled.div`
+  display: flex;
+  gap: 4rem;
+  margin: 0rem 2rem;
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+`
