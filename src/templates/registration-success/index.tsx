@@ -32,7 +32,7 @@ function RegistrationSuccessTemplate() {
               <Button variant="outlined" onClick={() => push('/')} startIcon={<ArrowBack />}>
                 Página principal
               </Button>
-              <Button variant="contained" onClick={() => push('/posts')} endIcon={<ArrowForward />}>
+              <Button variant="contained" onClick={() => push('/posts', '/publicacoes')} endIcon={<ArrowForward />}>
                 Ver mais conteúdos
               </Button>
             </Stack>
