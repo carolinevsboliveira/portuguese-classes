@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { Step, StepLabel, Stepper } from '@mui/material'
 
 import { useWindowSize } from '../../hooks/use-window-size'
@@ -9,7 +10,10 @@ export type ResponsiveStepperProps = {
   activeSteps: number
 }
 
-export function ResponsiveStepper({ steps, activeSteps }: ResponsiveStepperProps) {
+const Label = styled.h3`
+  color: #17326b;
+`
+function ResponsiveStepper({ steps, activeSteps }: { steps: Array<string>; activeSteps: number }) {
   const { width } = useWindowSize()
 
   return (
@@ -18,7 +22,7 @@ export function ResponsiveStepper({ steps, activeSteps }: ResponsiveStepperProps
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>
-              <h3>{label}</h3>
+              <Label>{label}</Label>
             </StepLabel>
           </Step>
         ))}

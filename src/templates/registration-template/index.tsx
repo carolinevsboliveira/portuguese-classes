@@ -54,7 +54,7 @@ function RegistrationTemplate() {
       <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
         <S.FullHeightStack>
           <Lottie options={{ ...defaultOptions, loop: false }} height={80} width={80} />
-          <h3>Cadastre-se</h3>
+          <S.RegistrationTitle>Cadastre-se</S.RegistrationTitle>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
               <ControlledTextField

@@ -47,7 +47,7 @@ function LoginTemplate() {
             height={80}
             width={80}
           />
-          <h3>Log in</h3>
+          <S.LogInTitle>Log in</S.LogInTitle>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={1}>
               <ControlledTextField
@@ -66,12 +66,20 @@ function LoginTemplate() {
                 required="Ops! Precisa preencher esse campo!"
                 onFocus={() => setHasErrors(false)}
               />
-              <Button variant="outlined" type="submit">
+              <Button type="submit" variant="contained">
                 Login
               </Button>
-              <Button variant="text" color="error" onClick={() => handleForgetPassword()} size="small">
+
+              <Button
+                variant="text"
+                color="error"
+                onClick={() => handleForgetPassword()}
+                size="small"
+                sx={{ marginTop: '3rem !important' }}
+              >
                 Esqueceu a senha?
               </Button>
+
               {hasErrors && <h4>Algo deu errado! Tente novamente</h4>}
             </Stack>
           </form>

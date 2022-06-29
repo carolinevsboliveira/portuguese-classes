@@ -30,7 +30,7 @@ function MissedClassesMessage({
         height={250}
         width={250}
       />
-      <Typography variant="h4">
+      <Typography variant="h4" color="text.primary">
         {hasMissedClasses
           ? `Você faltou ${missedClassesQuantity} das ${totalClassesQuantity} aulas deste período.`
           : `Parabéns! Você não teve faltas registradas nas ${missedClassesQuantity} aulas deste período.`}

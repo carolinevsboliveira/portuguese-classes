@@ -12,3 +12,8 @@ export const FullHeightStack = styled.div`
   align-items: center;
   justify-content: center;
 `
+
+export const LogInTitle = styled.h3`
+  margin-bottom: 1.5rem;
+  color: #000a36;
+`
