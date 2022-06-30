@@ -1,17 +1,19 @@
 import { Button, Grid, Paper } from '@mui/material'
 import Lottie from 'react-lottie'
-import defaultLottieOptionsBuilder from 'utils/lottie-options-builder'
-import * as S from './styles'
 import { useRouter } from 'next/router'
 import { ArrowLeft } from '@mui/icons-material'
 
-type NotFoundTemplateProps = {
+import defaultLottieOptionsBuilder from '../../utils/lottie-options-builder'
+
+import * as S from './styles'
+
+export type NotFoundTemplateProps = {
   title: string
   subtitle: string
   animation: any
 }
 
-function NotFoundTemplate({ title, subtitle, animation }: NotFoundTemplateProps) {
+export function NotFoundTemplate({ title, subtitle, animation }: NotFoundTemplateProps) {
   const { back } = useRouter()
 
   return (
