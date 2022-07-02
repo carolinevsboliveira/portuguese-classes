@@ -29,8 +29,8 @@ function ClassesList({
   return (
     <>
       <ClassListTemplate
-        missedClasses={currentStudentFrequencies.missedClasses}
-        totalPeriodClasses={Number(currentStudentFrequencies.totalPeriodClasses)}
+        missedClasses={currentStudentFrequencies?.missedClasses}
+        totalPeriodClasses={Number(currentStudentFrequencies?.totalPeriodClasses)}
         classes={classes}
         pageSize={PAGE_SIZE}
         page={page}
