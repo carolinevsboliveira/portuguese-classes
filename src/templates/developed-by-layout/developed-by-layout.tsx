@@ -5,13 +5,11 @@ function DevelopedByLayout() {
   return (
     <S.FixedFooter>
       <Button
-        onClick={() => window.open(new URL('https://github.com/carolinevsboliveira'), '_blank')}
+        onClick={() => window.open(new URL('https://github.com/carolinevsboliveira/portuguese-classes'), '_blank')}
         endIcon={<GitHub />}
         variant="text"
         sx={{ backgroundColor: '#fff' }}
-      >
-        Developed by Caroline
-      </Button>
+      />
     </S.FixedFooter>
   )
 }
