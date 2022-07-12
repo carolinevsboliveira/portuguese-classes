@@ -64,7 +64,7 @@ const HomeTemplate = ({
 
   const papers = [
     { animationData: ClassTime, title: 'Aulas aos sábados', subtitle: '8:30h as 11:00h' },
-    { animationData: OnlineClasses, title: 'Aulas online', subtitle: `Via ${courseClassPlataform}` },
+    { animationData: OnlineClasses, title: 'Aulas online', subtitle: +`Via ${courseClassPlataform}` },
     { animationData: AccessibleValue, title: `R$ ${valuePerMonth},00`, subtitle: '8:30h as 11:00h' }
   ]
 
@@ -133,10 +133,11 @@ const HomeTemplate = ({
           <S.PapersWrapper>
             {papers.map((paper) => (
               <CustomPaper
+                width={width}
                 key={`paper-${paper.title}`}
                 defaultOptions={{ ...defaultOptions, animationData: paper.animationData }}
                 title={paper.title}
-                subtitle={paper.subtitle}
+                subtitle={isNaN(Number(paper.subtitle)) ? 'Google Meet' : paper.subtitle.toString()}
               />
             ))}
           </S.PapersWrapper>
