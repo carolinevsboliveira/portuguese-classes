@@ -54,7 +54,7 @@ function JustificationTemplate({ missedClasses, email, missedClassesJustificatio
   }
 
   return (
-    <>
+    <Box sx={{ height: '100vh' }}>
       <S.NavbarWrapper>
         <Button onClick={() => back()} variant="outlined" startIcon={<ArrowLeft />}>
           Voltar
@@ -132,7 +132,7 @@ function JustificationTemplate({ missedClasses, email, missedClassesJustificatio
           ))}
         </S.JustifiedClassesContainer>
       </S.ContentWrapper>
-    </>
+    </Box>
   )
 }
 

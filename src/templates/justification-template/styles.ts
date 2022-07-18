@@ -6,6 +6,8 @@ export const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 0 1rem;
+  overflow: scroll;
 
   h1 {
     margin-bottom: 2rem;
