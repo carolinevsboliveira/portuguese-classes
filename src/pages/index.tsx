@@ -1,10 +1,10 @@
 import client from 'graphql/client'
-import { GetStaticProps } from 'next'
+import { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import HomeTemplate from 'templates/home-template'
 import { GET_HOMEPAGE_PROPS } from 'graphql/queries'
 import { CourseHomepageQuery } from 'generated/graphql'
 
-export default function Home({ homepage }: any) {
+export default function Home({ homepage }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const {
     title,
     slogan,
@@ -28,7 +28,7 @@ export default function Home({ homepage }: any) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { homepages } = await client.request<CourseHomepageQuery>(GET_HOMEPAGE_PROPS)
   const homepage = homepages[0]
   return {

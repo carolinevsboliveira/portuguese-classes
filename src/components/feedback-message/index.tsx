@@ -24,8 +24,8 @@ function FeedbackMessage() {
     <Stack spacing={3}>
       <Lottie options={defaultOptions} height={250} width={250} />
 
-      <Typography variant="h4" color="text.primary">
-        Avalie o professor e o ambiente da aula.
+      <Typography variant="h4" color="text.primary" textAlign="center">
+        Gostaríamos da sua avaliação sobre os professores.
       </Typography>
 
       <Box display="flex" justifyContent="center">

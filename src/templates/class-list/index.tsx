@@ -64,7 +64,7 @@ function ClassListTemplate({
   const actionButton = () => {
     push('/classes/justification', '/aulas/justificar-aula')
   }
-  const missedClassesQuantity = missedClasses.length
+  const missedClassesQuantity = missedClasses?.length
 
   return (
     <Box>

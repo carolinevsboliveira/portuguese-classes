@@ -9,7 +9,7 @@ type MissedClassesMessageProps = {
   actionButton?: () => void
 }
 const defaultOptions = {
-  loop: true,
+  loop: false,
   autoplay: true,
   animationData: Warning,
   rendererSettings: {
@@ -30,10 +30,10 @@ function MissedClassesMessage({
         height={250}
         width={250}
       />
-      <Typography variant="h4" color="text.primary">
+      <Typography variant="h4" color="text.primary" textAlign="center">
         {hasMissedClasses
           ? `Você faltou ${missedClassesQuantity} das ${totalClassesQuantity} aulas deste período.`
-          : `Parabéns! Você não teve faltas registradas nas ${missedClassesQuantity} aulas deste período.`}
+          : `Parabéns! Você não teve faltas registradas nas aulas deste período.`}
       </Typography>
       {hasMissedClasses && (
         <Box display="flex" justifyContent="center">

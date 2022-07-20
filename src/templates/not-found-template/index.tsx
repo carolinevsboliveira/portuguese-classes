@@ -14,7 +14,11 @@ export type NotFoundTemplateProps = {
 }
 
 export function NotFoundTemplate({ title, subtitle, animation }: NotFoundTemplateProps) {
-  const { back } = useRouter()
+  const { push } = useRouter()
+
+  function handleGoToHome() {
+    push('/')
+  }
 
   return (
     <Grid container sx={{ height: '100%' }}>
@@ -28,7 +32,7 @@ export function NotFoundTemplate({ title, subtitle, animation }: NotFoundTemplat
           />
           <h2>{title}</h2>
           <h3>{subtitle}</h3>
-          <Button variant="contained" onClick={() => back()} startIcon={<ArrowLeft />}>
+          <Button variant="contained" onClick={handleGoToHome} startIcon={<ArrowLeft />}>
             Voltar
           </Button>
         </S.FullHeightStack>
